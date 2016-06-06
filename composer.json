@@ -36,7 +36,7 @@
         "skeeks/cms-external-links": "*",
         "skeeks/cms-log-db-target": "*",
         "kartik-v/yii2-widget-rating": "*",
-	"skeeks/yii2-http-basic-auth": "*",
+	    "skeeks/yii2-http-basic-auth": "*",
         "yiisoft/yii2-debug": "*",
         "skeeks/cms-instagram-widget": "*"
     },
