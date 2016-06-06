@@ -15,8 +15,14 @@ php_value error_reporting       2039
   RewriteEngine On
 
   # редиррект для seo
-  RewriteCond %{HTTP_HOST} ^www.select-moto.ru
-  RewriteRule (.*) http://select-moto.ru/$1 [R=301,L]
+  RewriteCond %{HTTP_HOST} ^www.jhanway.ru
+  RewriteRule (.*) http://jhanway.ru/$1 [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^www.jhanway.com
+  RewriteRule (.*) http://jhanway.ru/$1 [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^jhanway.com
+  RewriteRule (.*) http://jhanway.ru/$1 [R=301,L]
 
   # Если это папка или файл, открываем её/его
   RewriteCond %{REQUEST_FILENAME} !-f
