@@ -16,7 +16,6 @@ class Fancybox extends Widget
     public $id;
     public $content;
 
-
     public function run()
     {
 

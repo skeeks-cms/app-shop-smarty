@@ -11,7 +11,6 @@
 <? if ($widget->label) : ?>
     <h1 class="size-17 margin-bottom-20"><?= $widget->label; ?></h1>
 <? endif; ?>
-
 <? if ($widget->enabledPjaxPagination = \skeeks\cms\components\Cms::BOOL_Y) : ?>
     <? $pjax = \skeeks\cms\modules\admin\widgets\Pjax::begin(); ?>
     <?
@@ -21,25 +20,23 @@
     new sx.classes.Pjax({'id': '{$pjax->id}'});
 })(sx, sx.$, sx._);
 JS
-);
+    );
     ?>
 <? endif; ?>
-
 <? echo \yii\widgets\ListView::widget([
-    'dataProvider'      => $widget->dataProvider,
-    'itemView'          => 'product-item',
-    'emptyText'          => '',
-    'options'           =>
-    [
-        'class'   => 'shop-item-list row list-inline nomargin',
-        'tag'   => 'ul',
-    ],
+    'dataProvider' => $widget->dataProvider,
+    'itemView' => 'product-item',
+    'emptyText' => '',
+    'options' =>
+        [
+            'class' => 'shop-item-list row list-inline nomargin',
+            'tag' => 'ul',
+        ],
     'itemOptions' => [
         'tag' => false
     ],
-    'layout'            => "\n{items}\n<p class=\"row\">{summary}{pager}</p>"
-])?>
-
+    'layout' => "\n{items}\n<p class=\"row\">{summary}{pager}</p>"
+]) ?>
 <? if ($widget->enabledPjaxPagination = \skeeks\cms\components\Cms::BOOL_Y) : ?>
     <? \skeeks\cms\modules\admin\widgets\Pjax::end(); ?>
 <? endif; ?>

@@ -5,19 +5,12 @@
  * @copyright 2010 SkeekS (СкикС)
  * @date 24.03.2015
  */
-
-if (!$title)
-{
-
-    if ($model)
-    {
-        $title = $model->name?$model->name:$model->username;
+if (!$title) {
+    if ($model) {
+        $title = $model->name ? $model->name : $model->username;
     }
 }
-
-
 ?>
-
 <!--
     PAGE HEADER
 
@@ -41,18 +34,17 @@ if (!$title)
             <div class="col-lg-6 col-md-6">
                 <h1><?= $title; ?></h1>
             </div>
-        <!-- breadcrumbs -->
-        <!--<ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Pages</a></li>
-            <li class="active">Blank Page</li>
-        </ol>--><!-- /breadcrumbs -->
+            <!-- breadcrumbs -->
+            <!--<ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Pages</a></li>
+                <li class="active">Blank Page</li>
+            </ol>--><!-- /breadcrumbs -->
             <div class="col-lg-6 col-md-6 breadCr hidden-sm hidden-xs">
-            <?= \skeeks\cms\cmsWidgets\breadcrumbs\BreadcrumbsCmsWidget::widget([
-                'viewFile'       => '@template/widgets/BreadcrumbsCmsWidget/default',
-            ]); ?>
+                <?= \skeeks\cms\cmsWidgets\breadcrumbs\BreadcrumbsCmsWidget::widget([
+                    'viewFile' => '@template/widgets/BreadcrumbsCmsWidget/default',
+                ]); ?>
             </div>
-
         </div>
     </div>
 </section>

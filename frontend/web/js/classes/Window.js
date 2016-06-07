@@ -4,58 +4,45 @@
  * @copyright 2010 SkeekS (СкикС)
  * @date 07.04.2015
  */
-(function(sx, $, _)
-{
+(function (sx, $, _) {
     sx.createNamespace('classes', sx);
     /**
      * Настройка блокировщика для админки по умолчанию. Глобальное перекрытие
      * @type {void|*|Function}
      */
-    sx.classes.Window  = sx.classes._Window.extend({
-
+    sx.classes.Window = sx.classes._Window.extend({
         /**
          * @returns {Window}
          */
-        open: function()
-        {
+        open: function () {
             var self = this;
-
             this.trigger('beforeOpen');
             //строка параметров, собираем из массива
             var paramsSting = "";
-            if (this.getOpts())
-            {
-                _.each(this.getOpts(), function(value, key)
-                {
-                    if (paramsSting)
-                    {
+            if (this.getOpts()) {
+                _.each(this.getOpts(), function (value, key) {
+                    if (paramsSting) {
                         paramsSting = paramsSting + ',';
                     }
                     paramsSting = paramsSting + String(key) + "=" + String(value);
                 });
             }
-
-            this.onDomReady(function()
-            {
+            this.onDomReady(function () {
                 var options = _.extend({
-                    'afterClose' : function()
-                    {
+                    'afterClose': function () {
                         self.trigger('close');
                     },
-                    'height'	: '100%',
-                    'autoSize'  : false,
-                    'width'		: '100%'
+                    'height': '100%',
+                    'autoSize': false,
+                    'width': '100%'
                 }, self.toArray());
-
                 $("<a>", {
-                    'style' : 'display: none;',
-                    'href' : self._src,
-                    'data-fancybox-type' : 'iframe',
+                    'style': 'display: none;',
+                    'href': self._src,
+                    'data-fancybox-type': 'iframe',
                 }).appendTo('body').fancybox(options).click();
             });
-
             return this;
         }
     });
-
 })(sx, sx.$, sx._);

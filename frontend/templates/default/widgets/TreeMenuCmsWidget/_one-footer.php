@@ -9,8 +9,7 @@
 /* @var $widget \skeeks\cms\cmsWidgets\treeMenu\TreeMenuCmsWidget */
 /* @var $model   \skeeks\cms\models\Tree */
 $class = '';
-if (\Yii::$app->cms->getCurrentTree()->id == $model->id)
-{
+if (\Yii::$app->cms->getCurrentTree()->id == $model->id) {
     $class = 'active';
 }
 ?>

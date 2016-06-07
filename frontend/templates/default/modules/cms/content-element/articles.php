@@ -10,6 +10,6 @@
 ?>
 <?= $this->render('@template/include/breadcrumbs', [
     'model' => $model
-])?>
+]) ?>
 
 <?= $model->description_full; ?>

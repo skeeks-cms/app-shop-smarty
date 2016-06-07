@@ -9,12 +9,11 @@
 /* @var $widget \skeeks\cms\cmsWidgets\treeMenu\TreeMenuCmsWidget */
 /* @var $trees  \skeeks\cms\models\Tree[] */
 ?>
-
-    <? if ($trees = $widget->activeQuery->all()) : ?>
-        <? foreach ($trees as $tree) : ?>
-            <?= $this->render("_one-catalogpage", [
-                "widget"        => $widget,
-                "model"         => $tree,
-            ]); ?>
-        <? endforeach; ?>
-    <? endif; ?>
+<? if ($trees = $widget->activeQuery->all()) : ?>
+    <? foreach ($trees as $tree) : ?>
+        <?= $this->render("_one-catalogpage", [
+            "widget" => $widget,
+            "model" => $tree,
+        ]); ?>
+    <? endforeach; ?>
+<? endif; ?>

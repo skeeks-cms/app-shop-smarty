@@ -1,5 +1,4 @@
 <?php
-
 $config = [
     /*'components' => [
         'request' => [
@@ -8,5 +7,4 @@ $config = [
         ],
     ],*/
 ];
-
 return $config;

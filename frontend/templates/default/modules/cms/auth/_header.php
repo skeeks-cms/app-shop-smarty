@@ -7,16 +7,9 @@
  */
 /* @var $this yii\web\View */
 /* @var $model \skeeks\cms\models\forms\LoginFormUsernameOrEmail */
-
-use yii\helpers\Html;
-use skeeks\cms\base\widgets\ActiveFormAjaxSubmit as ActiveForm;
-use \skeeks\cms\helpers\UrlHelper;
-
 $this->title = $title;
 \Yii::$app->breadcrumbs->createBase()->append($this->title);
-
 \yii\authclient\widgets\AuthChoiceAsset::register($this);
-
 $this->registerCss(<<<CSS
     div.auth-clients
     {
@@ -35,15 +28,13 @@ $this->registerCss(<<<CSS
 
 CSS
 );
-
 ?>
 
-<?/*= $this->render('@template/include/breadcrumbs', [
+<? /*= $this->render('@template/include/breadcrumbs', [
     'title' => $this->title
-])*/?>
+])*/ ?>
 
 <? \skeeks\cms\modules\admin\widgets\Pjax::begin(); ?>
-
 <!-- -->
 <section>
     <div class="container">

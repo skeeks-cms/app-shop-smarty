@@ -10,11 +10,10 @@
 use skeeks\modules\cms\form2\widgets\ActiveFormConstructForm as ActiveForm;
 
 $modelHasRelatedProperties = $widget->modelForm->createModelFormSend();
-
 ?>
-    <?php $form = ActiveForm::begin([
-        'modelForm'                                 => $widget->modelForm,
-        'afterValidateCallback'                     => new \yii\web\JsExpression(<<<JS
+<?php $form = ActiveForm::begin([
+    'modelForm' => $widget->modelForm,
+    'afterValidateCallback' => new \yii\web\JsExpression(<<<JS
             function(jForm, ajax)
             {
                 var handler = new sx.classes.AjaxHandlerStandartRespose(ajax, {
@@ -48,8 +47,8 @@ $modelHasRelatedProperties = $widget->modelForm->createModelFormSend();
                 });
             }
 JS
-),
-    ]);
+    ),
+]);
 ?>
 
 <?= \yii\bootstrap\Alert::widget([
@@ -59,7 +58,7 @@ JS
     ],
     'closeButton' => false,
     'body' => '<div class="sx-body">Ok</div>',
-])?>
+]) ?>
 
 <?= \yii\bootstrap\Alert::widget([
     'options' => [
@@ -68,8 +67,7 @@ JS
     ],
     'closeButton' => false,
     'body' => '<div class="sx-body">Ok</div>',
-])?>
-
+]) ?>
 <? if ($properties = $modelHasRelatedProperties->relatedProperties) : ?>
     <? foreach ($properties as $property) : ?>
         <?= $property->renderActiveForm($form, $modelHasRelatedProperties); ?>
@@ -79,5 +77,4 @@ JS
 <?= \yii\helpers\Html::submitButton("" . \Yii::t('app', $widget->btnSubmit), [
     'class' => $widget->btnSubmitClass,
 ]); ?>
-
 <?php ActiveForm::end(); ?>

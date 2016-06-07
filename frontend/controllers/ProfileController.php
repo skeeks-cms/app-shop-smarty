@@ -10,19 +10,17 @@
  */
 namespace frontend\controllers;
 
-use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\ContactForm;
-use yii\base\InvalidParamException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
+use Yii;
 use yii\filters\AccessControl;
+use yii\web\Controller;
+
 /**
  * Class ProfileController
+ *
  * @package frontend\controllers
  */
 class ProfileController extends Controller
@@ -45,7 +43,6 @@ class ProfileController extends Controller
             ],
         ];
     }
-
 
     public function actionIndex()
     {

@@ -1,19 +1,18 @@
 <?php
 namespace frontend\controllers;
 
-use common\models\User;
+use frontend\models\ContactForm;
 use skeeks\cms\actions\LogoutAction;
-use Yii;
 use skeeks\module\cms\user\model\LoginForm;
 use skeeks\module\cms\user\model\PasswordResetRequestForm;
 use skeeks\module\cms\user\model\ResetPasswordForm;
 use skeeks\module\cms\user\model\SignupForm;
-use frontend\models\ContactForm;
+use Yii;
 use yii\base\InvalidParamException;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
 
 /**
  * Site controller
@@ -76,45 +75,38 @@ class SiteController extends Controller
 
     /**
      * TODO: допилить, разделить
+     *
      * @param \yii\authclient\BaseClient $client
+     *
      * @return bool
      */
     public function successAuthclientCallback($client)
     {
         $attributes = $client->getUserAttributes();
-
         //TODO: добавить обновление данных
-        if (!Yii::$app->getUser()->isGuest)
-        {
+        if (!Yii::$app->getUser()->isGuest) {
             $userAuthClient = \common\models\UserAuthclient::findOne([
-                "user_id"               => Yii::$app->user->getId(),
-                "provider"              => $client->getId(),
-                "provider_identifier"   => $attributes["id"],
+                "user_id" => Yii::$app->user->getId(),
+                "provider" => $client->getId(),
+                "provider_identifier" => $attributes["id"],
             ]);
-
-            if (!$userAuthClient)
-            {
+            if (!$userAuthClient) {
                 $userAuthClient = new \common\models\UserAuthclient([
-                    "user_id"               => Yii::$app->user->getId(),
-                    "provider"              => $client->getId(),
-                    "provider_identifier"   => $attributes["id"],
-                    "provider_data"         => serialize($attributes)
+                    "user_id" => Yii::$app->user->getId(),
+                    "provider" => $client->getId(),
+                    "provider_identifier" => $attributes["id"],
+                    "provider_data" => serialize($attributes)
                 ]);
-
                 $userAuthClient->save();
             }
-        } else
-        {
+        } else {
             $userAuthClient = \common\models\UserAuthclient::findOne([
-                "provider"              => $client->getId(),
-                "provider_identifier"   => $attributes["id"],
+                "provider" => $client->getId(),
+                "provider_identifier" => $attributes["id"],
             ]);
-
-            if ($userAuthClient)
-            {
+            if ($userAuthClient) {
                 $user = \common\models\User::findIdentity($userAuthClient->getUserId());
-                if ($user)
-                {
+                if ($user) {
                     return Yii::$app->user->login($user, 0);
                 }
             }
@@ -126,16 +118,13 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
-
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
-
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login())
-        {
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
             return $this->render('login', [
@@ -143,7 +132,6 @@ class SiteController extends Controller
             ]);
         }
     }
-
 
     public function actionContact()
     {
@@ -154,7 +142,6 @@ class SiteController extends Controller
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
             }
-
             return $this->refresh();
         } else {
             return $this->render('contact', [
@@ -178,7 +165,6 @@ class SiteController extends Controller
                 }
             }
         }
-
         return $this->render('signup', [
             'model' => $model,
         ]);
@@ -190,13 +176,11 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
                 Yii::$app->getSession()->setFlash('success', 'Check your email for further instructions.');
-
                 return $this->goHome();
             } else {
                 Yii::$app->getSession()->setFlash('error', 'Sorry, we are unable to reset password for email provided.');
             }
         }
-
         return $this->render('requestPasswordResetToken', [
             'model' => $model,
         ]);
@@ -209,13 +193,10 @@ class SiteController extends Controller
         } catch (InvalidParamException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
-
         if ($model->load(Yii::$app->request->post()) && $model->validate() && $model->resetPassword()) {
             Yii::$app->getSession()->setFlash('success', 'New password was saved.');
-
             return $this->goHome();
         }
-
         return $this->render('resetPassword', [
             'model' => $model,
         ]);

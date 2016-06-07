@@ -8,11 +8,13 @@
  * @date 29.10.2014
  * @since 1.0.0
  */
-
 namespace common\models;
+
 use skeeks\cms\models\CmsUser;
+
 /**
  * Class User
+ *
  * @package common\models
  */
 class User

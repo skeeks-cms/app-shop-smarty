@@ -7,18 +7,14 @@
  */
 /* @var $this \yii\web\View */
 ?>
-
 <!-- FOOTER -->
 <footer id="footer">
-	<div class="container">
-
-		<div class="row">
-
-			<div class="col-md-3">
-
-				<?= \skeeks\cms\cmsWidgets\text\TextCmsWidget::widget([
-				'namespace'         => 'text-footer-left',
-				'text'              => <<<HTML
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <?= \skeeks\cms\cmsWidgets\text\TextCmsWidget::widget([
+                    'namespace' => 'text-footer-left',
+                    'text' => <<<HTML
 				<!-- Footer Logo -->
 				<h4 class="letter-spacing-1">О нас</h4>
 
@@ -49,52 +45,39 @@
 					<i class="icon-facebook"></i>
 				</a>
 HTML
-,
-			]); ?>
-
-
-
-			</div>
-
-			<div class="col-md-3">
-
-				<?/*= \skeeks\cms\cmsWidgets\contentElements\ContentElementsCmsWidget::widget([
+                    ,
+                ]); ?>
+            </div>
+            <div class="col-md-3">
+                <? /*= \skeeks\cms\cmsWidgets\contentElements\ContentElementsCmsWidget::widget([
 					'namespace'         => 'ContentElementsCmsWidget-footer',
 					'viewFile'          => '@template/widgets/ContentElementsCmsWidget/articles-footer',
 					'label'             => 'Новости и статьи',
 					'enabledCurrentTree'=> \skeeks\cms\components\Cms::BOOL_N,
 					'limit'             => 4,
-				])*/?>
+				])*/ ?>
 
-				<?= \skeeks\cms\cmsWidgets\treeMenu\TreeMenuCmsWidget::widget([
-					'namespace'      => 'menu-footer-3',
-					'viewFile'       => '@template/widgets/TreeMenuCmsWidget/menu-footer.php',
-					'label'          => 'Каталог',
-					'level'          => '1',
-				]); ?>
+                <?= \skeeks\cms\cmsWidgets\treeMenu\TreeMenuCmsWidget::widget([
+                    'namespace' => 'menu-footer-3',
+                    'viewFile' => '@template/widgets/TreeMenuCmsWidget/menu-footer.php',
+                    'label' => 'Каталог',
+                    'level' => '1',
+                ]); ?>
+            </div>
+            <div class="col-md-2">
+                <?= \skeeks\cms\cmsWidgets\treeMenu\TreeMenuCmsWidget::widget([
+                    'namespace' => 'menu-footer-2',
+                    'viewFile' => '@template/widgets/TreeMenuCmsWidget/menu-footer.php',
+                    'label' => 'Меню',
+                    'level' => '1',
+                ]); ?>
+            </div>
+            <div class="col-md-4">
+                <h4 class="letter-spacing-1">Обратная связь</h4>
 
-
-
-			</div>
-
-			<div class="col-md-2">
-
-				<?= \skeeks\cms\cmsWidgets\treeMenu\TreeMenuCmsWidget::widget([
-					'namespace'      => 'menu-footer-2',
-					'viewFile'       => '@template/widgets/TreeMenuCmsWidget/menu-footer.php',
-					'label'          => 'Меню',
-					'level'          => '1',
-				]); ?>
-
-			</div>
-
-			<div class="col-md-4">
-
-				<h4 class="letter-spacing-1">Обратная связь</h4>
-
-				<div class="sx-feedback-wrapper" id="sx-feedback">
-					<?
-					$this->registerCss(<<<CSS
+                <div class="sx-feedback-wrapper" id="sx-feedback">
+                    <?
+                    $this->registerCss(<<<CSS
 .sx-feedback-wrapper form
 {
 	margin-bottom: 0px;
@@ -109,51 +92,48 @@ HTML
 	height: 80px;
 }
 CSS
-)
-					?>
-					<?= \skeeks\modules\cms\form2\cmsWidgets\form2\FormWidget::widget([
-						'namespace' => 'FormWidget-feedback-all',
-						'form_code' => 'feedback',
-						'viewFile' => 'whith-messages',
-					])?>
-
-				</div>
-			</div>
-
-		</div>
-
-	</div>
-
-	<div class="copyright">
-		<div class="container">
-			<ul class="pull-right nomargin list-inline mobile-block">
-				<li><a href="http://skeeks.com" title="Студия SkeekS">Разработка сайта — SkeekS.com</a> (<a href="http://cms.skeeks.com" title="Система управления сайтом SkeekS CMS (Yii2 cms)">SkeekS CMS Yii2</a>)</li>
-
-			</ul>
-			<?= \skeeks\cms\cmsWidgets\text\TextCmsWidget::widget([
-				'namespace'         => 'text-footer-rights',
-				'text'              => <<<HTML
+                    )
+                    ?>
+                    <?= \skeeks\modules\cms\form2\cmsWidgets\form2\FormWidget::widget([
+                        'namespace' => 'FormWidget-feedback-all',
+                        'form_code' => 'feedback',
+                        'viewFile' => 'whith-messages',
+                    ]) ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <div class="container">
+            <ul class="pull-right nomargin list-inline mobile-block">
+                <li><a href="http://skeeks.com" title="Студия SkeekS">Разработка сайта — SkeekS.com</a> (<a
+                        href="http://cms.skeeks.com" title="Система управления сайтом SkeekS CMS (Yii2 cms)">SkeekS CMS
+                        Yii2</a>)
+                </li>
+            </ul>
+            <?= \skeeks\cms\cmsWidgets\text\TextCmsWidget::widget([
+                'namespace' => 'text-footer-rights',
+                'text' => <<<HTML
 				&copy; Все права защищены, SkeekS CMS - SHOP 2016
 HTML
-,
-			]); ?>
-
-		</div>
-	</div>
+                ,
+            ]); ?>
+        </div>
+    </div>
 </footer>
 <!-- /FOOTER -->
-
 <div style="display: none;">
-	<?= \Yii::$app->seo->countersContent; ?>
-	<div id="sx-callback" style="width: 600px;">
-		<h2>Обратный звонок</h2>
-		<p>Оставьте ваш номер телефона и мы вам перезвоним.</p>
-		<?= \skeeks\modules\cms\form2\cmsWidgets\form2\FormWidget::widget([
-			'namespace' => 'FormWidget-all',
-			'form_code' => 'callback',
-			'viewFile' => 'whith-messages',
-		])?>
-	</div>
+    <?= \Yii::$app->seo->countersContent; ?>
+    <div id="sx-callback" style="width: 600px;">
+        <h2>Обратный звонок</h2>
+
+        <p>Оставьте ваш номер телефона и мы вам перезвоним.</p>
+        <?= \skeeks\modules\cms\form2\cmsWidgets\form2\FormWidget::widget([
+            'namespace' => 'FormWidget-all',
+            'form_code' => 'callback',
+            'viewFile' => 'whith-messages',
+        ]) ?>
+    </div>
 </div>
 
 

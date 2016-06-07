@@ -8,9 +8,7 @@
  * @date 17.10.2014
  * @since 1.0.0
  */
-
 $commonMessages = include_once \Yii::getAlias("@common/messages/ru/app.php");
-
 return array_merge($commonMessages, [
-    "List of games"         =>  "Список игр"
+    "List of games" => "Список игр"
 ]);

@@ -6,7 +6,7 @@
  * @date 08.03.2016
  */
 /* @var $this yii\web\View */
-use \skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
+use skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
 
 ?>
 
@@ -16,8 +16,7 @@ use \skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
     'useAjaxSubmit' => true,
     'enableAjaxValidation' => true,
     'validationUrl' => \skeeks\cms\helpers\UrlHelper::construct(['/admin-import-stock-sale/validate'])->enableAdmin()->toString(),
-
-    'afterValidateCallback'                     => new \yii\web\JsExpression(<<<JS
+    'afterValidateCallback' => new \yii\web\JsExpression(<<<JS
         function(jForm, ajaxQuery){
             ajaxQuery.bind('success', function(e, responseObject)
             {
@@ -51,34 +50,32 @@ use \skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
 JS
     )
 ]); ?>
-    <?= $form->fieldSet('Основное'); ?>
-        <?= $form->field($model, 'importFilePath')->widget(
-            \skeeks\cms\modules\admin\widgets\formInputs\OneImage::className()
-        ); ?>
-    <?= $form->fieldSetEnd();?>
+<?= $form->fieldSet('Основное'); ?>
+<?= $form->field($model, 'importFilePath')->widget(
+    \skeeks\cms\modules\admin\widgets\formInputs\OneImage::className()
+); ?>
+<?= $form->fieldSetEnd(); ?>
 
-    <?= $form->buttonsStandart($model);?>
+<?= $form->buttonsStandart($model); ?>
 <? ActiveForm::end(); ?>
-<br />
-<br />
+<br/>
+<br/>
 <div style="text-align: center" id="sx-rows"></div>
 <div class="sx-progress-tasks" id="sx-progress-tasks" style="display: none;">
     <span style="vertical-align:middle;"><h3>Процесс импорта: <span class="sx-executing-ptc"></span>%</h3></span>
     <span style="vertical-align:middle;"><span class="sx-executing-task-name"></span></span>
+
     <div>
         <div class="progress progress-striped active">
             <div class="progress-bar progress-bar-success"></div>
         </div>
     </div>
 </div>
-
 <?
 \skeeks\cms\assets\JsTaskManagerAsset::register($this);
-
 $jsImport = \yii\helpers\Json::encode([
     'backend' => \skeeks\cms\helpers\UrlHelper::construct(['/admin-import-stock-sale/import-product'])->enableAdmin()->toString()
 ]);
-
 $this->registerJs(<<<JS
 (function(sx, $, _)
 {

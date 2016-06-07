@@ -8,6 +8,7 @@
 namespace frontend\assets;
 /**
  * Class AppAsset
+ *
  * @package frontend\assets
  */
 class CartAsset extends AppAsset

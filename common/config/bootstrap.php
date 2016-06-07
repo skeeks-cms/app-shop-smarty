@@ -8,7 +8,6 @@
  * @date 19.02.2015
  * @since 1.0.0
  */
-
 //TODO: Я думаю стоит это потом отсюда убрать
 Yii::setAlias('common', dirname(__DIR__));
 Yii::setAlias('frontend', dirname(dirname(__DIR__)) . '/frontend');

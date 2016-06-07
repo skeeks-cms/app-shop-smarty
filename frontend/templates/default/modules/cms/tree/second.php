@@ -11,8 +11,7 @@
 
 <?= $this->render('@template/include/breadcrumbs', [
     'model' => $model
-])?>
-
+]) ?>
 <!--=== Content Part ===-->
 <div class="container content">
     <div class="row magazine-page">

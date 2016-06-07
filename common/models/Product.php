@@ -2,10 +2,11 @@
 /**
  * @author Semenov Alexander <semenov@skeeks.com>
  * @link http://skeeks.com/
- * @copyright 2010 SkeekS (ÑêèêÑ)
+ * @copyright 2010 SkeekS (ï¿½ï¿½ï¿½ï¿½ï¿½)
  * @date 01.10.2015
  */
 namespace common\models;
+
 use skeeks\cms\helpers\CmsContentElementHelper;
 use skeeks\cms\models\CmsContentElement;
 
@@ -20,7 +21,7 @@ class Product
 {
     public function getArticle()
     {
-        return (string) $this->model->relatedPropertiesModel->getAttribute('article');
+        return (string)$this->model->relatedPropertiesModel->getAttribute('article');
     }
 
     /**
@@ -28,13 +29,14 @@ class Product
      */
     public function getBrand()
     {
-        return CmsContentElement::findOne((int) $this->model->relatedPropertiesModel->getAttribute('brand'));
+        return CmsContentElement::findOne((int)$this->model->relatedPropertiesModel->getAttribute('brand'));
     }
 
     public function getCharacters()
     {
         return $this->model->relatedPropertiesModel->getAttribute('characters');
     }
+
     public function getTextUnderBasket()
     {
         return $this->model->relatedPropertiesModel->getAttribute('textUnderBasket');

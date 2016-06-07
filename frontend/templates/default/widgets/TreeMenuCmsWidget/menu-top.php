@@ -8,9 +8,7 @@
 /* @var $this   yii\web\View */
 /* @var $widget \skeeks\cms\cmsWidgets\treeMenu\TreeMenuCmsWidget */
 /* @var $trees  \skeeks\cms\models\Tree[] */
-
 ?>
-
 <ul id="topMain" class="nav nav-pills nav-main sx-top-menu">
     <!--<li class="">
         <a href="/" title="Главная"><i class="fa fa-home"></i> Главная</a>
@@ -18,8 +16,8 @@
     <? if ($trees = $widget->activeQuery->all()) : ?>
         <? foreach ($trees as $tree) : ?>
             <?= $this->render("_one", [
-                "widget"        => $widget,
-                "model"         => $tree,
+                "widget" => $widget,
+                "model" => $tree,
             ]); ?>
         <? endforeach; ?>
     <? endif; ?>

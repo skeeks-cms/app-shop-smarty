@@ -10,7 +10,9 @@
  */
 ?>
 <? if ($url = $model->relatedPropertiesModel->getAttribute('url')) : ?>
-<img onclick="window.location.href='<?= $url; ?>'; return false;" style="cursor: pointer;" class="img-responsive" src="<?= $model->image->src; ?>" alt="<?= $model->name; ?>" title="<?= $model->name; ?>">
+    <img onclick="window.location.href='<?= $url; ?>'; return false;" style="cursor: pointer;" class="img-responsive"
+         src="<?= $model->image->src; ?>" alt="<?= $model->name; ?>" title="<?= $model->name; ?>">
 <? else: ?>
-    <img class="img-responsive" src="<?= $model->image->src; ?>" alt="<?= $model->name; ?>" title="<?= $model->name; ?>">
+    <img class="img-responsive" src="<?= $model->image->src; ?>" alt="<?= $model->name; ?>"
+         title="<?= $model->name; ?>">
 <? endif; ?>

@@ -13,8 +13,8 @@
     <ul class="shop-item-list row list-inline nomargin">
         <? foreach ($models as $model) : ?>
             <?= $this->render("_one_subcatalog", [
-                "widget"        => $widget,
-                "model"         => $model,
+                "widget" => $widget,
+                "model" => $model,
             ]); ?>
         <? endforeach; ?>
     </ul>

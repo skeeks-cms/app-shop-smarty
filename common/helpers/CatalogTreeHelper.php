@@ -2,8 +2,8 @@
 /**
  * @author Semenov Alexander <semenov@skeeks.com>
  * @link http://skeeks.com/
- * @copyright 2010 SkeekS (ÑêèêÑ)
- * @date 22.09.2015
+ * @copyright 2010 SkeekS (Ð¡ÐºÐ¸ÐºÐ¡)
+ * @date 07.06.2016
  */
 namespace common\helpers;
 
@@ -18,16 +18,14 @@ use yii\helpers\ArrayHelper;
  */
 class CatalogTreeHelper extends CmsTreeHelper
 {
-    const VIEW_TREE     = 'tree';
-    const VIEW_PRODUCT  = 'product';
+    const VIEW_TREE = 'tree';
+    const VIEW_PRODUCT = 'product';
 
     public function getViewType()
     {
-        if (!$value = ArrayHelper::getValue($this->model->relatedPropertiesModel, 'viewType'))
-        {
+        if (!$value = ArrayHelper::getValue($this->model->relatedPropertiesModel, 'viewType')) {
             return self::VIEW_TREE;
         }
-
         $property = $this->model->relatedPropertiesModel->getRelatedProperty('viewType');
         $enum = $property->getEnums()->andWhere(['id' => $value])->one();
         return $enum->code;

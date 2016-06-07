@@ -11,41 +11,38 @@
 use skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
 
 $result = [];
-if ($contentTypes = \skeeks\cms\models\CmsContentType::find()->all())
-{
-    foreach ($contentTypes as $contentType)
-    {
+if ($contentTypes = \skeeks\cms\models\CmsContentType::find()->all()) {
+    foreach ($contentTypes as $contentType) {
         $result[$contentType->name] = \yii\helpers\ArrayHelper::map($contentType->cmsContents, 'id', 'name');
     }
 }
 ?>
 <?php $form = ActiveForm::begin(); ?>
-    <?= $form->fieldSet(\skeeks\cms\shop\Module::t('app', 'Showing')); ?>
-        <?= $form->field($model, 'viewFile')->textInput(); ?>
-    <?= $form->fieldSetEnd(); ?>
+<?= $form->fieldSet(\skeeks\cms\shop\Module::t('app', 'Showing')); ?>
+<?= $form->field($model, 'viewFile')->textInput(); ?>
+<?= $form->fieldSetEnd(); ?>
 
-    <?= $form->fieldSet(\skeeks\cms\shop\Module::t('app', 'Data source')); ?>
-        <?= $form->fieldSelect($model, 'content_id', $result); ?>
+<?= $form->fieldSet(\skeeks\cms\shop\Module::t('app', 'Data source')); ?>
+<?= $form->fieldSelect($model, 'content_id', $result); ?>
 
-        <?= $form->fieldSelectMulti($model, 'searchModelAttributes', [
-            'image' => \skeeks\cms\shop\Module::t('app', 'Filter by photo'),
-            'hasQuantity' => \skeeks\cms\shop\Module::t('app', 'Filter by availability')
-        ]); ?>
+<?= $form->fieldSelectMulti($model, 'searchModelAttributes', [
+    'image' => \skeeks\cms\shop\Module::t('app', 'Filter by photo'),
+    'hasQuantity' => \skeeks\cms\shop\Module::t('app', 'Filter by availability')
+]); ?>
+<? if ($model->cmsContent) : ?>
+    <?= $form->fieldSelectMulti($model, 'realatedProperties', \yii\helpers\ArrayHelper::map($model->cmsContent->cmsContentProperties, 'code', 'name')); ?>
+<? else: ?>
+    Дополнительные свойства появятся после сохранения настроек
+<? endif; ?>
 
-        <? if ($model->cmsContent) : ?>
-            <?= $form->fieldSelectMulti($model, 'realatedProperties', \yii\helpers\ArrayHelper::map($model->cmsContent->cmsContentProperties, 'code', 'name')); ?>
-        <? else: ?>
-            Дополнительные свойства появятся после сохранения настроек
-        <? endif; ?>
 
+<?= $form->fieldSelect($model, 'type_price_id', \yii\helpers\ArrayHelper::map(
+    \skeeks\cms\shop\models\ShopTypePrice::find()->all(), 'id', 'name'
+), [
+    'allowDeselect' => true
+]); ?>
 
-        <?= $form->fieldSelect($model, 'type_price_id', \yii\helpers\ArrayHelper::map(
-            \skeeks\cms\shop\models\ShopTypePrice::find()->all(), 'id', 'name'
-        ), [
-            'allowDeselect' => true
-        ]); ?>
-
-    <?= $form->fieldSetEnd(); ?>
+<?= $form->fieldSetEnd(); ?>
 
 
 

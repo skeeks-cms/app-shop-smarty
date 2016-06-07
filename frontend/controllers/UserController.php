@@ -7,13 +7,9 @@
  */
 namespace frontend\controllers;
 
-use common\models\User;
-use Yii;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+use skeeks\cms\App;
 use skeeks\cms\models\searchs\User as UserSearch;
-use \skeeks\cms\App;
+use Yii;
 
 /**
  * Site controller

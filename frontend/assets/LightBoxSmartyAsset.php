@@ -8,13 +8,13 @@
  * @date 20.10.2014
  * @since 1.0.0
  */
-
 namespace frontend\assets;
 
 use skeeks\template\smarty\SmartyAsset;
 
 /**
  * Class LightBoxSmartyAsset
+ *
  * @package frontend\assets
  */
 class LightBoxSmartyAsset extends SmartyAsset
