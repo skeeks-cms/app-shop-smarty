@@ -1,4 +1,4 @@
-Base app on SkeekS CMS (Yii2)
+Shop on SkeekS CMS (Yii2)
 ================
 
 [![skeeks!](http://en.cms.skeeks.com/uploads/all/35/fd/33/35fd33aa306823dbaf53a0142d43b3fa.png)](http://en.cms.skeeks.com)  
