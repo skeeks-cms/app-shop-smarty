@@ -47,7 +47,7 @@ use \skeeks\cms\modules\admin\widgets\form\ActiveFormUseTab as ActiveForm;
                     sx.error('Не удалось разобрать файл');
                 }
             });
-        };
+        }
 JS
     )
 ]); ?>

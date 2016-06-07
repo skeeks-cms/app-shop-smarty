@@ -1,4 +1,3 @@
 User-agent: *
-Disallow: /~*
-Host: mypaprika.ru
-Sitemap: http://mypaprika.ru/sitemap.xml
+Disallow: /
+Disallow: *
