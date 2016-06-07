@@ -1979,16 +1979,16 @@
         },
         {
             "name": "skeeks/cms-module-form2",
-            "version": "2.2.5.1",
+            "version": "2.2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-module-form2.git",
-                "reference": "bf64cf434f8709ab2879280ddf99e8a702ec5a2d"
+                "reference": "4c4f902d6bf2f0d9553da10e46fbdf8d9ad3ae39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-module-form2/zipball/bf64cf434f8709ab2879280ddf99e8a702ec5a2d",
-                "reference": "bf64cf434f8709ab2879280ddf99e8a702ec5a2d",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-module-form2/zipball/4c4f902d6bf2f0d9553da10e46fbdf8d9ad3ae39",
+                "reference": "4c4f902d6bf2f0d9553da10e46fbdf8d9ad3ae39",
                 "shasum": ""
             },
             "require": {
@@ -2020,7 +2020,7 @@
                 "skeeks",
                 "yii2"
             ],
-            "time": "2016-05-06 14:28:16"
+            "time": "2016-06-07 09:40:34"
         },
         {
             "name": "skeeks/cms-module-money",
