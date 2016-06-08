@@ -11,8 +11,8 @@ Shop on SkeekS CMS (Yii2)
 
 ##Install
 
-[http://en.cms.skeeks.com/docs/install/installation-on-linux](http://en.cms.skeeks.com/docs/install/installation-on-linux)
-[http://marketplace.cms.skeeks.com/solutions/gotovyie-internet-magazinyi/257-internet-magazin-odejdyi](http://marketplace.cms.skeeks.com/solutions/gotovyie-internet-magazinyi/257-internet-magazin-odejdyi)
+* [http://en.cms.skeeks.com/docs/install/installation-on-linux](http://en.cms.skeeks.com/docs/install/installation-on-linux)
+* [http://marketplace.cms.skeeks.com/solutions/gotovyie-internet-magazinyi/257-internet-magazin-odejdyi](http://marketplace.cms.skeeks.com/solutions/gotovyie-internet-magazinyi/257-internet-magazin-odejdyi)
 
 
 ##Demo
