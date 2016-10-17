@@ -22,13 +22,7 @@ $config = [
     },
     'components' =>
         [
-            'httpBasicAuth' =>
-                [
-                    'class' => 'skeeks\yii2\httpBasicAuth\HttpBasicAuthComponent',
-                    'login' => 'login',
-                    'password' => 'password',
-                    'usePasswordHash' => false,
-                ],
+
             'errorHandler' => [
                 'errorAction' => 'cms/error/error',
             ],
