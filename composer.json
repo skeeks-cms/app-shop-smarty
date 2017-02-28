@@ -2,13 +2,13 @@
     "name": "skeeks/app-shop-smarty",
     "description": "Shop on SkeekS CMS",
     "keywords": ["framework", "cms", "skeeks", "sx", "app", "yii2", "shop"],
-    "homepage": "http://cms.skeeks.com",
+    "homepage": "https://cms.skeeks.com",
     "type": "project",
     "license": "GPL-3.0+",
     "support": {
-        "issues": "http://cms.skeeks.com",
-        "wiki": "http://git.skeeks.com/skeeks/cms/wikis/home",
-        "source": "http://git.skeeks.com/skeeks/cms-app"
+        "issues": "https://cms.skeeks.com",
+        "wiki": "https://cms.skeeks.com/docs",
+        "source": "https://github.com/skeeks-cms/app-shop-smarty"
     },
     "authors": [
         {

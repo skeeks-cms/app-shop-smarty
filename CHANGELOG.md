@@ -1,6 +1,10 @@
 CHANGELOG
 ==============
 
+1.2.0.2.pre
+-----------------
+  * Composer.json update
+
 1.2.0.1
 -----------------
   * Add no image file
