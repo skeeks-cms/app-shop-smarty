@@ -3,6 +3,7 @@ CHANGELOG
 
 1.2.0.1.pre
 -----------------
+  * Add no image file
   * Git ignore update
 
 1.2.0
