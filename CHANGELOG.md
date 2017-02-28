@@ -3,6 +3,7 @@ CHANGELOG
 
 1.2.0.2.pre
 -----------------
+  * .gitignore update
   * Composer.json update
 
 1.2.0.1
