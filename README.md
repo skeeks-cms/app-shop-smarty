@@ -5,10 +5,10 @@ Shop on SkeekS CMS (Yii2)
 
 ##Links
 * [Web site (SkeekS CMS)](https://cms.skeeks.com)
-* [Docs](https://cms.skeeks.com/docs)
+* [Marketplace (SkeekS CMS)](https://cms.skeeks.com/marketplace/websites/clothing/257-internet-magazin-odejdyi)
+* [Docs (SkeekS CMS)](https://cms.skeeks.com/docs)
 * [Author](https://skeeks.com)
 * [ChangeLog](https://github.com/skeeks-cms/cms/blob/master/CHANGELOG.md)
-* [Marketplace (SkeekS CMS)](https://cms.skeeks.com/marketplace/websites/clothing/257-internet-magazin-odejdyi)
 
 ##Install
 
