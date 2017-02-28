@@ -14,12 +14,12 @@
         <div class="thumbnail catalog_list">
             <a href="<?= $model->url; ?>" class="shop-item-image">
                 <img class="sx-lazy" src="/img/loader/loader-2.GIF" data-original="
-                <?= \skeeks\cms\helpers\Image::getSrc(\Yii::$app->imaging->getImagingUrl($model->image->src,
+                <?= $model->image ? \skeeks\cms\helpers\Image::getSrc(\Yii::$app->imaging->getImagingUrl($model->image->src,
                     new \skeeks\cms\components\imaging\filters\Thumbnail([
                         'w' => 0,
                         'h' => 200,
                     ])
-                )); ?>
+                )) : \skeeks\cms\helpers\Image::getCapSrc(); ?>
                 " alt="<?= $model->name; ?>">
             </a>
             <!--<div class="easy-block-v1-badge rgba-purple"><? /*= $model->name; */ ?></div>-->

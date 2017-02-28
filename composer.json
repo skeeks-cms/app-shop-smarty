@@ -38,7 +38,13 @@
         "kartik-v/yii2-widget-rating": "*",
 	    "skeeks/yii2-http-basic-auth": "*",
         "yiisoft/yii2-debug": "*",
-        "skeeks/cms-instagram-widget": "*"
+        "skeeks/cms-instagram-widget": "*",
+        "skeeks/cms-related-handler-extra": "*",
+        "skeeks/cms-shop-cart-steps-widget": "*",
+        "skeeks/cms-shop-cart-items-widget": "*",
+        "skeeks/cms-shop-checkout-widget": "*",
+        "skeeks/cms-shop-discount-coupon-widget": "*",
+        "skeeks/cms-rp-view-widget": "*"
     },
     "minimum-stability" : "dev",
     "prefer-stable" : true,

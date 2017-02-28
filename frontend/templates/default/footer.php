@@ -19,7 +19,7 @@
 				<h4 class="letter-spacing-1">О нас</h4>
 
 				<!-- Small Description -->
-				<p>MyPaprika.ru</p>
+				<p>SkeekS.com</p>
 				<p>Магазин брендовой одежды</p>
 
 				<!-- Contact Address -->

@@ -22,7 +22,7 @@
     'itemOptions' => [
         'tag' => false
     ],
-    'layout' => "\n{items}{$summary}\n<p class=\"row\">{pager}</p>"
+    'layout' => "\n{items}{summary}\n<p class=\"row\">{pager}</p>"
 ]) ?>
 <? if ($widget->enabledPjaxPagination = \skeeks\cms\components\Cms::BOOL_Y) : ?>
     <? \skeeks\cms\modules\admin\widgets\Pjax::end(); ?>
