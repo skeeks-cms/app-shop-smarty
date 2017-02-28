@@ -35,10 +35,8 @@ CSS
                 <hr/>
                 <p>
                     <span class="block"><strong><i class="fa fa-map-marker"></i> Адрес:</strong> Москва, Зеленоград, 2005-29</span>
-                    <span class="block"><strong><i class="fa fa-phone"></i> Телефон:</strong> <a href="tel:74993908958">+7
-                            (495) 722-28-73</a><br/></span>
-                    <span class="block"><strong><i class="fa fa-phone"></i> Телефон:</strong> <a href="tel:79264064166">+7
-                            (495) 722-28-73</a></span>
+                    <span class="block"><strong><i class="fa fa-phone"></i> Телефон:</strong> <a href="tel:+74950057926">(+7 495) 005-79-26</a><br/></span>
+
                     <span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a
                             href="mailto:info@skeeks.com">info@skeeks.com</a></span>
                 </p>

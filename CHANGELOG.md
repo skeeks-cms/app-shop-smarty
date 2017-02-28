@@ -1,7 +1,7 @@
 CHANGELOG
 ==============
 
-1.2.0.1.pre
+1.2.0.1
 -----------------
   * Add no image file
   * Git ignore update

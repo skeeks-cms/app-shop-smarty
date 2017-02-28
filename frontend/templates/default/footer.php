@@ -24,7 +24,7 @@
 
 				<!-- Contact Address -->
 				<address style="margin-top: 5px;">
-					<a href="tel:+74957222873" style="font-size: 21px; text-decoration: none;">+7 (495) 722 28-73</a>
+					<a href="tel:+74950057926" style="font-size: 21px; text-decoration: none;">(+7 495) 005-79-26</a>
 					<p>
 						<a href="#sx-callback" class="sx-fancybox" style="text-decoration: none; border-bottom: 1px dashed">Заказать обратный звонок</a>
 					</p>
