@@ -8,7 +8,7 @@ Shop on SkeekS CMS (Yii2)
 * [Docs](https://cms.skeeks.com/docs)
 * [Author](https://skeeks.com)
 * [ChangeLog](https://github.com/skeeks-cms/cms/blob/master/CHANGELOG.md)
-* [https://cms.skeeks.com/marketplace/websites/clothing/257-internet-magazin-odejdyi](https://cms.skeeks.com/marketplace/websites/clothing/257-internet-magazin-odejdyi)
+* [Marketplace (SkeekS CMS)](https://cms.skeeks.com/marketplace/websites/clothing/257-internet-magazin-odejdyi)
 
 ##Install
 
@@ -43,5 +43,5 @@ ___
 
 > [![skeeks!](https://gravatar.com/userimage/74431132/13d04d83218593564422770b616e5622.jpg)](https://skeeks.com)  
 <i>SkeekS CMS (Yii2) — quickly, easily and effectively!</i>  
-[skeeks.com](https://skeeks.com) | [en.cms.skeeks.com](https://en.cms.skeeks.com)
+[skeeks.com](https://skeeks.com) | [cms.skeeks.com](https://cms.skeeks.com)
 
