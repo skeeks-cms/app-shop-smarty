@@ -3,9 +3,9 @@ Shop on SkeekS CMS (Yii2)
 
 [![skeeks!](https://en.cms.skeeks.com/uploads/all/35/fd/33/35fd33aa306823dbaf53a0142d43b3fa.png)](https://en.cms.skeeks.com)  
 
-[![Latest Stable Version](https://poser.pugx.org/skeeks/app-shop-smarty/v/stable.png)](https://packagist.org/skeeks/app-shop-smarty/app-v3-shop)
-[![Total Downloads](https://poser.pugx.org/skeeks/app-shop-smarty/downloads.png)](https://packagist.org/packages/skeeks/app-shop-smarty)
-[![Dependency Status](https://www.versioneye.com/php/skeeks:app-shop-smarty/dev-master/badge.png)](https://www.versioneye.com/php/skeeks:app-shop-smarty/dev-master)
+[![Latest Stable Version](https://poser.pugx.org/atemi/app-skeeks/v/stable.png)](https://packagist.org/atemi/app-skeeks)
+[![Total Downloads](https://poser.pugx.org/atemi/app-skeeks/downloads.png)](https://packagist.org/packages/atemi/app-skeeks)
+[![Dependency Status](https://www.versioneye.com/php/atemi:app-skeeks/dev-master/badge.png)](https://www.versioneye.com/php/atemi:app-skeeks/dev-master)
 
 
 Links
