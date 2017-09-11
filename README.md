@@ -8,14 +8,16 @@ Shop on SkeekS CMS (Yii2)
 [![Dependency Status](https://www.versioneye.com/php/skeeks:app-shop-smarty/dev-master/badge.png)](https://www.versioneye.com/php/skeeks:app-shop-smarty/dev-master)
 
 
-##Links
+Links
+-----------
 * [Web site (SkeekS CMS)](https://cms.skeeks.com)
 * [Marketplace (SkeekS CMS)](https://cms.skeeks.com/marketplace/websites/clothing/257-internet-magazin-odejdyi)
 * [Docs (SkeekS CMS)](https://cms.skeeks.com/docs)
 * [Author](https://skeeks.com)
 * [ChangeLog](https://github.com/skeeks-cms/cms/blob/master/CHANGELOG.md)
 
-##Install
+Install
+-----------
 
 ```bash
 # Download latest version of composer
@@ -31,7 +33,8 @@ cd demo.ru
 php yii dbDumper/mysql/restore
 ```
 
-##Screenshots
+Screenshots
+-----------
 [![skeeks!](https://cms.skeeks.com/uploads/all/3f/6d/14/3f6d14293f59d2553f867c324ca1959e.png)](https://cms.skeeks.com)
 [![skeeks!](https://cms.skeeks.com/uploads/all/2d/27/d4/2d27d4cdeeaceb28c54184f3b1886f36.png)](https://cms.skeeks.com)
 
