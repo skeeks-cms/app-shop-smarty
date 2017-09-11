@@ -1,14 +1,9 @@
 <?php
 /**
- * app
- *
  * @author Semenov Alexander <semenov@skeeks.com>
- * @link http://skeeks.com/
- * @copyright 2010-2014 SkeekS (Sx)
- * @date 17.10.2014
- * @since 1.0.0
+ * @link https://skeeks.com/
+ * @copyright (c) 2010 SkeekS
+ * @date 11.09.2017
  */
 $commonMessages = include_once \Yii::getAlias("@common/messages/ru/app.php");
-return array_merge($commonMessages, [
-    "List of games" => "Список игр"
-]);
+return array_merge($commonMessages, []);

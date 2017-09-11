@@ -3,6 +3,11 @@ Shop on SkeekS CMS (Yii2)
 
 [![skeeks!](https://en.cms.skeeks.com/uploads/all/35/fd/33/35fd33aa306823dbaf53a0142d43b3fa.png)](https://en.cms.skeeks.com)  
 
+[![Latest Stable Version](https://poser.pugx.org/skeeks/app-shop-smarty/v/stable.png)](https://packagist.org/skeeks/app-shop-smarty/app-v3-shop)
+[![Total Downloads](https://poser.pugx.org/skeeks/app-shop-smarty/downloads.png)](https://packagist.org/packages/skeeks/app-shop-smarty)
+[![Dependency Status](https://www.versioneye.com/php/skeeks:app-shop-smarty/dev-master/badge.png)](https://www.versioneye.com/php/skeeks:app-shop-smarty/dev-master)
+
+
 ##Links
 * [Web site (SkeekS CMS)](https://cms.skeeks.com)
 * [Marketplace (SkeekS CMS)](https://cms.skeeks.com/marketplace/websites/clothing/257-internet-magazin-odejdyi)
@@ -16,24 +21,15 @@ Shop on SkeekS CMS (Yii2)
 # Download latest version of composer
 curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php
 # Installing the base project SkeekS CMS
-COMPOSER_HOME=.composer php composer.phar create-project --no-install --prefer-dist skeeks/app-shop-smarty demo.ru
+COMPOSER_HOME=.composer php composer.phar create-project --prefer-dist --stability=dev skeeks/app-shop-smarty demo.ru
 # Going into the project folder
 cd demo.ru
-# Download latest version of composer in project
-curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php
-# Extra plug-ins
-COMPOSER_HOME=.composer php composer.phar global require fxp/composer-asset-plugin --no-plugins
-# Download dependency
-COMPOSER_HOME=.composer php composer.phar install -o
-# Run the command to initialize the project, the installer executable file and the necessary rights to the directory
-php yii cms/init
 
 #Edit the file to access the database, it is located at common/config/db.php
 
 #Installation of ready-dump
 php yii dbDumper/mysql/restore
 ```
-
 
 ##Screenshots
 [![skeeks!](https://cms.skeeks.com/uploads/all/3f/6d/14/3f6d14293f59d2553f867c324ca1959e.png)](https://cms.skeeks.com)

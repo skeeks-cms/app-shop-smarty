@@ -1,7 +1,11 @@
 CHANGELOG
 ==============
 
-1.2.0.2.pre
+2.0.0
+-----------------
+  * Update cms
+  
+1.2.0.2
 -----------------
   * .gitignore update
   * Composer.json update
