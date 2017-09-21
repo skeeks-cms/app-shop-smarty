@@ -43,7 +43,8 @@
         "skeeks/cms-related-handler-extra": "^1",
         "skeeks/cms-rp-view-widget": "^1",
         "skeeks/cms-authclient": "^2",
-        "skeeks/cms-ssh-console": "^1"
+        "skeeks/cms-ssh-console": "^1",
+        "skeeks/cms-export-shop-yandex-market": "*"
     },
     "minimum-stability" : "dev",
     "prefer-stable" : true,
