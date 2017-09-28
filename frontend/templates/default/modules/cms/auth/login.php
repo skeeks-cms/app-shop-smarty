@@ -34,7 +34,7 @@ use yii\helpers\Html;
             <? if (\Yii::$app->authClientCollection->clients) : ?>
                 <hr/>
                 <?= yii\authclient\widgets\AuthChoice::widget([
-                    'baseAuthUrl' => ['/cms/auth/client'],
+                    'baseAuthUrl' => ['/authclient/auth/client'],
                     'popupMode' => true,
                 ]) ?>
             <? endif; ?>
