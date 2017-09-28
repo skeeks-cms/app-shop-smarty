@@ -23,3 +23,5 @@ if(\Yii::$app->appSettings->getXmlProductImport()) $file = \Yii::$app->appSettin
     <?= Html::submitButton('Импортировать XML продуктов', ['class' => 'btn btn-lg btn-primary']) ?>
 </div>
 <?php ActiveForm::end(); ?>
+
+<?= $res; ?>
