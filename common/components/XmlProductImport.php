@@ -40,29 +40,26 @@ class XmlProductImport extends Component
                 }
             }
             $shop = $sxe->shop;
-            $categories = $shop->categories->children();
             $offers = $shop->offers;
-            //var_dump($categories->category);
 
             $catalog = Tree::find()
                 ->where(['code' => 'catalog'])->andWhere(['level' => 1])->one();
 
+            $tree = [];
+
             foreach($sxe->shop->categories->category as $item) {
+                $params['name'] = (string) ''.$item->name;
 
                 if((int) $item->pid) {
-                    //$item->level = $this->getLevel($categories->category,$item->pid,2);
-                    //var_dump($item);
+                    $params = [];
+                    $params['pid'] = $tree[(int) $item->pid];
                 }
                 else {
                     $params = [];
-                    $params['name'] = (string) $item->name;
-                    $params['level'] = 2;
                     $params['pid'] = $catalog->id;
-                    $tree_id = $this->checkTree($params);
-                    var_dump($tree_id);
                 }
+                $tree[(int)$item->id] = $this->checkTree($params);
             }
-
             /*foreach (self::$category as $k => $category)
             {
                 if($category['pid']) {
@@ -109,7 +106,6 @@ class XmlProductImport extends Component
         $model = Tree::find()
             ->andWhere(['name' => $params['name']])
             ->andWhere(['tree_type_id' => '5'])
-            ->andWhere(['level' => $params['level']])
             ->andWhere(['pid' => $params['pid']])
             ->one();
         if(!$model)
@@ -117,12 +113,12 @@ class XmlProductImport extends Component
             $childTree = new Tree();
             $parent = Tree::find()->where(['id' => $params["pid"]])->one();
             $childTree->priority = Tree::PRIORITY_STEP;
+            $childTree->name = $params['name'];
 
             //Элемент с большим приоритетом
             if ($treeChildrens = $parent->getChildren()->orderBy(['priority' => SORT_DESC])->one())
             {
                 $childTree->priority = $treeChildrens->priority + Tree::PRIORITY_STEP;
-                $childTree->name = $params['name'];
             }
             if($parent && $parent->processAddNode($childTree))
             {
