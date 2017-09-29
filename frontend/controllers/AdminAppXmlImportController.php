@@ -41,7 +41,8 @@ class AdminAppXmlImportController extends \skeeks\cms\modules\admin\controllers\
 
     public function importActionXML()
     {
-        $res = XmlProductImport::import();
+        $xml = new XmlProductImport();
+        $res = $xml->import();
         return $this->render($this->action->id,['res' => $res]);
     }
 }
