@@ -2,6 +2,8 @@
 namespace common\components;
 
 use common\helpers\CatalogTreeHelper;
+use common\models\Product;
+use skeeks\cms\models\CmsContentElement;
 use skeeks\cms\models\CmsTree;
 use skeeks\cms\models\Tree;
 use yii\base\InvalidConfigException;
@@ -49,7 +51,7 @@ class XmlProductImport extends Component
 
             foreach($sxe->shop->categories->category as $item) {
                 $params = [];
-                $params['name'] = (string) ''.$item->name;
+                $params['name'] = (string) $item->name;
 
                 if((int) $item->pid) {
                     $params['pid'] = $tree[(int) $item->pid];
@@ -60,17 +62,45 @@ class XmlProductImport extends Component
                 $tree[(int)$item->id] = $this->checkTree($params);
             }
 
-            var_dump($offers);
+            //var_dump($offers);
+            foreach ($offers->offer as $offer)
+            {
+                //var_dump((string)$offer->name);
+                $params = [];
+                $params['name'] = (string) $offer->name;
+                $params['page'] = (string) $offer->page;
+                $params['price'] = (int) $offer->price;
+                $params['desc'] = (string) $offer->description;
+                $params['vendor'] = (string) $offer->vendor;
+                $params['article'] = (string) $offer->vendorCode;
+                $params['country'] = (string) $offer->country_of_origin;
+                $params['barcode'] = (string) $offer->barcode;
+                $params['amount'] = (string) $offer->amount;
+                $params['weight'] = (string) $offer->weight;
+                $params['file'] = (string) $offer->file;
+                $params['image'] = (string) $offer->picture;
+                $params['tree_id'] = $tree[(int)$offer->categoryId];
+                $params['vendorCode'] = (string)$offer->vendorCode;
+                $this->checkProduct($params);
+
+                break; // пока будем тормозить на первом же товаре
+            }
 
             return 'done!';
         }
     }
 
+    /**
+     * @param $params
+     * @return bool|int
+     */
     private function checkTree($params)
     {
+        $type_id = \skeeks\cms\models\CmsTreeType::find()->where(['code' => 'catalog'])->one()->id;
+        if(!$type_id) throw new Exception('no catalog type');
         $model = Tree::find()
             ->andWhere(['name' => $params['name']])
-            ->andWhere(['tree_type_id' => '5'])
+            ->andWhere(['tree_type_id' => $type_id])
             ->andWhere(['pid' => $params['pid']])
             ->one();
         if(!$model)
@@ -87,10 +117,42 @@ class XmlProductImport extends Component
             }
             if($parent && $parent->processAddNode($childTree))
             {
-                return $childTree->id;
+                return (int) $childTree->id;
             }
-            return false;
+            return (bool) false;
         }
-        return $model->id;
+        return (int) $model->id;
+    }
+
+    /**
+     * @param $params
+     */
+    private function checkProduct($params)
+    {
+        $prod_id = \skeeks\cms\models\CmsContent::find()->where(['code' => 'product'])->one()->id;
+        if(!$prod_id) throw new Exception('no product type');
+        $model = CmsContentElement::find()
+            ->andWhere(['name' => $params['name']])
+            ->andWhere(['content_id' => $prod_id])
+            ->andWhere(['tree_id' => $params['tree_id']])
+            ->one();
+        if($model) return;
+        $model = new CmsContentElement();
+        $model->name = $params['name'];
+        $model->content_id = $prod_id;
+        $model->tree_id = $params['tree_id'];
+        $model->code = $params['page'];
+        $model->description_full = $params['desc'];
+        if($model->save())
+        {
+            $model->relatedPropertiesModel->setAttribute('country',$params['country']);
+            $model->relatedPropertiesModel->setAttribute('file',$params['file']);
+            $model->relatedPropertiesModel->setAttribute('weight',$params['weight']);
+            $model->relatedPropertiesModel->setAttribute('amount',$params['amount']);
+            $model->relatedPropertiesModel->setAttribute('barcode',$params['barcode']);
+            $model->relatedPropertiesModel->setAttribute('stockSaleId',$params['vendorCode']);
+            $model->relatedPropertiesModel->save();
+        }
+
     }
 }
