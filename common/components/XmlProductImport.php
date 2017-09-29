@@ -48,18 +48,19 @@ class XmlProductImport extends Component
             $tree = [];
 
             foreach($sxe->shop->categories->category as $item) {
+                $params = [];
                 $params['name'] = (string) ''.$item->name;
 
                 if((int) $item->pid) {
-                    $params = [];
                     $params['pid'] = $tree[(int) $item->pid];
                 }
                 else {
-                    $params = [];
                     $params['pid'] = $catalog->id;
                 }
                 $tree[(int)$item->id] = $this->checkTree($params);
             }
+
+            var_dump($offers);
 
             return 'done!';
         }
