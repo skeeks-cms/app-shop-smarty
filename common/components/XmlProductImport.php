@@ -60,45 +60,9 @@ class XmlProductImport extends Component
                 }
                 $tree[(int)$item->id] = $this->checkTree($params);
             }
-            /*foreach (self::$category as $k => $category)
-            {
-                if($category['pid']) {
-                    $n_pid = self::checkParent($category['pid']);
-
-                }
-                else
-                {
-                    // проверика и создание раздела
-                    print_r($k);
-                    unset(self::$category[$k]);
-                }
-                //print_r($category->id);
-                //print_r($category->name);
-                //print_r($category->pid);
-            }*/
-            //var_dump($categories);
-
-
-            //var_dump($categories);*/
-            /*$catalog = Tree::find()
-                ->where(['code' => 'catalog'])->andWhere(['level' => 1])->one();
-            var_dump($catalog->id);*/
-
 
             return 'done!';
         }
-    }
-
-    private function getLevel($pid,$level)
-    {
-        foreach ($this->category as $item) {
-            if($item->id == $pid) {
-                if($item->pid) return $this->getLevel($this->category,$item->pid,$level+1);
-                else return $level+1;
-                break;
-            }
-        }
-        return $level;
     }
 
     private function checkTree($params)
