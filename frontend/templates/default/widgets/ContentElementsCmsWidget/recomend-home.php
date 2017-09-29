@@ -18,7 +18,7 @@
     'emptyText' => '',
     'options' =>
         [
-            'class' => 'shop-item-list row list-inline nomargin',
+            'class' => 'shop-item-list row list-inline nomargin recomend-slider',
             'tag' => 'ul',
         ],
     'itemOptions' => [

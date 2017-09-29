@@ -12,7 +12,8 @@
 $shopProduct = \skeeks\cms\shop\models\ShopProduct::getInstanceByContentElement($model);
 $model->name = $model->name . " ({$model->relatedPropertiesModel->getSmartAttribute('brand')})";
 ?>
-<li class="col-lg-3 col-sm-3 col-xs-6">
+<div class="recowl-item">
+<!--<li class="col-lg-3 col-sm-3 col-xs-6">-->
     <div class="shop-item">
         <div class="thumbnail catalog_list">
             <!-- product image(s) -->
@@ -46,7 +47,7 @@ $model->name = $model->name . " ({$model->relatedPropertiesModel->getSmartAttrib
             <? endif; ?>
         </div>
         <div class="shop-item-summary text-center">
-            <h2><?= $model->name; ?></h2>
+            <span><?= $model->name; ?></span>
             <!-- rating -->
             <!-- /rating -->
             <? if ($shopProduct->baseProductPrice) : ?>
@@ -66,7 +67,7 @@ $model->name = $model->name . " ({$model->relatedPropertiesModel->getSmartAttrib
             <? endif; ?>
         </div>
     </div>
-    </li>
+<!--    </li>-->
 
-
+</div>
 
