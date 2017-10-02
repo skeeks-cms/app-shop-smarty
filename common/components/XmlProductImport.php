@@ -144,6 +144,7 @@ class XmlProductImport extends Component
         $model->tree_id = $params['tree_id'];
         $model->code = $params['page'];
         $model->description_full = $params['desc'];
+
         if($model->save())
         {
             $model->relatedPropertiesModel->setAttribute('country',$params['country']);
@@ -159,6 +160,15 @@ class XmlProductImport extends Component
             $shopProduct->baseProductPriceValue = $params['price'];
             $shopProduct->baseProductPriceCurrency = "RUB";
             $shopProduct->save();
+        }
+
+        if($params['image'])
+        {
+            $file = \Yii::$app->storage->upload($params['image'], [
+                'name' => $model->name
+            ]);
+            $model->link('image',$file);
+            $model->save();
         }
 
     }
