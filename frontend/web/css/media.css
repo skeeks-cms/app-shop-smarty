@@ -1,0 +1,40 @@
+@media only screen and (max-width: 992px)
+{
+
+    #topNav nav.nav-main
+    {
+        background-color: #fff;
+
+        /* border: 1px solid silver; */
+        box-shadow: 1px 6px 10px 0px;
+    }
+
+}
+
+
+@media only screen and (max-width: 420px)
+{
+
+    .sx-top-logo-block img
+    {
+        height: 30px;
+    }
+
+    .sx-top-logo-block {
+        padding-top: 5px;
+        padding-bottom: 0;
+    }
+
+    .sx-top-phone {
+        font-size: 16px;
+        padding-top: 3px;
+    }
+
+    .mslider {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+}
+
+
