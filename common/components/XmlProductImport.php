@@ -11,6 +11,7 @@ use Yii;
 use skeeks\cms\base\Component;
 use yii\db\ActiveRecord;
 use yii\db\Exception;
+use skeeks\cms\shop\models\ShopProduct;
 
 class XmlProductImport extends Component
 {
@@ -152,6 +153,12 @@ class XmlProductImport extends Component
             $model->relatedPropertiesModel->setAttribute('barcode',$params['barcode']);
             $model->relatedPropertiesModel->setAttribute('stockSaleId',$params['vendorCode']);
             $model->relatedPropertiesModel->save();
+
+            $shopProduct = new ShopProduct();
+            $shopProduct->id = $model->id;
+            $shopProduct->baseProductPriceValue = $params['price'];
+            $shopProduct->baseProductPriceCurrency = "RUB";
+            $shopProduct->save();
         }
 
     }
