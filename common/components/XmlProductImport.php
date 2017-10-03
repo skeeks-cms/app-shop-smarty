@@ -189,28 +189,30 @@ class XmlProductImport extends Component
             }
 
             // установка страны
+            $country_id = CmsContent::findOne(['code' => 'country','content_type' => 'info'])->primaryKey;
             $country = CmsContentElement::findOne([
                 'name' => $params['country'],
-                'content_id' => CmsContent::findOne(['code' => 'country','content_type' => 'info'])->primaryKey,
+                'content_id' => $country_id,
             ]);
             if(!$country)
             {
                 $country = new CmsContentElement();
-                $country->content_id = CmsContent::findOne(['code' => 'country','content_type' => 'info'])->primaryKey;
+                $country->content_id = $country_id;
                 $country->name = $params['country'];
                 $country->save();
             }
             $model->relatedPropertiesModel->setAttribute('country',$country->primaryKey);
 
             // установка бренда
+            $brand_id = CmsContent::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey;
             $brand = CmsContentElement::findOne([
-                'content_id' => CmsContent::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey,
+                'content_id' => $brand_id,
                 'name' => $params['brand'],
             ]);
             if(!$brand)
             {
                 $brand = new CmsContentElement();
-                $brand->content_id = CmsContent::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey;
+                $brand->content_id = $brand_id;
                 $brand->name = $params['brand'];
                 $brand->save();
             }
