@@ -3,6 +3,7 @@ namespace common\components;
 
 use common\helpers\CatalogTreeHelper;
 use common\models\Product;
+use skeeks\cms\models\CmsContent;
 use skeeks\cms\models\CmsContentElement;
 use skeeks\cms\models\CmsTree;
 use skeeks\cms\models\Tree;
@@ -12,6 +13,8 @@ use skeeks\cms\base\Component;
 use yii\db\ActiveRecord;
 use yii\db\Exception;
 use skeeks\cms\shop\models\ShopProduct;
+use skeeks\cms\models\CmsContentPropertyEnum;
+use skeeks\cms\models\CmsContentProperty;
 
 class XmlProductImport extends Component
 {
@@ -72,7 +75,7 @@ class XmlProductImport extends Component
                 $params['page'] = (string) $offer->page;
                 $params['price'] = (int) $offer->price;
                 $params['desc'] = (string) $offer->description;
-                $params['vendor'] = (string) $offer->vendor;
+                $params['brand'] = (string) $offer->vendor;
                 $params['article'] = (string) $offer->vendorCode;
                 $params['country'] = (string) $offer->country_of_origin;
                 $params['barcode'] = (string) $offer->barcode;
@@ -147,7 +150,7 @@ class XmlProductImport extends Component
 
         if($model->save())
         {
-            $model->relatedPropertiesModel->setAttribute('country',$params['country']);
+            // свойства элемента
             $model->relatedPropertiesModel->setAttribute('file',$params['file']);
             $model->relatedPropertiesModel->setAttribute('weight',$params['weight']);
             $model->relatedPropertiesModel->setAttribute('amount',$params['amount']);
@@ -155,20 +158,52 @@ class XmlProductImport extends Component
             $model->relatedPropertiesModel->setAttribute('stockSaleId',$params['vendorCode']);
             $model->relatedPropertiesModel->save();
 
+            // связка элемент-товар
             $shopProduct = new ShopProduct();
             $shopProduct->id = $model->id;
             $shopProduct->baseProductPriceValue = $params['price'];
             $shopProduct->baseProductPriceCurrency = "RUB";
             $shopProduct->save();
-        }
 
-        if($params['image'])
-        {
-            $file = \Yii::$app->storage->upload($params['image'], [
-                'name' => $model->name
+            // привыязываем картинку
+            if($params['image'])
+            {
+                $file = \Yii::$app->storage->upload($params['image'], [
+                    'name' => $model->name
+                ]);
+                $model->link('image',$file);
+                $model->save();
+            }
+
+            // установка страны
+            $country = CmsContentElement::findOne([
+                'name' => $params['country'],
+                'content_id' => CmsContent::findOne(['code' => 'country','content_type' => 'info'])->primaryKey,
             ]);
-            $model->link('image',$file);
-            $model->save();
+            if(!$country)
+            {
+                $country = new CmsContentElement();
+                $country->content_id = CmsContent::findOne(['code' => 'country','content_type' => 'info'])->primaryKey;
+                $country->name = $params['country'];
+                $country->save();
+            }
+            $model->relatedPropertiesModel->setAttribute('country',$country->primaryKey);
+            $model->relatedPropertiesModel->save();
+
+            // установка бренда
+            $brand = CmsContentElement::findOne([
+                'content_id' => CmsContent::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey,
+                'name' => $params['brand'],
+            ]);
+            if(!$brand)
+            {
+                $brand = new CmsContentElement();
+                $brand->content_id = CmsContentProperty::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey;
+                $brand->name = $params['brand'];
+                $brand->save();
+            }
+            $model->relatedPropertiesModel->setAttribute('brand',$brand->primaryKey);
+            $model->relatedPropertiesModel->save();
         }
 
     }
