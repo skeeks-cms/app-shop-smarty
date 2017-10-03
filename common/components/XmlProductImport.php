@@ -198,7 +198,7 @@ class XmlProductImport extends Component
             if(!$brand)
             {
                 $brand = new CmsContentElement();
-                $brand->content_id = CmsContentProperty::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey;
+                $brand->content_id = CmsContent::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey;
                 $brand->name = $params['brand'];
                 $brand->save();
             }
