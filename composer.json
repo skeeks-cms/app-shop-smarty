@@ -45,6 +45,7 @@
         "skeeks/cms-authclient": "^2",
         "skeeks/cms-ssh-console": "^1",
         "skeeks/cms-export-shop-yandex-market": "*",
+        "atemi/smarty-theme": "dev-master",
         "skeeks/cms-import-csv-shop-content": "*"
     },
     "minimum-stability" : "dev",

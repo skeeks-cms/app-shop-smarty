@@ -1,7 +1,6 @@
 <?php
 namespace common\components;
 
-use common\helpers\CatalogTreeHelper;
 use common\models\Product;
 use skeeks\cms\models\CmsContent;
 use skeeks\cms\models\CmsContentElement;

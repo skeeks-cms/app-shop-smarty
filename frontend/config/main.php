@@ -43,7 +43,7 @@ $config = [
 
                     ]*/
                 ],
-            'view' => [
+            /*'view' => [
                 'theme' =>
                     [
                         'pathMap' =>
@@ -54,7 +54,7 @@ $config = [
                                     ],
                             ]
                     ],
-            ],
+            ],*/
         ]
 ];
 return $config;
