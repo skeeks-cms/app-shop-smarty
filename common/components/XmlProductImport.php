@@ -54,6 +54,7 @@ class XmlProductImport extends Component
             $tree = [];
 
             foreach($sxe->shop->categories->category as $item) {
+                set_time_limit(10);
                 $params = [];
                 $params['name'] = (string) $item->name;
 
@@ -69,6 +70,7 @@ class XmlProductImport extends Component
             //var_dump($offers);
             foreach ($offers->offer as $offer)
             {
+                set_time_limit(10);
                 //var_dump((string)$offer->name);
                 $params = [];
                 $params['name'] = (string) $offer->name;
