@@ -147,6 +147,7 @@ class XmlProductImport extends Component
         $model->tree_id = $params['tree_id'];
         $model->code = $params['page'];
         $model->description_full = $params['desc'];
+        $model->description_short = $params['desc'];
 
         if($model->save())
         {
