@@ -28,6 +28,7 @@ class AppAsset extends AssetBundle
         'https://fonts.googleapis.com/css?family=Open+Sans',
         'css/animate.css',
         'css/fast.css',
+        'css/media.css',
         'css/owl.carousel.min.css',
         'css/owl.theme.default.min.css',
     ];

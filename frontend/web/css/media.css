@@ -1,5 +1,17 @@
 @media only screen and (max-width: 992px)
 {
+    .visible-xs.sx-top-logo-block{
+        text-align:left;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .visible-xs.sx-top-logo-block p{
+        margin-bottom:0;
+    }
+    .visible-xs.sx-top-logo-block img{
+        max-height:20px;
+        margin:7px 0 0 5px;
+    }
 
     #topNav nav.nav-main
     {
@@ -9,12 +21,41 @@
         box-shadow: 1px 6px 10px 0px;
     }
 
+    #header ul.nav-second-main {
+        margin-top: 23px;
+        margin-right: 17px;
+    }
+
+    #header ul.nav-second-main li {
+        padding: 0;
+        padding-top: 0px;
+    }
+
+    .header-contacts{
+        padding-top:60px;
+    }
+
+    #header {
+        height: 60px !important;
+        position:fixed;
+        top:0;
+        left: -15px;
+        right: -15px;
+    }
+}
+
+
+@media only screen and (max-width: 600px)
+{
+    .owl-pagination {
+        display: block;
+        /* margin-top: 20px; */
+    }
 }
 
 
 @media only screen and (max-width: 420px)
 {
-
     .sx-top-logo-block img
     {
         height: 30px;

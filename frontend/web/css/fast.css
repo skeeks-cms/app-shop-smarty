@@ -39,6 +39,12 @@ section.page-header .breadcrumb
     margin-top: auto;
 }
 
+.owl-item div.shop-item img{
+	max-width:100%;
+	width:auto;
+	display:block;
+}
+
 div.row > div.shop-item img.img-responsive
 {
     max-height: 150px;
@@ -56,9 +62,7 @@ div.shop-item
     box-shadow: 0px 0px 1px;
     margin-left: 0;
     margin-right: 10px;
-
-     /*временно пока не починим слайдер TODO */
-    /*временно*/
+    height: 300px;
 }
 
 div.shop-item:hover
@@ -263,7 +267,7 @@ div.shop-item-summary h2
     margin-right: auto;
     background: white;
     max-width: 1200px;
-    padding: 0px 15px 0px 15px;
+   /*  padding: 0px 15px 0px 15px; */
 }
 
 #footer ul.footer-links > li > a, #footer a
@@ -334,6 +338,12 @@ div.side-nav ul > li:before
 {
     margin-top: 25px;
     margin-right: 10px;
+}
+
+
+
+#header ul.nav-second-main li>a{
+	padding: 0 7px;
 }
 
 #header.fixed #topNav .sx-menu-bg
@@ -658,7 +668,7 @@ h2.owl-featured
      white-space: nowrap;
      overflow: hidden;
      padding: 5px;
-     width: 230px;
+     width: 100%;
      display: block;
 }
 
@@ -680,3 +690,5 @@ h2.owl-featured
     padding-bottom: 20px;
     border: none;
 }
+
+
