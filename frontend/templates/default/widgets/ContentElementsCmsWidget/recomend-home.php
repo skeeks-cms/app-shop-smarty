@@ -8,18 +8,21 @@
 /* @var $this   yii\web\View */
 /* @var $widget \skeeks\cms\cmsWidgets\contentElements\ContentElementsCmsWidget */
 ?>
-<div class="headline"><h2><?= $widget->label; ?></h2></div>
+
+<? if ($widget->label) : ?>
+    <h2 class="size-30 margin-bottom-20"><?= $widget->label; ?></h2>
+<? endif; ?>
 <? echo \yii\widgets\ListView::widget([
     'dataProvider' => $widget->dataProvider,
-    'itemView' => '_widget-item',
+    'itemView' => 'recomend-item',
     'emptyText' => '',
     'options' =>
         [
+            'class' => 'shop-item-list row list-inline nomargin recomend-slider',
             'tag' => 'ul',
-            'class' => 'list-unstyled link-list',
         ],
     'itemOptions' => [
         'tag' => false
     ],
-    'layout' => "\n{items}{summary}\n<p class=\"row\">{pager}</p>"
+    'layout' => "\n{items}"
 ]) ?>
