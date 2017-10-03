@@ -44,7 +44,8 @@
         "skeeks/cms-rp-view-widget": "^1",
         "skeeks/cms-authclient": "^2",
         "skeeks/cms-ssh-console": "^1",
-        "skeeks/cms-export-shop-yandex-market": "*"
+        "skeeks/cms-export-shop-yandex-market": "*",
+        "skeeks/cms-import-csv-shop-content": "*"
     },
     "minimum-stability" : "dev",
     "prefer-stable" : true,
