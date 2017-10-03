@@ -19,6 +19,10 @@ use skeeks\cms\models\CmsContentProperty;
 class XmlProductImport extends Component
 {
     private $category;
+    private $counter = 0;
+    private $count = 0;
+    private $total = 0;
+    private $limit = 500;
 
     public function import()
     {
@@ -54,6 +58,7 @@ class XmlProductImport extends Component
             $tree = [];
 
             foreach($sxe->shop->categories->category as $item) {
+                set_time_limit(10);
                 $params = [];
                 $params['name'] = (string) $item->name;
 
@@ -66,9 +71,14 @@ class XmlProductImport extends Component
                 $tree[(int)$item->id] = $this->checkTree($params);
             }
 
+            $this->total = count($offers->offer);
+
             //var_dump($offers);
             foreach ($offers->offer as $offer)
             {
+                set_time_limit(10);
+                if($this->limit == $this->count) return 'Импорт завершен не полностью: '.$this->counter.' из '.$this->total.'.';
+                $this->counter++;
                 //var_dump((string)$offer->name);
                 $params = [];
                 $params['name'] = (string) $offer->name;
@@ -90,7 +100,7 @@ class XmlProductImport extends Component
                 //break; // пока будем тормозить на первом же товаре
             }
 
-            return 'done!';
+            return 'Импорт полностью завершен!';
         }
     }
 
@@ -109,6 +119,7 @@ class XmlProductImport extends Component
             ->one();
         if(!$model)
         {
+            $this->count++;
             $childTree = new Tree();
             $parent = Tree::find()->where(['id' => $params["pid"]])->one();
             $childTree->priority = Tree::PRIORITY_STEP;
@@ -199,7 +210,7 @@ class XmlProductImport extends Component
             if(!$brand)
             {
                 $brand = new CmsContentElement();
-                $brand->content_id = CmsContentProperty::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey;
+                $brand->content_id = CmsContent::findOne(['code' => 'brand','content_type' => 'info'])->primaryKey;
                 $brand->name = $params['brand'];
                 $brand->save();
             }
