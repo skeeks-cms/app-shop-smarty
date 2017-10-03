@@ -103,7 +103,7 @@ class XmlProductImport extends Component
                 //break; // пока будем тормозить на первом же товаре
             }
 
-            return 'Импорт полностью завершен!';
+            return 'done!';
         }
     }
 
@@ -113,7 +113,7 @@ class XmlProductImport extends Component
      */
     private function checkTree($params)
     {
-        $type_id = \skeeks\cms\models\CmsTreeType::findOne(['code' => 'catalog'])->primaryKey;
+        $type_id = \skeeks\cms\models\CmsTreeType::find()->where(['code' => 'catalog'])->one()->id;
         if(!$type_id) throw new Exception('no catalog type');
         $model = Tree::find()
             ->andWhere(['name' => $params['name']])
@@ -146,7 +146,7 @@ class XmlProductImport extends Component
      */
     private function checkProduct($params)
     {
-        $prod_id = \skeeks\cms\models\CmsContent::findOne(['code' => 'product'])->primaryKey;
+        $prod_id = \skeeks\cms\models\CmsContent::find()->where(['code' => 'product'])->one()->id;
         if(!$prod_id) throw new Exception('no product type');
         $model = CmsContentElement::find()
             ->andWhere(['name' => $params['name']])
@@ -154,16 +154,12 @@ class XmlProductImport extends Component
             ->andWhere(['tree_id' => $params['tree_id']])
             ->one();
         if($model) return;
-
-        $this->count++;
-
         $model = new CmsContentElement();
         $model->name = $params['name'];
         $model->content_id = $prod_id;
         $model->tree_id = $params['tree_id'];
         $model->code = $params['page'];
         $model->description_full = $params['desc'];
-        $model->description_short = $params['desc'];
 
         if($model->save())
         {
@@ -173,6 +169,7 @@ class XmlProductImport extends Component
             $model->relatedPropertiesModel->setAttribute('amount',$params['amount']);
             $model->relatedPropertiesModel->setAttribute('barcode',$params['barcode']);
             $model->relatedPropertiesModel->setAttribute('stockSaleId',$params['vendorCode']);
+            $model->relatedPropertiesModel->save();
 
             // связка элемент-товар
             $shopProduct = new ShopProduct();
