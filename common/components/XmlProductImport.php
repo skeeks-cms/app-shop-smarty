@@ -87,7 +87,7 @@ class XmlProductImport extends Component
                 $params['vendorCode'] = (string)$offer->vendorCode;
                 $this->checkProduct($params);
 
-                break; // пока будем тормозить на первом же товаре
+                //break; // пока будем тормозить на первом же товаре
             }
 
             return 'done!';
