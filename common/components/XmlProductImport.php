@@ -119,7 +119,6 @@ class XmlProductImport extends Component
             ->one();
         if(!$model)
         {
-            $this->count++;
             $childTree = new Tree();
             $parent = Tree::find()->where(['id' => $params["pid"]])->one();
             $childTree->priority = Tree::PRIORITY_STEP;
@@ -152,6 +151,9 @@ class XmlProductImport extends Component
             ->andWhere(['tree_id' => $params['tree_id']])
             ->one();
         if($model) return;
+
+        $this->count++;
+
         $model = new CmsContentElement();
         $model->name = $params['name'];
         $model->content_id = $prod_id;
@@ -168,7 +170,6 @@ class XmlProductImport extends Component
             $model->relatedPropertiesModel->setAttribute('amount',$params['amount']);
             $model->relatedPropertiesModel->setAttribute('barcode',$params['barcode']);
             $model->relatedPropertiesModel->setAttribute('stockSaleId',$params['vendorCode']);
-            $model->relatedPropertiesModel->save();
 
             // связка элемент-товар
             $shopProduct = new ShopProduct();
@@ -200,7 +201,6 @@ class XmlProductImport extends Component
                 $country->save();
             }
             $model->relatedPropertiesModel->setAttribute('country',$country->primaryKey);
-            $model->relatedPropertiesModel->save();
 
             // установка бренда
             $brand = CmsContentElement::findOne([
