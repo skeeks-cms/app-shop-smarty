@@ -692,3 +692,9 @@ h2.owl-featured
 }
 
 
+.fo4 {
+    letter-spacing: 0.1em !important;
+    color: white;
+    text-transform: uppercase;
+    font-size: 19px;
+}

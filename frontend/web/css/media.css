@@ -84,6 +84,34 @@
     section div.row>div {
         margin-bottom: 5px;
     }
+    section {
+        padding: 0;
+    }
+
+    #footer > .container {
+        padding-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    #footer .row > div {
+        margin-bottom: 0;
+    }
+
+    .padding-bottom-20 {
+        padding-bottom: 1px !important;
+    }
+
+    .fancybox-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    #sx-callback {
+        width: 300px !important;
+    }
+    #sx-callback h2 {
+        font-size: 20px;
+    }
 
 }
 
