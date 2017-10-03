@@ -57,15 +57,18 @@ class XmlProductImport extends Component
 
             $tree = [];
 
-            foreach($sxe->shop->categories->category as $item) {
+            foreach($sxe->shop->categories->category as $item)
+            {
                 set_time_limit(10);
                 $params = [];
                 $params['name'] = (string) $item->name;
 
-                if((int) $item->pid) {
+                if((int) $item->pid)
+                {
                     $params['pid'] = $tree[(int) $item->pid];
                 }
-                else {
+                else
+                {
                     $params['pid'] = $catalog->id;
                 }
                 $tree[(int)$item->id] = $this->checkTree($params);
@@ -110,7 +113,7 @@ class XmlProductImport extends Component
      */
     private function checkTree($params)
     {
-        $type_id = \skeeks\cms\models\CmsTreeType::find()->where(['code' => 'catalog'])->one()->id;
+        $type_id = \skeeks\cms\models\CmsTreeType::findOne(['code' => 'catalog'])->primaryKey;
         if(!$type_id) throw new Exception('no catalog type');
         $model = Tree::find()
             ->andWhere(['name' => $params['name']])
@@ -143,7 +146,7 @@ class XmlProductImport extends Component
      */
     private function checkProduct($params)
     {
-        $prod_id = \skeeks\cms\models\CmsContent::find()->where(['code' => 'product'])->one()->id;
+        $prod_id = \skeeks\cms\models\CmsContent::findOne(['code' => 'product'])->primaryKey;
         if(!$prod_id) throw new Exception('no product type');
         $model = CmsContentElement::find()
             ->andWhere(['name' => $params['name']])
