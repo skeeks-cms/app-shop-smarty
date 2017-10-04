@@ -36,7 +36,6 @@ class AppAsset extends AssetBundle
     public $js = [
         'smarty/js/scripts.js',
         'js/app.js',
-        'css/slick/slick.min.js',
         'js/owl.carousel.min.js',
     ];
 
