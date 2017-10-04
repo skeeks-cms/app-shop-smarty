@@ -35,9 +35,21 @@ $this->registerJs(<<<JS
 
 JS
 );
+
+\frontend\assets\OwnCarouselAsset::register($this); //подключаем чтобы не ломалась верстка если убрать слайдер с брендами
+$this->registerJs(<<<JS
+
+new sx.classes.OwnCarousel({
+
+'jsquerySelector' : '.brands-carousel'
+
+});
+
+JS
+);
 ?>
 <!-- SLIDER -->
-<section class="padding-top-20 padding-bottom-20" style="border: none;">
+<section class="mslider" style="border: none;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -51,11 +63,10 @@ JS
 </section>
 <!-- /SLIDER -->
 
-<section class="padding-top-40 padding-bottom-20" style="border: none;">
-    <div class="container ">
+<section class="recslider">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="recslider">
                     <?= \skeeks\cms\cmsWidgets\contentElements\ContentElementsCmsWidget::widget([
 //                    'contentElementClass' => \skeeks\cms\shop\models\ShopCmsContentElement::className(),
                         'namespace' => 'ContentElementsCmsWidget-home-page',
@@ -67,64 +78,12 @@ JS
 //
 //                    }
                     ]); ?>
-                </div>
-
             </div>
         </div>
     </div>
 </section>
-<section class="padding-top-40 padding-bottom-60" style="border: none;">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="size-30 margin-bottom-20">Бренды</h1>
-                <hr/>
-                <div style="text-align: center">
-                    <?= \skeeks\cms\cmsWidgets\contentElements\ContentElementsCmsWidget::widget([
-                        'namespace' => 'ContentElementsCmsWidget-home-brands',
-                        'viewFile' => '@app/views/widgets/ContentElementsCmsWidget/brands-home',
-                        'limit' => 20,
-                    ]); ?>
-                    <!--<img src="/img/brands.png" class="img-responsive"/>-->
-                </div>
-                <hr/>
-            </div>
-        </div>
-    </div>
-</section>
-<!--<section class="padding-top-20 padding-bottom-0">
+  
 
-	<div class="container">
-
-
-
-		<div class="row">
-
-
-
-
-
-			<div class="col-md-12">
-
-				<? /*= \skeeks\cms\cmsWidgets\contentElements\ContentElementsCmsWidget::widget([
-
-					'namespace' => 'ContentElementsCmsWidget-home-page2',
-
-					'viewFile' 	=> '@app/views/widgets/ContentElementsCmsWidget/products-home',
-
-				]); */ ?>
-
-
-
-			</div>
-
-		</div>
-
-
-
-	</div>
-
-</section>-->
 <? if ($model->description_full) : ?>
     <section class="padding-top-20">
         <div class="container">

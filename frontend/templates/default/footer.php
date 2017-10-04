@@ -11,20 +11,20 @@
 <footer id="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-12">
                 <?= \skeeks\cms\cmsWidgets\text\TextCmsWidget::widget([
                     'namespace' => 'text-footer-left',
                     'text' => <<<HTML
 				<!-- Footer Logo -->
-				<h4 class="letter-spacing-1">О нас</h4>
+				<div class="fo4">О нас</div>
 
 				<!-- Small Description -->
-				<p>SkeekS.com</p>
+				<p>atemi.ru</p>
 				<p>Магазин брендовой одежды</p>
 
 				<!-- Contact Address -->
 				<address style="margin-top: 5px;">
-					<a href="tel:+74950057926" style="font-size: 21px; text-decoration: none;">(+7 495) 005-79-26</a>
+					<a href="tel:+74951234567" style="font-size: 21px; text-decoration: none;">(+7 495) 123-45-67</a>
 					<p>
 						<a href="#sx-callback" class="sx-fancybox" style="text-decoration: none; border-bottom: 1px dashed">Заказать обратный звонок</a>
 					</p>
@@ -48,7 +48,7 @@ HTML
                     ,
                 ]); ?>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 col-xs-6">
                 <? /*= \skeeks\cms\cmsWidgets\contentElements\ContentElementsCmsWidget::widget([
 					'namespace'         => 'ContentElementsCmsWidget-footer',
 					'viewFile'          => '@template/widgets/ContentElementsCmsWidget/articles-footer',
@@ -64,7 +64,7 @@ HTML
                     'level' => '1',
                 ]); ?>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 col-xs-6">
                 <?= \skeeks\cms\cmsWidgets\treeMenu\TreeMenuCmsWidget::widget([
                     'namespace' => 'menu-footer-2',
                     'viewFile' => '@template/widgets/TreeMenuCmsWidget/menu-footer.php',
@@ -72,7 +72,7 @@ HTML
                     'level' => '1',
                 ]); ?>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-xs-12">
                 <h4 class="letter-spacing-1">Обратная связь</h4>
 
                 <div class="sx-feedback-wrapper" id="sx-feedback">
@@ -106,15 +106,15 @@ CSS
     <div class="copyright">
         <div class="container">
             <ul class="pull-right nomargin list-inline mobile-block">
-                <li><a href="http://skeeks.com" title="Студия SkeekS">Разработка сайта — SkeekS.com</a> (<a
-                        href="http://cms.skeeks.com" title="Система управления сайтом SkeekS CMS (Yii2 cms)">SkeekS CMS
-                        Yii2</a>)
+                <li><a href="//rusoft.ru" title="Русофт">Разработка сайта</a>
+                    <img src="/img/rusoft_logo.png" alt="Разработка сайта — RUsoft.ru"> — RuSoft.ru
+
                 </li>
             </ul>
             <?= \skeeks\cms\cmsWidgets\text\TextCmsWidget::widget([
                 'namespace' => 'text-footer-rights',
                 'text' => <<<HTML
-				&copy; Все права защищены, SkeekS CMS - SHOP 2016
+				&copy; Все права защищены, SkeekS CMS - SHOP 2017
 HTML
                 ,
             ]); ?>
