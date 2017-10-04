@@ -21,7 +21,10 @@ class SearchController extends Controller
 
         $models = CmsContentElement::find()
             //->select(['id as value', 'name as label'])
-            ->where(['like', 'name', $term])
+            ->where(['like', CmsContentElement::tableName().'.name', $term])
+            ->andWhere([CmsContentElement::tableName().'.active' => 'Y'])
+            ->joinWith('cmsContent as ccontent')
+            ->andWhere(['ccontent.code' => 'product'])
             ->limit(10)
             ->all();
 
@@ -29,9 +32,12 @@ class SearchController extends Controller
         if ($models) {
             foreach ($models as $model)
             {
+                $shopProduct = \skeeks\cms\shop\models\ShopProduct::getInstanceByContentElement($model);
+                $price = \Yii::$app->money->convertAndFormat($shopProduct->baseProductPrice->money);
+
                 $tmpdata = [];
                 $tmpdata['value'] = $model->id;
-                $tmpdata['label'] = $model->name;
+                $tmpdata['label'] = $model->name.' - '.$price;
                 $tmpdata['url'] = $model->url;
                 $data[] = $tmpdata;
             }
