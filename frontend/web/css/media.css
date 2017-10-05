@@ -113,4 +113,8 @@
         font-size: 20px;
     }
 
+    section.page-header h1 {
+        font-size: 18px;
+    }
+
 }
