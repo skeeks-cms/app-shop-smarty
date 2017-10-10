@@ -661,8 +661,6 @@ h2.owl-featured
     overflow: visible !important;
 }
 
-
-
  .shop-item-summary span{
      text-overflow: ellipsis;
      white-space: nowrap;
@@ -696,4 +694,10 @@ h2.owl-featured
     color: white;
     text-transform: uppercase;
     font-size: 19px;
+}
+
+div.row>div img.img-responsive {
+    width: auto;
+    max-width: 100%;
+    margin: 0 auto;
 }
