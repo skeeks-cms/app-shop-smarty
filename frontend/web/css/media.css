@@ -118,3 +118,8 @@
     }
 
 }
+
+.mm-menu.mm-offcanvas {
+    z-index: 1;
+    display: block;
+}
