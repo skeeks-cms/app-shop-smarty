@@ -29,14 +29,11 @@ class AppAsset extends AssetBundle
         'css/animate.css',
         'css/fast.css',
         'css/media.css',
-        'css/owl.carousel.min.css',
-        'css/owl.theme.default.min.css',
     ];
 
     public $js = [
         'smarty/js/scripts.js',
         'js/app.js',
-        'js/owl.carousel.min.js',
     ];
 
     public $depends = [
