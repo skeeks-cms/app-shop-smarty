@@ -39,8 +39,8 @@
         height: 60px !important;
         position:fixed;
         top:0;
-        left: -15px;
-        right: -15px;
+        left: 0;
+        right: 0;
     }
 }
 
@@ -56,6 +56,12 @@
 
 @media only screen and (max-width: 420px)
 {
+
+    #header ul.nav-second-main {
+        margin-right: 0;
+    }
+
+
     .sx-top-logo-block img
     {
         height: 30px;
@@ -117,9 +123,8 @@
         font-size: 18px;
     }
 
-}
+    .box-light {
+        overflow-x: auto;
+    }
 
-.mm-menu.mm-offcanvas {
-    z-index: 1;
-    display: block;
 }
