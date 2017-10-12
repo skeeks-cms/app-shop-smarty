@@ -496,7 +496,7 @@ h2.owl-featured
 .sx-has-filters .sx-left-menu
 {
     overflow: hidden;
-    max-height: 183px;
+    /*max-height: 183px;*/
 }
 
 #sx-filters-form > .form-group
