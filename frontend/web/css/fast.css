@@ -303,7 +303,8 @@ div.shop-item-summary h2
 
 .sx-top-logo-block
 {
-    text-align: center;
+    /*чтобы лого не ровнялось
+    text-align: center;*/
     padding-top: 15px;
     padding-bottom: 15px;
 }
