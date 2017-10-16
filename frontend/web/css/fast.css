@@ -78,6 +78,16 @@ div.shop-item .thumbnail
     border-radius: 0;
 }
 
+div.shop-item>.thumbnail {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border-color: #ddd !important;
+    margin-bottom: 6px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #topMain.nav-pills > li > a.dropdownToggle
 {
     padding-right: 25px;
