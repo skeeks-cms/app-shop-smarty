@@ -1,0 +1,147 @@
+@media only screen and (max-width: 992px)
+{
+    .visible-xs.sx-top-logo-block{
+        text-align:left;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    .visible-xs.sx-top-logo-block p{
+        margin-bottom:0;
+    }
+    .visible-xs.sx-top-logo-block img{
+        max-height:20px;
+        margin:7px 0 0 5px;
+    }
+
+    #topNav nav.nav-main
+    {
+        background-color: #fff;
+
+        /* border: 1px solid silver; */
+        box-shadow: 1px 6px 10px 0px;
+    }
+
+    #header ul.nav-second-main {
+        margin-top: 23px;
+        margin-right: 17px;
+    }
+
+    #header ul.nav-second-main li {
+        padding: 0;
+        padding-top: 0px;
+    }
+
+    .header-contacts{
+        padding-top:60px;
+    }
+
+    #header {
+        height: 60px !important;
+        position:fixed;
+        top:0;
+        left: 0;
+        right: 0;
+    }
+}
+
+
+@media only screen and (max-width: 600px)
+{
+    .owl-pagination {
+        display: block;
+        /* margin-top: 20px; */
+    }
+}
+
+
+@media only screen and (max-width: 420px)
+{
+    .container {
+         padding-right: 0 !important;
+         padding-left: 0 !important;
+    }
+
+
+    #header ul.nav-second-main {
+        margin-right: 0;
+    }
+
+
+    .sx-top-logo-block img
+    {
+        height: 30px;
+    }
+
+    .sx-top-logo-block {
+        padding-top: 5px;
+        padding-bottom: 0;
+    }
+
+    .sx-top-phone {
+        font-size: 16px;
+        padding-top: 3px;
+    }
+
+    .mslider {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .recslider {
+        padding-top: 2px;
+        padding-bottom: 2px;
+    }
+
+    section div.row>div {
+        margin-bottom: 5px;
+    }
+    section {
+        padding: 0;
+    }
+
+    #footer > .container {
+        padding-top: 10px;
+        margin-bottom: 5px;
+    }
+
+    #footer .row > div {
+        margin-bottom: 0;
+    }
+
+    #footer {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    #footer>.copyright {
+        background: none !important;
+    }
+
+    .padding-bottom-20 {
+        padding-bottom: 1px !important;
+    }
+
+    .fancybox-container {
+        width: 100%;
+        height: 100%;
+    }
+
+    #sx-callback {
+        width: 300px !important;
+    }
+    #sx-callback h2 {
+        font-size: 20px;
+    }
+
+    section.page-header h1 {
+        font-size: 18px;
+    }
+
+    .box-light {
+        overflow-x: auto;
+    }
+    .recslider .size-30 {
+        padding-left: 10px;
+    }
+
+}

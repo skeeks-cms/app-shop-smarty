@@ -9,6 +9,7 @@ return array_merge(
     (array)include_once \Yii::getAlias("@skeeks/cms/messages/ru/main.php"),
     //(array) include_once \Yii::getAlias("@skeeks/modules/cms/game/messages/ru/main.php"),
     [
-        "Common translates" => "Общие сообщения"
+        "Common translates" => "Общие сообщения",
+        "Main" => "Основное",
     ]
 );
