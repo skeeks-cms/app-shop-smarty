@@ -26,11 +26,12 @@ JS
 ?>
 <!--=== Content Part ===-->
 <section class="sx-cart-layout bg-printair">
+    <? \skeeks\cms\modules\admin\widgets\Pjax::begin([
+        'id' => 'sx-cart-full',
+    ]) ?>
     <div class="row">
         <div class="container sx-border-block">
-            <? \skeeks\cms\modules\admin\widgets\Pjax::begin([
-                'id' => 'sx-cart-full',
-            ]) ?>
+
 
             <? if (\Yii::$app->shop->shopFuser->isEmpty()) : ?>
                 <!-- EMPTY CART -->
@@ -73,7 +74,7 @@ HTML
                 </div>
             <? endif; ?>
 
-            <? \skeeks\cms\modules\admin\widgets\Pjax::end() ?>
         </div>
     </div>
+    <? \skeeks\cms\modules\admin\widgets\Pjax::end() ?>
 </section>

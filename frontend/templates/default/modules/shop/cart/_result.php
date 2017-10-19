@@ -5,6 +5,7 @@
  * @copyright 2010 SkeekS (СкикС)
  * @date 09.10.2015
  */
+\Yii::$app->shop->shopFuser->refresh();
 ?>
 
 <!-- TOGGLE -->
