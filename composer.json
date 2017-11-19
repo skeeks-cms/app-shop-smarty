@@ -25,7 +25,9 @@
         "skeeks/cms-external-links": "~1.0",
         "skeeks/cms-ssh-console": "~1.1.0",
         "skeeks/cms-instagram-widget": "~1.0",
-        "skeeks/yii2-template-smarty-asset": "1.1.5",
+        "skeeks/yii2-template-smarty-asset": "1.1.5"
+    },
+    "require-dev": {
         "yiisoft/yii2-debug": "*"
     },
     "minimum-stability" : "dev",
