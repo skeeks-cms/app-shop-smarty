@@ -19,6 +19,8 @@ Links
 Install
 -----------
 
+http://www.linuxandubuntu.com/home/difference-between-postgresql-and-mysql-and-how-to-migrate-from-mysql-to-postgresql
+
 ```bash
 # Download latest version of composer
 curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php

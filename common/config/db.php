@@ -9,10 +9,13 @@ return
 [
     'components'    => [
         'db' => [
-            'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=shop_smarty',
+            /*'class' => 'yii\db\Connection',
+            'dsn' => 'mysql:host=localhost;dbname=shop_smarty4',
             'username' => 'shop',
-            'password' => 'jW4mKYSVRVZPGyNn',
+            'password' => 'jW4mKYSVRVZPGyNn',*/
+            'dsn' => 'pgsql:host=localhost;dbname=test',
+                        'username' => 'test',
+                        'password' => 'gk-wIJI4OMIYqOJ4EfW1jD1Yj',
             'charset' => 'utf8',
             'enableSchemaCache' => true,
             'schemaCacheDuration' => 3600,
