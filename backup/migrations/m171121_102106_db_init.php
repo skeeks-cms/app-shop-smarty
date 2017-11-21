@@ -19,7 +19,6 @@ class m171121_102106_db_init extends \yii\db\Migration
 {
     public function safeUp()
     {
-
         if ($this->db->driverName === 'mysql') {
 
             $filePath = dirname(dirname(__DIR__)) . "/backup/db/db__2017-11-21_02-03-02.sql";

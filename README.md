@@ -30,7 +30,7 @@ cd demo.ru
 #Edit the file to access the database, it is located at common/config/db.php
 
 #Installation of ready-dump
-php yii migrate -t=migration_install
+php yii migrate -t=migration_install -p=backup/migrations
 ```
 
 

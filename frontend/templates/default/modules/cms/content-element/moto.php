@@ -343,7 +343,7 @@ $shopProduct->createNewView();
                     'limit' => 10,
                     'activeQueryCallback' => function (\yii\db\ActiveQuery $query) use ($model) {
                         $query->andWhere(['!=', \skeeks\cms\models\CmsContentElement::tableName() . ".id", $model->id]);
-                        $query->leftJoin('cms_content_element_property', '`cms_content_element_property`.`element_id` = `cms_content_element`.`id`');
+                        $query->leftJoin('cms_content_element_property', 'cms_content_element_property.element_id = cms_content_element.id');
                     }
                 ]); ?>
             </div>
@@ -367,8 +367,8 @@ $shopProduct->createNewView();
                         'limit' => 6,
                         'activeQueryCallback' => function (\yii\db\ActiveQuery $query) use ($model) {
                             $query->andWhere(['!=', \skeeks\cms\models\CmsContentElement::tableName() . ".id", $model->id]);
-                            $query->leftJoin('shop_product', '`shop_product`.`id` = `cms_content_element`.`id`');
-                            $query->leftJoin('shop_viewed_product', '`shop_viewed_product`.`shop_product_id` = `shop_product`.`id`');
+                            $query->leftJoin('shop_product', 'shop_product.id = cms_content_element.id');
+                            $query->leftJoin('shop_viewed_product', 'shop_viewed_product.shop_product_id = shop_product.id');
                             $query->andWhere(['shop_fuser_id' => \Yii::$app->shop->shopFuser->id]);
                             //$query->orderBy(['shop_viewed_product.created_at' => SORT_DESC]);
                         }
