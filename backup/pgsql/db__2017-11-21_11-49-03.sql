@@ -4,14 +4,14 @@ Navicat PGSQL Data Transfer
 Source Server         : app-basic
 Source Server Version : 90320
 Source Host           : 148.251.40.235:54322
-Source Database       : test
+Source Database       : test_mysql
 Source Schema         : public
 
 Target Server Type    : PGSQL
 Target Server Version : 90320
 File Encoding         : 65001
 
-Date: 2017-11-21 11:45:34
+Date: 2017-11-21 12:03:34
 */
 
 
@@ -575,9 +575,9 @@ CREATE SEQUENCE "public"."log_db_target_id_seq"
  INCREMENT 1
  MINVALUE 1
  MAXVALUE 9223372036854775807
- START 13091
+ START 13092
  CACHE 1;
-SELECT setval('"public"."log_db_target_id_seq"', 13091, true);
+SELECT setval('"public"."log_db_target_id_seq"', 13092, true);
 
 -- ----------------------------
 -- Sequence structure for measure_id_seq
@@ -2544,7 +2544,7 @@ INSERT INTO "public"."cms_agent" VALUES ('43', '1511218856', '1511305256', 'dbDu
 INSERT INTO "public"."cms_agent" VALUES ('44', '1511251843', '1511273443', 'shop/agents/delete-empty-carts', 'Удаление пустых корзин', '21600', '100', 'Y', 'N', 'N');
 INSERT INTO "public"."cms_agent" VALUES ('45', '1511218857', '1511305257', 'cms/cache/flush-all', 'Чистка кэша', '86400', '100', 'Y', 'N', 'N');
 INSERT INTO "public"."cms_agent" VALUES ('46', '1511218857', '1511305257', 'shop/flush/price-changes', 'Удаление старых изменений цен', '86400', '100', 'Y', 'N', 'N');
-INSERT INTO "public"."cms_agent" VALUES ('47', '1511253778', '1511254378', 'shop/notify/quantity-emails', 'Уведомить о поступлении', '600', '100', 'Y', 'N', 'N');
+INSERT INTO "public"."cms_agent" VALUES ('47', '1511254198', '1511254798', 'shop/notify/quantity-emails', 'Уведомить о поступлении', '600', '100', 'Y', 'N', 'N');
 INSERT INTO "public"."cms_agent" VALUES ('48', '1511218857', '1511305257', 'ajaxfileupload/cleanup', 'Чистка временно загружаемых файлов', '86400', '100', 'Y', 'N', 'N');
 
 -- ----------------------------
@@ -5667,6 +5667,9 @@ Stack trace:
 #1 /var/www/sites/shop-smarty.ru/vendor/skeeks/cms/app-web.php(27): yii\base\Application->run()
 #2 /var/www/sites/shop-smarty.ru/frontend/web/index.php(45): include(''/var/www/sites/...'')
 #3 {main}');
+INSERT INTO "public"."log_db_target" VALUES ('13092', '4', 'skeeks/agent::shop/notify/quantity-emails', '1511254198', '[-][-][-]', 'Execute agent > shop/notify/quantity-emails
+Уведомить некого
+Lead time > 0.065299034118652 sec');
 
 -- ----------------------------
 -- Table structure for measure
@@ -7942,7 +7945,7 @@ ALTER SEQUENCE "public"."source_message_id_seq" OWNED BY "source_message"."id";
 -- ----------------------------
 -- Indexes structure for table auth_assignment
 -- ----------------------------
-CREATE INDEX "idx_71849_auth_assignment_user_id" ON "public"."auth_assignment" USING btree ("user_id");
+CREATE INDEX "idx_76657_auth_assignment_user_id" ON "public"."auth_assignment" USING btree ("user_id");
 
 -- ----------------------------
 -- Primary Key structure for table auth_assignment
@@ -7952,8 +7955,8 @@ ALTER TABLE "public"."auth_assignment" ADD PRIMARY KEY ("item_name", "user_id");
 -- ----------------------------
 -- Indexes structure for table auth_item
 -- ----------------------------
-CREATE INDEX "idx_71852_rule_name" ON "public"."auth_item" USING btree ("rule_name");
-CREATE INDEX "idx_71852_idx-auth_item-type" ON "public"."auth_item" USING btree ("type");
+CREATE INDEX "idx_76660_idx-auth_item-type" ON "public"."auth_item" USING btree ("type");
+CREATE INDEX "idx_76660_rule_name" ON "public"."auth_item" USING btree ("rule_name");
 
 -- ----------------------------
 -- Primary Key structure for table auth_item
@@ -7963,7 +7966,7 @@ ALTER TABLE "public"."auth_item" ADD PRIMARY KEY ("name");
 -- ----------------------------
 -- Indexes structure for table auth_item_child
 -- ----------------------------
-CREATE INDEX "idx_71858_child" ON "public"."auth_item_child" USING btree ("child");
+CREATE INDEX "idx_76666_child" ON "public"."auth_item_child" USING btree ("child");
 
 -- ----------------------------
 -- Primary Key structure for table auth_item_child
@@ -7978,12 +7981,12 @@ ALTER TABLE "public"."auth_rule" ADD PRIMARY KEY ("name");
 -- ----------------------------
 -- Indexes structure for table cms_admin_filter
 -- ----------------------------
-CREATE INDEX "idx_71869_updated_by" ON "public"."cms_admin_filter" USING btree ("updated_by");
-CREATE INDEX "idx_71869_unique_default" ON "public"."cms_admin_filter" USING btree ("cms_user_id", "is_default", "namespace");
-CREATE INDEX "idx_71869_created_at" ON "public"."cms_admin_filter" USING btree ("created_at");
-CREATE INDEX "idx_71869_created_by" ON "public"."cms_admin_filter" USING btree ("created_by");
-CREATE INDEX "idx_71869_updated_at" ON "public"."cms_admin_filter" USING btree ("updated_at");
-CREATE INDEX "idx_71869_cms_user_id" ON "public"."cms_admin_filter" USING btree ("cms_user_id");
+CREATE INDEX "idx_76677_created_at" ON "public"."cms_admin_filter" USING btree ("created_at");
+CREATE INDEX "idx_76677_created_by" ON "public"."cms_admin_filter" USING btree ("created_by");
+CREATE INDEX "idx_76677_cms_user_id" ON "public"."cms_admin_filter" USING btree ("cms_user_id");
+CREATE INDEX "idx_76677_updated_by" ON "public"."cms_admin_filter" USING btree ("updated_by");
+CREATE INDEX "idx_76677_updated_at" ON "public"."cms_admin_filter" USING btree ("updated_at");
+CREATE INDEX "idx_76677_unique_default" ON "public"."cms_admin_filter" USING btree ("cms_user_id", "is_default", "namespace");
 
 -- ----------------------------
 -- Primary Key structure for table cms_admin_filter
@@ -7993,13 +7996,13 @@ ALTER TABLE "public"."cms_admin_filter" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_agent
 -- ----------------------------
-CREATE INDEX "idx_71878_agent_interval" ON "public"."cms_agent" USING btree ("agent_interval");
-CREATE INDEX "idx_71878_next_exec_at" ON "public"."cms_agent" USING btree ("next_exec_at");
-CREATE INDEX "idx_71878_is_running" ON "public"."cms_agent" USING btree ("is_running");
-CREATE INDEX "idx_71878_priority" ON "public"."cms_agent" USING btree ("priority");
-CREATE INDEX "idx_71878_last_exec_at" ON "public"."cms_agent" USING btree ("last_exec_at");
-CREATE INDEX "idx_71878_is_period" ON "public"."cms_agent" USING btree ("is_period");
-CREATE INDEX "idx_71878_active" ON "public"."cms_agent" USING btree ("active");
+CREATE INDEX "idx_76686_last_exec_at" ON "public"."cms_agent" USING btree ("last_exec_at");
+CREATE INDEX "idx_76686_is_period" ON "public"."cms_agent" USING btree ("is_period");
+CREATE INDEX "idx_76686_is_running" ON "public"."cms_agent" USING btree ("is_running");
+CREATE INDEX "idx_76686_agent_interval" ON "public"."cms_agent" USING btree ("agent_interval");
+CREATE INDEX "idx_76686_active" ON "public"."cms_agent" USING btree ("active");
+CREATE INDEX "idx_76686_next_exec_at" ON "public"."cms_agent" USING btree ("next_exec_at");
+CREATE INDEX "idx_76686_priority" ON "public"."cms_agent" USING btree ("priority");
 
 -- ----------------------------
 -- Primary Key structure for table cms_agent
@@ -8009,14 +8012,14 @@ ALTER TABLE "public"."cms_agent" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_component_settings
 -- ----------------------------
-CREATE INDEX "idx_71892_updated_at" ON "public"."cms_component_settings" USING btree ("updated_at");
-CREATE INDEX "idx_71892_updated_by" ON "public"."cms_component_settings" USING btree ("updated_by");
-CREATE INDEX "idx_71892_user_id" ON "public"."cms_component_settings" USING btree ("user_id");
-CREATE INDEX "idx_71892_created_by" ON "public"."cms_component_settings" USING btree ("created_by");
-CREATE INDEX "idx_71892_component" ON "public"."cms_component_settings" USING btree ("component");
-CREATE INDEX "idx_71892_created_at" ON "public"."cms_component_settings" USING btree ("created_at");
-CREATE INDEX "idx_71892_cms_site_id" ON "public"."cms_component_settings" USING btree ("cms_site_id");
-CREATE INDEX "idx_71892_namespace" ON "public"."cms_component_settings" USING btree ("namespace");
+CREATE INDEX "idx_76700_cms_site_id" ON "public"."cms_component_settings" USING btree ("cms_site_id");
+CREATE INDEX "idx_76700_created_at" ON "public"."cms_component_settings" USING btree ("created_at");
+CREATE INDEX "idx_76700_component" ON "public"."cms_component_settings" USING btree ("component");
+CREATE INDEX "idx_76700_created_by" ON "public"."cms_component_settings" USING btree ("created_by");
+CREATE INDEX "idx_76700_updated_by" ON "public"."cms_component_settings" USING btree ("updated_by");
+CREATE INDEX "idx_76700_namespace" ON "public"."cms_component_settings" USING btree ("namespace");
+CREATE INDEX "idx_76700_updated_at" ON "public"."cms_component_settings" USING btree ("updated_at");
+CREATE INDEX "idx_76700_user_id" ON "public"."cms_component_settings" USING btree ("user_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_component_settings
@@ -8026,28 +8029,28 @@ ALTER TABLE "public"."cms_component_settings" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content
 -- ----------------------------
-CREATE INDEX "idx_71901_content_type" ON "public"."cms_content" USING btree ("content_type");
-CREATE UNIQUE INDEX "idx_71901_code" ON "public"."cms_content" USING btree ("code");
-CREATE INDEX "idx_71901_created_at" ON "public"."cms_content" USING btree ("created_at");
-CREATE INDEX "idx_71901_active" ON "public"."cms_content" USING btree ("active");
-CREATE INDEX "idx_71901_default_tree_id" ON "public"."cms_content" USING btree ("default_tree_id");
-CREATE INDEX "idx_71901_created_by" ON "public"."cms_content" USING btree ("created_by");
-CREATE INDEX "idx_71901_index_for_search" ON "public"."cms_content" USING btree ("index_for_search");
-CREATE INDEX "idx_71901_name_meny" ON "public"."cms_content" USING btree ("name_meny");
-CREATE INDEX "idx_71901_is_allow_change_tree" ON "public"."cms_content" USING btree ("is_allow_change_tree");
-CREATE INDEX "idx_71901_name" ON "public"."cms_content" USING btree ("name");
-CREATE INDEX "idx_71901_name_one" ON "public"."cms_content" USING btree ("name_one");
-CREATE INDEX "idx_71901_list_mode" ON "public"."cms_content" USING btree ("list_mode");
-CREATE INDEX "idx_71901_parent_content_is_required" ON "public"."cms_content" USING btree ("parent_content_is_required");
-CREATE INDEX "idx_71901_tree_chooser" ON "public"."cms_content" USING btree ("tree_chooser");
-CREATE INDEX "idx_71901_visible" ON "public"."cms_content" USING btree ("visible");
-CREATE INDEX "idx_71901_parent_content_on_delete" ON "public"."cms_content" USING btree ("parent_content_on_delete");
-CREATE INDEX "idx_71901_priority" ON "public"."cms_content" USING btree ("priority");
-CREATE INDEX "idx_71901_updated_at" ON "public"."cms_content" USING btree ("updated_at");
-CREATE INDEX "idx_71901_viewfile" ON "public"."cms_content" USING btree ("view_file");
-CREATE INDEX "idx_71901_parent_content_id" ON "public"."cms_content" USING btree ("parent_content_id");
-CREATE INDEX "idx_71901_root_tree_id" ON "public"."cms_content" USING btree ("root_tree_id");
-CREATE INDEX "idx_71901_updated_by" ON "public"."cms_content" USING btree ("updated_by");
+CREATE INDEX "idx_76709_created_by" ON "public"."cms_content" USING btree ("created_by");
+CREATE INDEX "idx_76709_active" ON "public"."cms_content" USING btree ("active");
+CREATE INDEX "idx_76709_created_at" ON "public"."cms_content" USING btree ("created_at");
+CREATE INDEX "idx_76709_default_tree_id" ON "public"."cms_content" USING btree ("default_tree_id");
+CREATE UNIQUE INDEX "idx_76709_code" ON "public"."cms_content" USING btree ("code");
+CREATE INDEX "idx_76709_content_type" ON "public"."cms_content" USING btree ("content_type");
+CREATE INDEX "idx_76709_root_tree_id" ON "public"."cms_content" USING btree ("root_tree_id");
+CREATE INDEX "idx_76709_updated_at" ON "public"."cms_content" USING btree ("updated_at");
+CREATE INDEX "idx_76709_is_allow_change_tree" ON "public"."cms_content" USING btree ("is_allow_change_tree");
+CREATE INDEX "idx_76709_list_mode" ON "public"."cms_content" USING btree ("list_mode");
+CREATE INDEX "idx_76709_tree_chooser" ON "public"."cms_content" USING btree ("tree_chooser");
+CREATE INDEX "idx_76709_name_one" ON "public"."cms_content" USING btree ("name_one");
+CREATE INDEX "idx_76709_name_meny" ON "public"."cms_content" USING btree ("name_meny");
+CREATE INDEX "idx_76709_parent_content_on_delete" ON "public"."cms_content" USING btree ("parent_content_on_delete");
+CREATE INDEX "idx_76709_parent_content_is_required" ON "public"."cms_content" USING btree ("parent_content_is_required");
+CREATE INDEX "idx_76709_name" ON "public"."cms_content" USING btree ("name");
+CREATE INDEX "idx_76709_index_for_search" ON "public"."cms_content" USING btree ("index_for_search");
+CREATE INDEX "idx_76709_parent_content_id" ON "public"."cms_content" USING btree ("parent_content_id");
+CREATE INDEX "idx_76709_priority" ON "public"."cms_content" USING btree ("priority");
+CREATE INDEX "idx_76709_visible" ON "public"."cms_content" USING btree ("visible");
+CREATE INDEX "idx_76709_viewfile" ON "public"."cms_content" USING btree ("view_file");
+CREATE INDEX "idx_76709_updated_by" ON "public"."cms_content" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content
@@ -8057,28 +8060,28 @@ ALTER TABLE "public"."cms_content" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_element
 -- ----------------------------
-CREATE INDEX "idx_71918_created_at" ON "public"."cms_content_element" USING btree ("created_at");
-CREATE INDEX "idx_71918_content_id" ON "public"."cms_content_element" USING btree ("content_id");
-CREATE INDEX "idx_71918_code" ON "public"."cms_content_element" USING btree ("code");
-CREATE INDEX "idx_71918_active" ON "public"."cms_content_element" USING btree ("active");
-CREATE INDEX "idx_71918_image_full_id" ON "public"."cms_content_element" USING btree ("image_full_id");
-CREATE UNIQUE INDEX "idx_71918_content_id_2" ON "public"."cms_content_element" USING btree ("content_id", "code");
-CREATE INDEX "idx_71918_image_id" ON "public"."cms_content_element" USING btree ("image_id");
-CREATE INDEX "idx_71918_description_full_type" ON "public"."cms_content_element" USING btree ("description_full_type");
-CREATE INDEX "idx_71918_description_short_type" ON "public"."cms_content_element" USING btree ("description_short_type");
-CREATE INDEX "idx_71918_created_by" ON "public"."cms_content_element" USING btree ("created_by");
-CREATE INDEX "idx_71918_name" ON "public"."cms_content_element" USING btree ("name");
-CREATE INDEX "idx_71918_updated_by" ON "public"."cms_content_element" USING btree ("updated_by");
-CREATE INDEX "idx_71918_updated_at" ON "public"."cms_content_element" USING btree ("updated_at");
-CREATE INDEX "idx_71918_published_to" ON "public"."cms_content_element" USING btree ("published_to");
-CREATE UNIQUE INDEX "idx_71918_tree_id_2" ON "public"."cms_content_element" USING btree ("tree_id", "code");
-CREATE INDEX "idx_71918_priority" ON "public"."cms_content_element" USING btree ("priority");
-CREATE INDEX "idx_71918_parent_content_element_id" ON "public"."cms_content_element" USING btree ("parent_content_element_id");
-CREATE INDEX "idx_71918_meta_title" ON "public"."cms_content_element" USING btree ("meta_title");
-CREATE INDEX "idx_71918_tree_id" ON "public"."cms_content_element" USING btree ("tree_id");
-CREATE INDEX "idx_71918_show_counter" ON "public"."cms_content_element" USING btree ("show_counter");
-CREATE INDEX "idx_71918_published_at" ON "public"."cms_content_element" USING btree ("published_at");
-CREATE INDEX "idx_71918_show_counter_start" ON "public"."cms_content_element" USING btree ("show_counter_start");
+CREATE INDEX "idx_76726_updated_at" ON "public"."cms_content_element" USING btree ("updated_at");
+CREATE INDEX "idx_76726_updated_by" ON "public"."cms_content_element" USING btree ("updated_by");
+CREATE UNIQUE INDEX "idx_76726_tree_id_2" ON "public"."cms_content_element" USING btree ("tree_id", "code");
+CREATE INDEX "idx_76726_tree_id" ON "public"."cms_content_element" USING btree ("tree_id");
+CREATE INDEX "idx_76726_show_counter_start" ON "public"."cms_content_element" USING btree ("show_counter_start");
+CREATE INDEX "idx_76726_description_short_type" ON "public"."cms_content_element" USING btree ("description_short_type");
+CREATE INDEX "idx_76726_image_id" ON "public"."cms_content_element" USING btree ("image_id");
+CREATE INDEX "idx_76726_content_id" ON "public"."cms_content_element" USING btree ("content_id");
+CREATE UNIQUE INDEX "idx_76726_content_id_2" ON "public"."cms_content_element" USING btree ("content_id", "code");
+CREATE INDEX "idx_76726_show_counter" ON "public"."cms_content_element" USING btree ("show_counter");
+CREATE INDEX "idx_76726_published_to" ON "public"."cms_content_element" USING btree ("published_to");
+CREATE INDEX "idx_76726_published_at" ON "public"."cms_content_element" USING btree ("published_at");
+CREATE INDEX "idx_76726_description_full_type" ON "public"."cms_content_element" USING btree ("description_full_type");
+CREATE INDEX "idx_76726_created_by" ON "public"."cms_content_element" USING btree ("created_by");
+CREATE INDEX "idx_76726_parent_content_element_id" ON "public"."cms_content_element" USING btree ("parent_content_element_id");
+CREATE INDEX "idx_76726_name" ON "public"."cms_content_element" USING btree ("name");
+CREATE INDEX "idx_76726_active" ON "public"."cms_content_element" USING btree ("active");
+CREATE INDEX "idx_76726_created_at" ON "public"."cms_content_element" USING btree ("created_at");
+CREATE INDEX "idx_76726_code" ON "public"."cms_content_element" USING btree ("code");
+CREATE INDEX "idx_76726_priority" ON "public"."cms_content_element" USING btree ("priority");
+CREATE INDEX "idx_76726_image_full_id" ON "public"."cms_content_element" USING btree ("image_full_id");
+CREATE INDEX "idx_76726_meta_title" ON "public"."cms_content_element" USING btree ("meta_title");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_element
@@ -8088,14 +8091,14 @@ ALTER TABLE "public"."cms_content_element" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_element_file
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_71937_storage_file_id__content_element_id" ON "public"."cms_content_element_file" USING btree ("storage_file_id", "content_element_id");
-CREATE INDEX "idx_71937_content_element_id" ON "public"."cms_content_element_file" USING btree ("content_element_id");
-CREATE INDEX "idx_71937_priority" ON "public"."cms_content_element_file" USING btree ("priority");
-CREATE INDEX "idx_71937_storage_file_id" ON "public"."cms_content_element_file" USING btree ("storage_file_id");
-CREATE INDEX "idx_71937_created_at" ON "public"."cms_content_element_file" USING btree ("created_at");
-CREATE INDEX "idx_71937_updated_by" ON "public"."cms_content_element_file" USING btree ("updated_by");
-CREATE INDEX "idx_71937_updated_at" ON "public"."cms_content_element_file" USING btree ("updated_at");
-CREATE INDEX "idx_71937_created_by" ON "public"."cms_content_element_file" USING btree ("created_by");
+CREATE INDEX "idx_76745_created_at" ON "public"."cms_content_element_file" USING btree ("created_at");
+CREATE INDEX "idx_76745_created_by" ON "public"."cms_content_element_file" USING btree ("created_by");
+CREATE INDEX "idx_76745_content_element_id" ON "public"."cms_content_element_file" USING btree ("content_element_id");
+CREATE INDEX "idx_76745_priority" ON "public"."cms_content_element_file" USING btree ("priority");
+CREATE INDEX "idx_76745_storage_file_id" ON "public"."cms_content_element_file" USING btree ("storage_file_id");
+CREATE INDEX "idx_76745_updated_at" ON "public"."cms_content_element_file" USING btree ("updated_at");
+CREATE UNIQUE INDEX "idx_76745_storage_file_id__content_element_id" ON "public"."cms_content_element_file" USING btree ("storage_file_id", "content_element_id");
+CREATE INDEX "idx_76745_updated_by" ON "public"."cms_content_element_file" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_element_file
@@ -8105,14 +8108,14 @@ ALTER TABLE "public"."cms_content_element_file" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_element_image
 -- ----------------------------
-CREATE INDEX "idx_71944_created_at" ON "public"."cms_content_element_image" USING btree ("created_at");
-CREATE INDEX "idx_71944_content_element_id" ON "public"."cms_content_element_image" USING btree ("content_element_id");
-CREATE INDEX "idx_71944_created_by" ON "public"."cms_content_element_image" USING btree ("created_by");
-CREATE INDEX "idx_71944_priority" ON "public"."cms_content_element_image" USING btree ("priority");
-CREATE UNIQUE INDEX "idx_71944_storage_file_id__content_element_id" ON "public"."cms_content_element_image" USING btree ("storage_file_id", "content_element_id");
-CREATE INDEX "idx_71944_storage_file_id" ON "public"."cms_content_element_image" USING btree ("storage_file_id");
-CREATE INDEX "idx_71944_updated_at" ON "public"."cms_content_element_image" USING btree ("updated_at");
-CREATE INDEX "idx_71944_updated_by" ON "public"."cms_content_element_image" USING btree ("updated_by");
+CREATE UNIQUE INDEX "idx_76752_storage_file_id__content_element_id" ON "public"."cms_content_element_image" USING btree ("storage_file_id", "content_element_id");
+CREATE INDEX "idx_76752_storage_file_id" ON "public"."cms_content_element_image" USING btree ("storage_file_id");
+CREATE INDEX "idx_76752_created_at" ON "public"."cms_content_element_image" USING btree ("created_at");
+CREATE INDEX "idx_76752_content_element_id" ON "public"."cms_content_element_image" USING btree ("content_element_id");
+CREATE INDEX "idx_76752_priority" ON "public"."cms_content_element_image" USING btree ("priority");
+CREATE INDEX "idx_76752_created_by" ON "public"."cms_content_element_image" USING btree ("created_by");
+CREATE INDEX "idx_76752_updated_at" ON "public"."cms_content_element_image" USING btree ("updated_at");
+CREATE INDEX "idx_76752_updated_by" ON "public"."cms_content_element_image" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_element_image
@@ -8122,22 +8125,22 @@ ALTER TABLE "public"."cms_content_element_image" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_element_property
 -- ----------------------------
-CREATE INDEX "idx_71951_created_at" ON "public"."cms_content_element_property" USING btree ("created_at");
-CREATE INDEX "idx_71951_value_int2" ON "public"."cms_content_element_property" USING btree ("value_int2");
-CREATE INDEX "idx_71951_created_by" ON "public"."cms_content_element_property" USING btree ("created_by");
-CREATE INDEX "idx_71951_description" ON "public"."cms_content_element_property" USING btree ("description");
-CREATE INDEX "idx_71951_updated_by" ON "public"."cms_content_element_property" USING btree ("updated_by");
-CREATE INDEX "idx_71951_property2element2value_num" ON "public"."cms_content_element_property" USING btree ("property_id", "element_id", "value_num");
-CREATE INDEX "idx_71951_property_id" ON "public"."cms_content_element_property" USING btree ("property_id");
-CREATE INDEX "idx_71951_property2element2value_enum" ON "public"."cms_content_element_property" USING btree ("property_id", "element_id", "value_enum");
-CREATE INDEX "idx_71951_element_id" ON "public"."cms_content_element_property" USING btree ("element_id");
-CREATE INDEX "idx_71951_value_num2" ON "public"."cms_content_element_property" USING btree ("value_num2");
-CREATE INDEX "idx_71951_value_enum" ON "public"."cms_content_element_property" USING btree ("value_enum");
-CREATE INDEX "idx_71951_property2element" ON "public"."cms_content_element_property" USING btree ("property_id", "element_id");
-CREATE INDEX "idx_71951_updated_at" ON "public"."cms_content_element_property" USING btree ("updated_at");
-CREATE INDEX "idx_71951_value_string" ON "public"."cms_content_element_property" USING btree ("value_string");
-CREATE INDEX "idx_71951_value_num" ON "public"."cms_content_element_property" USING btree ("value_num");
-CREATE INDEX "idx_71951_property2element2value_string" ON "public"."cms_content_element_property" USING btree ("property_id", "element_id", "value_string");
+CREATE INDEX "idx_76759_description" ON "public"."cms_content_element_property" USING btree ("description");
+CREATE INDEX "idx_76759_element_id" ON "public"."cms_content_element_property" USING btree ("element_id");
+CREATE INDEX "idx_76759_property2element" ON "public"."cms_content_element_property" USING btree ("property_id", "element_id");
+CREATE INDEX "idx_76759_property2element2value_num" ON "public"."cms_content_element_property" USING btree ("property_id", "element_id", "value_num");
+CREATE INDEX "idx_76759_created_by" ON "public"."cms_content_element_property" USING btree ("created_by");
+CREATE INDEX "idx_76759_created_at" ON "public"."cms_content_element_property" USING btree ("created_at");
+CREATE INDEX "idx_76759_property2element2value_enum" ON "public"."cms_content_element_property" USING btree ("property_id", "element_id", "value_enum");
+CREATE INDEX "idx_76759_value_enum" ON "public"."cms_content_element_property" USING btree ("value_enum");
+CREATE INDEX "idx_76759_value_int2" ON "public"."cms_content_element_property" USING btree ("value_int2");
+CREATE INDEX "idx_76759_updated_by" ON "public"."cms_content_element_property" USING btree ("updated_by");
+CREATE INDEX "idx_76759_updated_at" ON "public"."cms_content_element_property" USING btree ("updated_at");
+CREATE INDEX "idx_76759_property2element2value_string" ON "public"."cms_content_element_property" USING btree ("property_id", "element_id", "value_string");
+CREATE INDEX "idx_76759_property_id" ON "public"."cms_content_element_property" USING btree ("property_id");
+CREATE INDEX "idx_76759_value_string" ON "public"."cms_content_element_property" USING btree ("value_string");
+CREATE INDEX "idx_76759_value_num2" ON "public"."cms_content_element_property" USING btree ("value_num2");
+CREATE INDEX "idx_76759_value_num" ON "public"."cms_content_element_property" USING btree ("value_num");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_element_property
@@ -8147,13 +8150,13 @@ ALTER TABLE "public"."cms_content_element_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_element_tree
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_71960_element_id_2" ON "public"."cms_content_element_tree" USING btree ("element_id", "tree_id");
-CREATE INDEX "idx_71960_tree_id" ON "public"."cms_content_element_tree" USING btree ("tree_id");
-CREATE INDEX "idx_71960_element_id" ON "public"."cms_content_element_tree" USING btree ("element_id");
-CREATE INDEX "idx_71960_created_by" ON "public"."cms_content_element_tree" USING btree ("created_by");
-CREATE INDEX "idx_71960_created_at" ON "public"."cms_content_element_tree" USING btree ("created_at");
-CREATE INDEX "idx_71960_updated_by" ON "public"."cms_content_element_tree" USING btree ("updated_by");
-CREATE INDEX "idx_71960_updated_at" ON "public"."cms_content_element_tree" USING btree ("updated_at");
+CREATE INDEX "idx_76768_created_at" ON "public"."cms_content_element_tree" USING btree ("created_at");
+CREATE UNIQUE INDEX "idx_76768_element_id_2" ON "public"."cms_content_element_tree" USING btree ("element_id", "tree_id");
+CREATE INDEX "idx_76768_element_id" ON "public"."cms_content_element_tree" USING btree ("element_id");
+CREATE INDEX "idx_76768_created_by" ON "public"."cms_content_element_tree" USING btree ("created_by");
+CREATE INDEX "idx_76768_updated_at" ON "public"."cms_content_element_tree" USING btree ("updated_at");
+CREATE INDEX "idx_76768_updated_by" ON "public"."cms_content_element_tree" USING btree ("updated_by");
+CREATE INDEX "idx_76768_tree_id" ON "public"."cms_content_element_tree" USING btree ("tree_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_element_tree
@@ -8163,12 +8166,12 @@ ALTER TABLE "public"."cms_content_element_tree" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_element2cms_user
 -- ----------------------------
-CREATE INDEX "idx_71931_created_by" ON "public"."cms_content_element2cms_user" USING btree ("created_by");
-CREATE INDEX "idx_71931_updated_by" ON "public"."cms_content_element2cms_user" USING btree ("updated_by");
-CREATE INDEX "idx_71931_updated_at" ON "public"."cms_content_element2cms_user" USING btree ("updated_at");
-CREATE UNIQUE INDEX "idx_71931_user2elements" ON "public"."cms_content_element2cms_user" USING btree ("cms_user_id", "cms_content_element_id");
-CREATE INDEX "idx_71931_cms_content_element2cms_user__cms_content_element_id" ON "public"."cms_content_element2cms_user" USING btree ("cms_content_element_id");
-CREATE INDEX "idx_71931_created_at" ON "public"."cms_content_element2cms_user" USING btree ("created_at");
+CREATE INDEX "idx_76739_updated_by" ON "public"."cms_content_element2cms_user" USING btree ("updated_by");
+CREATE INDEX "idx_76739_created_at" ON "public"."cms_content_element2cms_user" USING btree ("created_at");
+CREATE INDEX "idx_76739_created_by" ON "public"."cms_content_element2cms_user" USING btree ("created_by");
+CREATE INDEX "idx_76739_updated_at" ON "public"."cms_content_element2cms_user" USING btree ("updated_at");
+CREATE INDEX "idx_76739_cms_content_element2cms_user__cms_content_element_id" ON "public"."cms_content_element2cms_user" USING btree ("cms_content_element_id");
+CREATE UNIQUE INDEX "idx_76739_user2elements" ON "public"."cms_content_element2cms_user" USING btree ("cms_user_id", "cms_content_element_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_element2cms_user
@@ -8178,21 +8181,21 @@ ALTER TABLE "public"."cms_content_element2cms_user" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_property
 -- ----------------------------
-CREATE INDEX "idx_71966_content_id" ON "public"."cms_content_property" USING btree ("content_id");
-CREATE UNIQUE INDEX "idx_71966_code_2" ON "public"."cms_content_property" USING btree ("code", "content_id");
-CREATE INDEX "idx_71966_created_by" ON "public"."cms_content_property" USING btree ("created_by");
-CREATE INDEX "idx_71966_name" ON "public"."cms_content_property" USING btree ("name");
-CREATE INDEX "idx_71966_code" ON "public"."cms_content_property" USING btree ("code");
-CREATE INDEX "idx_71966_active" ON "public"."cms_content_property" USING btree ("active");
-CREATE INDEX "idx_71966_component" ON "public"."cms_content_property" USING btree ("component");
-CREATE INDEX "idx_71966_created_at" ON "public"."cms_content_property" USING btree ("created_at");
-CREATE INDEX "idx_71966_is_required" ON "public"."cms_content_property" USING btree ("is_required");
-CREATE INDEX "idx_71966_hint" ON "public"."cms_content_property" USING btree ("hint");
-CREATE INDEX "idx_71966_multiple" ON "public"."cms_content_property" USING btree ("multiple");
-CREATE INDEX "idx_71966_property_type" ON "public"."cms_content_property" USING btree ("property_type");
-CREATE INDEX "idx_71966_priority" ON "public"."cms_content_property" USING btree ("priority");
-CREATE INDEX "idx_71966_updated_by" ON "public"."cms_content_property" USING btree ("updated_by");
-CREATE INDEX "idx_71966_updated_at" ON "public"."cms_content_property" USING btree ("updated_at");
+CREATE INDEX "idx_76774_code" ON "public"."cms_content_property" USING btree ("code");
+CREATE INDEX "idx_76774_component" ON "public"."cms_content_property" USING btree ("component");
+CREATE UNIQUE INDEX "idx_76774_code_2" ON "public"."cms_content_property" USING btree ("code", "content_id");
+CREATE INDEX "idx_76774_created_at" ON "public"."cms_content_property" USING btree ("created_at");
+CREATE INDEX "idx_76774_active" ON "public"."cms_content_property" USING btree ("active");
+CREATE INDEX "idx_76774_content_id" ON "public"."cms_content_property" USING btree ("content_id");
+CREATE INDEX "idx_76774_hint" ON "public"."cms_content_property" USING btree ("hint");
+CREATE INDEX "idx_76774_created_by" ON "public"."cms_content_property" USING btree ("created_by");
+CREATE INDEX "idx_76774_is_required" ON "public"."cms_content_property" USING btree ("is_required");
+CREATE INDEX "idx_76774_name" ON "public"."cms_content_property" USING btree ("name");
+CREATE INDEX "idx_76774_multiple" ON "public"."cms_content_property" USING btree ("multiple");
+CREATE INDEX "idx_76774_updated_at" ON "public"."cms_content_property" USING btree ("updated_at");
+CREATE INDEX "idx_76774_priority" ON "public"."cms_content_property" USING btree ("priority");
+CREATE INDEX "idx_76774_updated_by" ON "public"."cms_content_property" USING btree ("updated_by");
+CREATE INDEX "idx_76774_property_type" ON "public"."cms_content_property" USING btree ("property_type");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_property
@@ -8202,15 +8205,15 @@ ALTER TABLE "public"."cms_content_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_property_enum
 -- ----------------------------
-CREATE INDEX "idx_71991_created_at" ON "public"."cms_content_property_enum" USING btree ("created_at");
-CREATE INDEX "idx_71991_updated_at" ON "public"."cms_content_property_enum" USING btree ("updated_at");
-CREATE INDEX "idx_71991_created_by" ON "public"."cms_content_property_enum" USING btree ("created_by");
-CREATE INDEX "idx_71991_def" ON "public"."cms_content_property_enum" USING btree ("def");
-CREATE INDEX "idx_71991_code" ON "public"."cms_content_property_enum" USING btree ("code");
-CREATE INDEX "idx_71991_updated_by" ON "public"."cms_content_property_enum" USING btree ("updated_by");
-CREATE INDEX "idx_71991_priority" ON "public"."cms_content_property_enum" USING btree ("priority");
-CREATE INDEX "idx_71991_property_id" ON "public"."cms_content_property_enum" USING btree ("property_id");
-CREATE INDEX "idx_71991_value" ON "public"."cms_content_property_enum" USING btree ("value");
+CREATE INDEX "idx_76799_code" ON "public"."cms_content_property_enum" USING btree ("code");
+CREATE INDEX "idx_76799_created_by" ON "public"."cms_content_property_enum" USING btree ("created_by");
+CREATE INDEX "idx_76799_def" ON "public"."cms_content_property_enum" USING btree ("def");
+CREATE INDEX "idx_76799_property_id" ON "public"."cms_content_property_enum" USING btree ("property_id");
+CREATE INDEX "idx_76799_created_at" ON "public"."cms_content_property_enum" USING btree ("created_at");
+CREATE INDEX "idx_76799_priority" ON "public"."cms_content_property_enum" USING btree ("priority");
+CREATE INDEX "idx_76799_updated_by" ON "public"."cms_content_property_enum" USING btree ("updated_by");
+CREATE INDEX "idx_76799_value" ON "public"."cms_content_property_enum" USING btree ("value");
+CREATE INDEX "idx_76799_updated_at" ON "public"."cms_content_property_enum" USING btree ("updated_at");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_property_enum
@@ -8220,13 +8223,13 @@ ALTER TABLE "public"."cms_content_property_enum" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_property2content
 -- ----------------------------
-CREATE INDEX "idx_71979_cms_content_property_id" ON "public"."cms_content_property2content" USING btree ("cms_content_property_id");
-CREATE INDEX "idx_71979_updated_at" ON "public"."cms_content_property2content" USING btree ("updated_at");
-CREATE INDEX "idx_71979_created_by" ON "public"."cms_content_property2content" USING btree ("created_by");
-CREATE INDEX "idx_71979_created_at" ON "public"."cms_content_property2content" USING btree ("created_at");
-CREATE UNIQUE INDEX "idx_71979_property2content" ON "public"."cms_content_property2content" USING btree ("cms_content_property_id", "cms_content_id");
-CREATE INDEX "idx_71979_cms_content_id" ON "public"."cms_content_property2content" USING btree ("cms_content_id");
-CREATE INDEX "idx_71979_updated_by" ON "public"."cms_content_property2content" USING btree ("updated_by");
+CREATE UNIQUE INDEX "idx_76787_property2content" ON "public"."cms_content_property2content" USING btree ("cms_content_property_id", "cms_content_id");
+CREATE INDEX "idx_76787_cms_content_property_id" ON "public"."cms_content_property2content" USING btree ("cms_content_property_id");
+CREATE INDEX "idx_76787_cms_content_id" ON "public"."cms_content_property2content" USING btree ("cms_content_id");
+CREATE INDEX "idx_76787_created_at" ON "public"."cms_content_property2content" USING btree ("created_at");
+CREATE INDEX "idx_76787_created_by" ON "public"."cms_content_property2content" USING btree ("created_by");
+CREATE INDEX "idx_76787_updated_by" ON "public"."cms_content_property2content" USING btree ("updated_by");
+CREATE INDEX "idx_76787_updated_at" ON "public"."cms_content_property2content" USING btree ("updated_at");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_property2content
@@ -8236,13 +8239,13 @@ ALTER TABLE "public"."cms_content_property2content" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_property2tree
 -- ----------------------------
-CREATE INDEX "idx_71985_cms_tree_id" ON "public"."cms_content_property2tree" USING btree ("cms_tree_id");
-CREATE INDEX "idx_71985_updated_by" ON "public"."cms_content_property2tree" USING btree ("updated_by");
-CREATE INDEX "idx_71985_created_by" ON "public"."cms_content_property2tree" USING btree ("created_by");
-CREATE INDEX "idx_71985_created_at" ON "public"."cms_content_property2tree" USING btree ("created_at");
-CREATE INDEX "idx_71985_cms_content_property_id" ON "public"."cms_content_property2tree" USING btree ("cms_content_property_id");
-CREATE UNIQUE INDEX "idx_71985_property2tree" ON "public"."cms_content_property2tree" USING btree ("cms_content_property_id", "cms_tree_id");
-CREATE INDEX "idx_71985_updated_at" ON "public"."cms_content_property2tree" USING btree ("updated_at");
+CREATE INDEX "idx_76793_created_at" ON "public"."cms_content_property2tree" USING btree ("created_at");
+CREATE INDEX "idx_76793_created_by" ON "public"."cms_content_property2tree" USING btree ("created_by");
+CREATE INDEX "idx_76793_cms_tree_id" ON "public"."cms_content_property2tree" USING btree ("cms_tree_id");
+CREATE INDEX "idx_76793_cms_content_property_id" ON "public"."cms_content_property2tree" USING btree ("cms_content_property_id");
+CREATE INDEX "idx_76793_updated_at" ON "public"."cms_content_property2tree" USING btree ("updated_at");
+CREATE INDEX "idx_76793_updated_by" ON "public"."cms_content_property2tree" USING btree ("updated_by");
+CREATE UNIQUE INDEX "idx_76793_property2tree" ON "public"."cms_content_property2tree" USING btree ("cms_content_property_id", "cms_tree_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_property2tree
@@ -8252,13 +8255,13 @@ ALTER TABLE "public"."cms_content_property2tree" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_content_type
 -- ----------------------------
-CREATE INDEX "idx_71999_priority" ON "public"."cms_content_type" USING btree ("priority");
-CREATE INDEX "idx_71999_created_by" ON "public"."cms_content_type" USING btree ("created_by");
-CREATE INDEX "idx_71999_name" ON "public"."cms_content_type" USING btree ("name");
-CREATE INDEX "idx_71999_updated_by" ON "public"."cms_content_type" USING btree ("updated_by");
-CREATE INDEX "idx_71999_created_at" ON "public"."cms_content_type" USING btree ("created_at");
-CREATE UNIQUE INDEX "idx_71999_code" ON "public"."cms_content_type" USING btree ("code");
-CREATE INDEX "idx_71999_updated_at" ON "public"."cms_content_type" USING btree ("updated_at");
+CREATE INDEX "idx_76807_created_at" ON "public"."cms_content_type" USING btree ("created_at");
+CREATE INDEX "idx_76807_priority" ON "public"."cms_content_type" USING btree ("priority");
+CREATE INDEX "idx_76807_created_by" ON "public"."cms_content_type" USING btree ("created_by");
+CREATE INDEX "idx_76807_updated_at" ON "public"."cms_content_type" USING btree ("updated_at");
+CREATE UNIQUE INDEX "idx_76807_code" ON "public"."cms_content_type" USING btree ("code");
+CREATE INDEX "idx_76807_name" ON "public"."cms_content_type" USING btree ("name");
+CREATE INDEX "idx_76807_updated_by" ON "public"."cms_content_type" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table cms_content_type
@@ -8268,14 +8271,14 @@ ALTER TABLE "public"."cms_content_type" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_dashboard
 -- ----------------------------
-CREATE INDEX "idx_72009_cms_user_id" ON "public"."cms_dashboard" USING btree ("cms_user_id");
-CREATE INDEX "idx_72009_created_at" ON "public"."cms_dashboard" USING btree ("created_at");
-CREATE INDEX "idx_72009_created_by" ON "public"."cms_dashboard" USING btree ("created_by");
-CREATE INDEX "idx_72009_priority" ON "public"."cms_dashboard" USING btree ("priority");
-CREATE INDEX "idx_72009_columns" ON "public"."cms_dashboard" USING btree ("columns");
-CREATE INDEX "idx_72009_updated_at" ON "public"."cms_dashboard" USING btree ("updated_at");
-CREATE INDEX "idx_72009_updated_by" ON "public"."cms_dashboard" USING btree ("updated_by");
-CREATE INDEX "idx_72009_name" ON "public"."cms_dashboard" USING btree ("name");
+CREATE INDEX "idx_76817_created_by" ON "public"."cms_dashboard" USING btree ("created_by");
+CREATE INDEX "idx_76817_updated_at" ON "public"."cms_dashboard" USING btree ("updated_at");
+CREATE INDEX "idx_76817_columns" ON "public"."cms_dashboard" USING btree ("columns");
+CREATE INDEX "idx_76817_name" ON "public"."cms_dashboard" USING btree ("name");
+CREATE INDEX "idx_76817_priority" ON "public"."cms_dashboard" USING btree ("priority");
+CREATE INDEX "idx_76817_created_at" ON "public"."cms_dashboard" USING btree ("created_at");
+CREATE INDEX "idx_76817_updated_by" ON "public"."cms_dashboard" USING btree ("updated_by");
+CREATE INDEX "idx_76817_cms_user_id" ON "public"."cms_dashboard" USING btree ("cms_user_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_dashboard
@@ -8285,14 +8288,14 @@ ALTER TABLE "public"."cms_dashboard" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_dashboard_widget
 -- ----------------------------
-CREATE INDEX "idx_72020_created_by" ON "public"."cms_dashboard_widget" USING btree ("created_by");
-CREATE INDEX "idx_72020_priority" ON "public"."cms_dashboard_widget" USING btree ("priority");
-CREATE INDEX "idx_72020_updated_by" ON "public"."cms_dashboard_widget" USING btree ("updated_by");
-CREATE INDEX "idx_72020_cms_dashboard_column" ON "public"."cms_dashboard_widget" USING btree ("cms_dashboard_column");
-CREATE INDEX "idx_72020_cms_dashboard_id" ON "public"."cms_dashboard_widget" USING btree ("cms_dashboard_id");
-CREATE INDEX "idx_72020_component" ON "public"."cms_dashboard_widget" USING btree ("component");
-CREATE INDEX "idx_72020_created_at" ON "public"."cms_dashboard_widget" USING btree ("created_at");
-CREATE INDEX "idx_72020_updated_at" ON "public"."cms_dashboard_widget" USING btree ("updated_at");
+CREATE INDEX "idx_76828_updated_at" ON "public"."cms_dashboard_widget" USING btree ("updated_at");
+CREATE INDEX "idx_76828_component" ON "public"."cms_dashboard_widget" USING btree ("component");
+CREATE INDEX "idx_76828_created_at" ON "public"."cms_dashboard_widget" USING btree ("created_at");
+CREATE INDEX "idx_76828_updated_by" ON "public"."cms_dashboard_widget" USING btree ("updated_by");
+CREATE INDEX "idx_76828_cms_dashboard_id" ON "public"."cms_dashboard_widget" USING btree ("cms_dashboard_id");
+CREATE INDEX "idx_76828_created_by" ON "public"."cms_dashboard_widget" USING btree ("created_by");
+CREATE INDEX "idx_76828_priority" ON "public"."cms_dashboard_widget" USING btree ("priority");
+CREATE INDEX "idx_76828_cms_dashboard_column" ON "public"."cms_dashboard_widget" USING btree ("cms_dashboard_column");
 
 -- ----------------------------
 -- Primary Key structure for table cms_dashboard_widget
@@ -8302,9 +8305,9 @@ ALTER TABLE "public"."cms_dashboard_widget" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_event
 -- ----------------------------
-CREATE INDEX "idx_72031_name" ON "public"."cms_event" USING btree ("name");
-CREATE INDEX "idx_72031_priority" ON "public"."cms_event" USING btree ("priority");
-CREATE UNIQUE INDEX "idx_72031_event_name" ON "public"."cms_event" USING btree ("event_name");
+CREATE INDEX "idx_76839_priority" ON "public"."cms_event" USING btree ("priority");
+CREATE INDEX "idx_76839_name" ON "public"."cms_event" USING btree ("name");
+CREATE UNIQUE INDEX "idx_76839_event_name" ON "public"."cms_event" USING btree ("event_name");
 
 -- ----------------------------
 -- Primary Key structure for table cms_event
@@ -8314,17 +8317,17 @@ ALTER TABLE "public"."cms_event" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_lang
 -- ----------------------------
-CREATE INDEX "idx_72041_name" ON "public"."cms_lang" USING btree ("name");
-CREATE INDEX "idx_72041_updated_by" ON "public"."cms_lang" USING btree ("updated_by");
-CREATE INDEX "idx_72041_priority" ON "public"."cms_lang" USING btree ("priority");
-CREATE INDEX "idx_72041_cms_lang__image_id" ON "public"."cms_lang" USING btree ("image_id");
-CREATE INDEX "idx_72041_created_at" ON "public"."cms_lang" USING btree ("created_at");
-CREATE UNIQUE INDEX "idx_72041_code_2" ON "public"."cms_lang" USING btree ("code");
-CREATE INDEX "idx_72041_def" ON "public"."cms_lang" USING btree ("def");
-CREATE INDEX "idx_72041_updated_at" ON "public"."cms_lang" USING btree ("updated_at");
-CREATE INDEX "idx_72041_code" ON "public"."cms_lang" USING btree ("code");
-CREATE INDEX "idx_72041_created_by" ON "public"."cms_lang" USING btree ("created_by");
-CREATE INDEX "idx_72041_description" ON "public"."cms_lang" USING btree ("description");
+CREATE INDEX "idx_76849_description" ON "public"."cms_lang" USING btree ("description");
+CREATE INDEX "idx_76849_name" ON "public"."cms_lang" USING btree ("name");
+CREATE INDEX "idx_76849_updated_by" ON "public"."cms_lang" USING btree ("updated_by");
+CREATE UNIQUE INDEX "idx_76849_code_2" ON "public"."cms_lang" USING btree ("code");
+CREATE INDEX "idx_76849_created_at" ON "public"."cms_lang" USING btree ("created_at");
+CREATE INDEX "idx_76849_created_by" ON "public"."cms_lang" USING btree ("created_by");
+CREATE INDEX "idx_76849_priority" ON "public"."cms_lang" USING btree ("priority");
+CREATE INDEX "idx_76849_updated_at" ON "public"."cms_lang" USING btree ("updated_at");
+CREATE INDEX "idx_76849_cms_lang__image_id" ON "public"."cms_lang" USING btree ("image_id");
+CREATE INDEX "idx_76849_def" ON "public"."cms_lang" USING btree ("def");
+CREATE INDEX "idx_76849_code" ON "public"."cms_lang" USING btree ("code");
 
 -- ----------------------------
 -- Primary Key structure for table cms_lang
@@ -8334,16 +8337,16 @@ ALTER TABLE "public"."cms_lang" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_search_phrase
 -- ----------------------------
-CREATE INDEX "idx_72053_updated_at" ON "public"."cms_search_phrase" USING btree ("updated_at");
-CREATE INDEX "idx_72053_created_at" ON "public"."cms_search_phrase" USING btree ("created_at");
-CREATE INDEX "idx_72053_ip" ON "public"."cms_search_phrase" USING btree ("ip");
-CREATE INDEX "idx_72053_created_by" ON "public"."cms_search_phrase" USING btree ("created_by");
-CREATE INDEX "idx_72053_session_id" ON "public"."cms_search_phrase" USING btree ("session_id");
-CREATE INDEX "idx_72053_phrase" ON "public"."cms_search_phrase" USING btree ("phrase");
-CREATE INDEX "idx_72053_site_code" ON "public"."cms_search_phrase" USING btree ("site_code");
-CREATE INDEX "idx_72053_pages" ON "public"."cms_search_phrase" USING btree ("pages");
-CREATE INDEX "idx_72053_updated_by" ON "public"."cms_search_phrase" USING btree ("updated_by");
-CREATE INDEX "idx_72053_result_count" ON "public"."cms_search_phrase" USING btree ("result_count");
+CREATE INDEX "idx_76861_result_count" ON "public"."cms_search_phrase" USING btree ("result_count");
+CREATE INDEX "idx_76861_session_id" ON "public"."cms_search_phrase" USING btree ("session_id");
+CREATE INDEX "idx_76861_updated_at" ON "public"."cms_search_phrase" USING btree ("updated_at");
+CREATE INDEX "idx_76861_updated_by" ON "public"."cms_search_phrase" USING btree ("updated_by");
+CREATE INDEX "idx_76861_site_code" ON "public"."cms_search_phrase" USING btree ("site_code");
+CREATE INDEX "idx_76861_created_by" ON "public"."cms_search_phrase" USING btree ("created_by");
+CREATE INDEX "idx_76861_created_at" ON "public"."cms_search_phrase" USING btree ("created_at");
+CREATE INDEX "idx_76861_phrase" ON "public"."cms_search_phrase" USING btree ("phrase");
+CREATE INDEX "idx_76861_pages" ON "public"."cms_search_phrase" USING btree ("pages");
+CREATE INDEX "idx_76861_ip" ON "public"."cms_search_phrase" USING btree ("ip");
 
 -- ----------------------------
 -- Primary Key structure for table cms_search_phrase
@@ -8353,16 +8356,16 @@ ALTER TABLE "public"."cms_search_phrase" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_site
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_72064_code" ON "public"."cms_site" USING btree ("code");
-CREATE INDEX "idx_72064_active" ON "public"."cms_site" USING btree ("active");
-CREATE INDEX "idx_72064_cms_site__image_id" ON "public"."cms_site" USING btree ("image_id");
-CREATE INDEX "idx_72064_created_at" ON "public"."cms_site" USING btree ("created_at");
-CREATE INDEX "idx_72064_def" ON "public"."cms_site" USING btree ("def");
-CREATE INDEX "idx_72064_updated_by" ON "public"."cms_site" USING btree ("updated_by");
-CREATE INDEX "idx_72064_updated_at" ON "public"."cms_site" USING btree ("updated_at");
-CREATE INDEX "idx_72064_created_by" ON "public"."cms_site" USING btree ("created_by");
-CREATE INDEX "idx_72064_server_name" ON "public"."cms_site" USING btree ("server_name");
-CREATE INDEX "idx_72064_priority" ON "public"."cms_site" USING btree ("priority");
+CREATE INDEX "idx_76872_active" ON "public"."cms_site" USING btree ("active");
+CREATE INDEX "idx_76872_cms_site__image_id" ON "public"."cms_site" USING btree ("image_id");
+CREATE INDEX "idx_76872_def" ON "public"."cms_site" USING btree ("def");
+CREATE INDEX "idx_76872_updated_by" ON "public"."cms_site" USING btree ("updated_by");
+CREATE INDEX "idx_76872_priority" ON "public"."cms_site" USING btree ("priority");
+CREATE INDEX "idx_76872_server_name" ON "public"."cms_site" USING btree ("server_name");
+CREATE UNIQUE INDEX "idx_76872_code" ON "public"."cms_site" USING btree ("code");
+CREATE INDEX "idx_76872_created_at" ON "public"."cms_site" USING btree ("created_at");
+CREATE INDEX "idx_76872_updated_at" ON "public"."cms_site" USING btree ("updated_at");
+CREATE INDEX "idx_76872_created_by" ON "public"."cms_site" USING btree ("created_by");
 
 -- ----------------------------
 -- Primary Key structure for table cms_site
@@ -8372,12 +8375,12 @@ ALTER TABLE "public"."cms_site" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_site_domain
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_72076_domain" ON "public"."cms_site_domain" USING btree ("domain");
-CREATE INDEX "idx_72076_cms_site_id" ON "public"."cms_site_domain" USING btree ("cms_site_id");
-CREATE INDEX "idx_72076_created_by" ON "public"."cms_site_domain" USING btree ("created_by");
-CREATE INDEX "idx_72076_updated_by" ON "public"."cms_site_domain" USING btree ("updated_by");
-CREATE INDEX "idx_72076_created_at" ON "public"."cms_site_domain" USING btree ("created_at");
-CREATE INDEX "idx_72076_updated_at" ON "public"."cms_site_domain" USING btree ("updated_at");
+CREATE UNIQUE INDEX "idx_76884_domain" ON "public"."cms_site_domain" USING btree ("domain");
+CREATE INDEX "idx_76884_created_at" ON "public"."cms_site_domain" USING btree ("created_at");
+CREATE INDEX "idx_76884_updated_by" ON "public"."cms_site_domain" USING btree ("updated_by");
+CREATE INDEX "idx_76884_created_by" ON "public"."cms_site_domain" USING btree ("created_by");
+CREATE INDEX "idx_76884_updated_at" ON "public"."cms_site_domain" USING btree ("updated_at");
+CREATE INDEX "idx_76884_cms_site_id" ON "public"."cms_site_domain" USING btree ("cms_site_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_site_domain
@@ -8387,20 +8390,20 @@ ALTER TABLE "public"."cms_site_domain" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_storage_file
 -- ----------------------------
-CREATE INDEX "idx_72082_name_to_save" ON "public"."cms_storage_file" USING btree ("name_to_save");
-CREATE INDEX "idx_72082_image_width" ON "public"."cms_storage_file" USING btree ("image_width");
-CREATE INDEX "idx_72082_mime_type" ON "public"."cms_storage_file" USING btree ("mime_type");
-CREATE INDEX "idx_72082_image_height" ON "public"."cms_storage_file" USING btree ("image_height");
-CREATE UNIQUE INDEX "idx_72082_cluster_id" ON "public"."cms_storage_file" USING btree ("cluster_id", "cluster_file");
-CREATE INDEX "idx_72082_updated_at" ON "public"."cms_storage_file" USING btree ("updated_at");
-CREATE INDEX "idx_72082_name" ON "public"."cms_storage_file" USING btree ("name");
-CREATE INDEX "idx_72082_cluster_id_2" ON "public"."cms_storage_file" USING btree ("cluster_id");
-CREATE INDEX "idx_72082_size" ON "public"."cms_storage_file" USING btree ("size");
-CREATE INDEX "idx_72082_cluster_file" ON "public"."cms_storage_file" USING btree ("cluster_file");
-CREATE INDEX "idx_72082_extension" ON "public"."cms_storage_file" USING btree ("extension");
-CREATE INDEX "idx_72082_created_at" ON "public"."cms_storage_file" USING btree ("created_at");
-CREATE INDEX "idx_72082_updated_by" ON "public"."cms_storage_file" USING btree ("updated_by");
-CREATE INDEX "idx_72082_created_by" ON "public"."cms_storage_file" USING btree ("created_by");
+CREATE INDEX "idx_76890_extension" ON "public"."cms_storage_file" USING btree ("extension");
+CREATE INDEX "idx_76890_image_height" ON "public"."cms_storage_file" USING btree ("image_height");
+CREATE UNIQUE INDEX "idx_76890_cluster_id" ON "public"."cms_storage_file" USING btree ("cluster_id", "cluster_file");
+CREATE INDEX "idx_76890_name_to_save" ON "public"."cms_storage_file" USING btree ("name_to_save");
+CREATE INDEX "idx_76890_size" ON "public"."cms_storage_file" USING btree ("size");
+CREATE INDEX "idx_76890_image_width" ON "public"."cms_storage_file" USING btree ("image_width");
+CREATE INDEX "idx_76890_cluster_id_2" ON "public"."cms_storage_file" USING btree ("cluster_id");
+CREATE INDEX "idx_76890_updated_at" ON "public"."cms_storage_file" USING btree ("updated_at");
+CREATE INDEX "idx_76890_created_at" ON "public"."cms_storage_file" USING btree ("created_at");
+CREATE INDEX "idx_76890_mime_type" ON "public"."cms_storage_file" USING btree ("mime_type");
+CREATE INDEX "idx_76890_name" ON "public"."cms_storage_file" USING btree ("name");
+CREATE INDEX "idx_76890_cluster_file" ON "public"."cms_storage_file" USING btree ("cluster_file");
+CREATE INDEX "idx_76890_updated_by" ON "public"."cms_storage_file" USING btree ("updated_by");
+CREATE INDEX "idx_76890_created_by" ON "public"."cms_storage_file" USING btree ("created_by");
 
 -- ----------------------------
 -- Primary Key structure for table cms_storage_file
@@ -8410,31 +8413,31 @@ ALTER TABLE "public"."cms_storage_file" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_tree
 -- ----------------------------
-CREATE INDEX "idx_72091_cms_tree__site_dir" ON "public"."cms_tree" USING btree ("dir", "cms_site_id");
-CREATE UNIQUE INDEX "idx_72091_pid_2" ON "public"."cms_tree" USING btree ("pid", "code");
-CREATE INDEX "idx_72091_redirect" ON "public"."cms_tree" USING btree ("redirect");
-CREATE INDEX "idx_72091_priority" ON "public"."cms_tree" USING btree ("priority");
-CREATE INDEX "idx_72091_image_id" ON "public"."cms_tree" USING btree ("image_id");
-CREATE INDEX "idx_72091_image_full_id" ON "public"."cms_tree" USING btree ("image_full_id");
-CREATE INDEX "idx_72091_updated_by" ON "public"."cms_tree" USING btree ("updated_by");
-CREATE INDEX "idx_72091_meta_title" ON "public"."cms_tree" USING btree ("meta_title");
-CREATE INDEX "idx_72091_description_short_type" ON "public"."cms_tree" USING btree ("description_short_type");
-CREATE INDEX "idx_72091_name" ON "public"."cms_tree" USING btree ("name");
-CREATE INDEX "idx_72091_cms_site_id" ON "public"."cms_tree" USING btree ("cms_site_id");
-CREATE INDEX "idx_72091_view_file" ON "public"."cms_tree" USING btree ("view_file");
-CREATE INDEX "idx_72091_published_at" ON "public"."cms_tree" USING btree ("published_at");
-CREATE INDEX "idx_72091_redirect_code" ON "public"."cms_tree" USING btree ("redirect_code");
-CREATE INDEX "idx_72091_created_at" ON "public"."cms_tree" USING btree ("created_at");
-CREATE INDEX "idx_72091_pid" ON "public"."cms_tree" USING btree ("pid");
-CREATE INDEX "idx_72091_created_by" ON "public"."cms_tree" USING btree ("created_by");
-CREATE INDEX "idx_72091_updated_at" ON "public"."cms_tree" USING btree ("updated_at");
-CREATE INDEX "idx_72091_name_hidden" ON "public"."cms_tree" USING btree ("name_hidden");
-CREATE INDEX "idx_72091_description_full_type" ON "public"."cms_tree" USING btree ("description_full_type");
-CREATE INDEX "idx_72091_pids" ON "public"."cms_tree" USING btree ("pids");
-CREATE INDEX "idx_72091_redirect_tree_id" ON "public"."cms_tree" USING btree ("redirect_tree_id");
-CREATE INDEX "idx_72091_level" ON "public"."cms_tree" USING btree ("level");
-CREATE INDEX "idx_72091_tree_type_id" ON "public"."cms_tree" USING btree ("tree_type_id");
-CREATE INDEX "idx_72091_seo_page_name" ON "public"."cms_tree" USING btree ("code");
+CREATE INDEX "idx_76899_cms_site_id" ON "public"."cms_tree" USING btree ("cms_site_id");
+CREATE INDEX "idx_76899_created_by" ON "public"."cms_tree" USING btree ("created_by");
+CREATE INDEX "idx_76899_description_full_type" ON "public"."cms_tree" USING btree ("description_full_type");
+CREATE INDEX "idx_76899_description_short_type" ON "public"."cms_tree" USING btree ("description_short_type");
+CREATE INDEX "idx_76899_cms_tree__site_dir" ON "public"."cms_tree" USING btree ("dir", "cms_site_id");
+CREATE INDEX "idx_76899_image_full_id" ON "public"."cms_tree" USING btree ("image_full_id");
+CREATE INDEX "idx_76899_created_at" ON "public"."cms_tree" USING btree ("created_at");
+CREATE INDEX "idx_76899_tree_type_id" ON "public"."cms_tree" USING btree ("tree_type_id");
+CREATE INDEX "idx_76899_redirect" ON "public"."cms_tree" USING btree ("redirect");
+CREATE INDEX "idx_76899_updated_by" ON "public"."cms_tree" USING btree ("updated_by");
+CREATE INDEX "idx_76899_priority" ON "public"."cms_tree" USING btree ("priority");
+CREATE UNIQUE INDEX "idx_76899_pid_2" ON "public"."cms_tree" USING btree ("pid", "code");
+CREATE INDEX "idx_76899_meta_title" ON "public"."cms_tree" USING btree ("meta_title");
+CREATE INDEX "idx_76899_redirect_code" ON "public"."cms_tree" USING btree ("redirect_code");
+CREATE INDEX "idx_76899_updated_at" ON "public"."cms_tree" USING btree ("updated_at");
+CREATE INDEX "idx_76899_seo_page_name" ON "public"."cms_tree" USING btree ("code");
+CREATE INDEX "idx_76899_level" ON "public"."cms_tree" USING btree ("level");
+CREATE INDEX "idx_76899_image_id" ON "public"."cms_tree" USING btree ("image_id");
+CREATE INDEX "idx_76899_pid" ON "public"."cms_tree" USING btree ("pid");
+CREATE INDEX "idx_76899_published_at" ON "public"."cms_tree" USING btree ("published_at");
+CREATE INDEX "idx_76899_name" ON "public"."cms_tree" USING btree ("name");
+CREATE INDEX "idx_76899_name_hidden" ON "public"."cms_tree" USING btree ("name_hidden");
+CREATE INDEX "idx_76899_pids" ON "public"."cms_tree" USING btree ("pids");
+CREATE INDEX "idx_76899_view_file" ON "public"."cms_tree" USING btree ("view_file");
+CREATE INDEX "idx_76899_redirect_tree_id" ON "public"."cms_tree" USING btree ("redirect_tree_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_tree
@@ -8444,14 +8447,14 @@ ALTER TABLE "public"."cms_tree" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_tree_file
 -- ----------------------------
-CREATE INDEX "idx_72106_storage_file_id" ON "public"."cms_tree_file" USING btree ("storage_file_id");
-CREATE INDEX "idx_72106_tree_id" ON "public"."cms_tree_file" USING btree ("tree_id");
-CREATE INDEX "idx_72106_created_at" ON "public"."cms_tree_file" USING btree ("created_at");
-CREATE UNIQUE INDEX "idx_72106_storage_file_id__tree_id" ON "public"."cms_tree_file" USING btree ("storage_file_id", "tree_id");
-CREATE INDEX "idx_72106_priority" ON "public"."cms_tree_file" USING btree ("priority");
-CREATE INDEX "idx_72106_updated_at" ON "public"."cms_tree_file" USING btree ("updated_at");
-CREATE INDEX "idx_72106_created_by" ON "public"."cms_tree_file" USING btree ("created_by");
-CREATE INDEX "idx_72106_updated_by" ON "public"."cms_tree_file" USING btree ("updated_by");
+CREATE INDEX "idx_76914_updated_by" ON "public"."cms_tree_file" USING btree ("updated_by");
+CREATE INDEX "idx_76914_storage_file_id" ON "public"."cms_tree_file" USING btree ("storage_file_id");
+CREATE UNIQUE INDEX "idx_76914_storage_file_id__tree_id" ON "public"."cms_tree_file" USING btree ("storage_file_id", "tree_id");
+CREATE INDEX "idx_76914_created_by" ON "public"."cms_tree_file" USING btree ("created_by");
+CREATE INDEX "idx_76914_tree_id" ON "public"."cms_tree_file" USING btree ("tree_id");
+CREATE INDEX "idx_76914_created_at" ON "public"."cms_tree_file" USING btree ("created_at");
+CREATE INDEX "idx_76914_updated_at" ON "public"."cms_tree_file" USING btree ("updated_at");
+CREATE INDEX "idx_76914_priority" ON "public"."cms_tree_file" USING btree ("priority");
 
 -- ----------------------------
 -- Primary Key structure for table cms_tree_file
@@ -8461,14 +8464,14 @@ ALTER TABLE "public"."cms_tree_file" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_tree_image
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_72113_storage_file_id__tree_id" ON "public"."cms_tree_image" USING btree ("storage_file_id", "tree_id");
-CREATE INDEX "idx_72113_created_at" ON "public"."cms_tree_image" USING btree ("created_at");
-CREATE INDEX "idx_72113_updated_at" ON "public"."cms_tree_image" USING btree ("updated_at");
-CREATE INDEX "idx_72113_updated_by" ON "public"."cms_tree_image" USING btree ("updated_by");
-CREATE INDEX "idx_72113_priority" ON "public"."cms_tree_image" USING btree ("priority");
-CREATE INDEX "idx_72113_storage_file_id" ON "public"."cms_tree_image" USING btree ("storage_file_id");
-CREATE INDEX "idx_72113_created_by" ON "public"."cms_tree_image" USING btree ("created_by");
-CREATE INDEX "idx_72113_tree_id" ON "public"."cms_tree_image" USING btree ("tree_id");
+CREATE INDEX "idx_76921_created_by" ON "public"."cms_tree_image" USING btree ("created_by");
+CREATE INDEX "idx_76921_created_at" ON "public"."cms_tree_image" USING btree ("created_at");
+CREATE INDEX "idx_76921_storage_file_id" ON "public"."cms_tree_image" USING btree ("storage_file_id");
+CREATE INDEX "idx_76921_tree_id" ON "public"."cms_tree_image" USING btree ("tree_id");
+CREATE INDEX "idx_76921_updated_at" ON "public"."cms_tree_image" USING btree ("updated_at");
+CREATE INDEX "idx_76921_updated_by" ON "public"."cms_tree_image" USING btree ("updated_by");
+CREATE INDEX "idx_76921_priority" ON "public"."cms_tree_image" USING btree ("priority");
+CREATE UNIQUE INDEX "idx_76921_storage_file_id__tree_id" ON "public"."cms_tree_image" USING btree ("storage_file_id", "tree_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_tree_image
@@ -8478,18 +8481,18 @@ ALTER TABLE "public"."cms_tree_image" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_tree_property
 -- ----------------------------
-CREATE INDEX "idx_72120_created_at" ON "public"."cms_tree_property" USING btree ("created_at");
-CREATE INDEX "idx_72120_created_by" ON "public"."cms_tree_property" USING btree ("created_by");
-CREATE INDEX "idx_72120_value_num2" ON "public"."cms_tree_property" USING btree ("value_num2");
-CREATE INDEX "idx_72120_property_id" ON "public"."cms_tree_property" USING btree ("property_id");
-CREATE INDEX "idx_72120_description" ON "public"."cms_tree_property" USING btree ("description");
-CREATE INDEX "idx_72120_updated_by" ON "public"."cms_tree_property" USING btree ("updated_by");
-CREATE INDEX "idx_72120_element_id" ON "public"."cms_tree_property" USING btree ("element_id");
-CREATE INDEX "idx_72120_value_string" ON "public"."cms_tree_property" USING btree ("value_string");
-CREATE INDEX "idx_72120_value_int2" ON "public"."cms_tree_property" USING btree ("value_int2");
-CREATE INDEX "idx_72120_updated_at" ON "public"."cms_tree_property" USING btree ("updated_at");
-CREATE INDEX "idx_72120_value_num" ON "public"."cms_tree_property" USING btree ("value_num");
-CREATE INDEX "idx_72120_value_enum" ON "public"."cms_tree_property" USING btree ("value_enum");
+CREATE INDEX "idx_76928_element_id" ON "public"."cms_tree_property" USING btree ("element_id");
+CREATE INDEX "idx_76928_value_int2" ON "public"."cms_tree_property" USING btree ("value_int2");
+CREATE INDEX "idx_76928_created_by" ON "public"."cms_tree_property" USING btree ("created_by");
+CREATE INDEX "idx_76928_value_num" ON "public"."cms_tree_property" USING btree ("value_num");
+CREATE INDEX "idx_76928_updated_at" ON "public"."cms_tree_property" USING btree ("updated_at");
+CREATE INDEX "idx_76928_value_num2" ON "public"."cms_tree_property" USING btree ("value_num2");
+CREATE INDEX "idx_76928_description" ON "public"."cms_tree_property" USING btree ("description");
+CREATE INDEX "idx_76928_property_id" ON "public"."cms_tree_property" USING btree ("property_id");
+CREATE INDEX "idx_76928_created_at" ON "public"."cms_tree_property" USING btree ("created_at");
+CREATE INDEX "idx_76928_value_string" ON "public"."cms_tree_property" USING btree ("value_string");
+CREATE INDEX "idx_76928_updated_by" ON "public"."cms_tree_property" USING btree ("updated_by");
+CREATE INDEX "idx_76928_value_enum" ON "public"."cms_tree_property" USING btree ("value_enum");
 
 -- ----------------------------
 -- Primary Key structure for table cms_tree_property
@@ -8499,19 +8502,19 @@ ALTER TABLE "public"."cms_tree_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_tree_type
 -- ----------------------------
-CREATE INDEX "idx_72129_active" ON "public"."cms_tree_type" USING btree ("active");
-CREATE INDEX "idx_72129_name_one" ON "public"."cms_tree_type" USING btree ("name_one");
-CREATE INDEX "idx_72129_name_meny" ON "public"."cms_tree_type" USING btree ("name_meny");
-CREATE INDEX "idx_72129_updated_at" ON "public"."cms_tree_type" USING btree ("updated_at");
-CREATE INDEX "idx_72129_updated_by" ON "public"."cms_tree_type" USING btree ("updated_by");
-CREATE INDEX "idx_72129_created_at" ON "public"."cms_tree_type" USING btree ("created_at");
-CREATE INDEX "idx_72129_created_by" ON "public"."cms_tree_type" USING btree ("created_by");
-CREATE INDEX "idx_72129_priority" ON "public"."cms_tree_type" USING btree ("priority");
-CREATE INDEX "idx_72129_viewfile" ON "public"."cms_tree_type" USING btree ("view_file");
-CREATE UNIQUE INDEX "idx_72129_code" ON "public"."cms_tree_type" USING btree ("code");
-CREATE INDEX "idx_72129_default_children_tree_type" ON "public"."cms_tree_type" USING btree ("default_children_tree_type");
-CREATE INDEX "idx_72129_name" ON "public"."cms_tree_type" USING btree ("name");
-CREATE INDEX "idx_72129_index_for_search" ON "public"."cms_tree_type" USING btree ("index_for_search");
+CREATE INDEX "idx_76937_created_by" ON "public"."cms_tree_type" USING btree ("created_by");
+CREATE INDEX "idx_76937_viewfile" ON "public"."cms_tree_type" USING btree ("view_file");
+CREATE UNIQUE INDEX "idx_76937_code" ON "public"."cms_tree_type" USING btree ("code");
+CREATE INDEX "idx_76937_default_children_tree_type" ON "public"."cms_tree_type" USING btree ("default_children_tree_type");
+CREATE INDEX "idx_76937_priority" ON "public"."cms_tree_type" USING btree ("priority");
+CREATE INDEX "idx_76937_updated_at" ON "public"."cms_tree_type" USING btree ("updated_at");
+CREATE INDEX "idx_76937_name" ON "public"."cms_tree_type" USING btree ("name");
+CREATE INDEX "idx_76937_created_at" ON "public"."cms_tree_type" USING btree ("created_at");
+CREATE INDEX "idx_76937_index_for_search" ON "public"."cms_tree_type" USING btree ("index_for_search");
+CREATE INDEX "idx_76937_name_one" ON "public"."cms_tree_type" USING btree ("name_one");
+CREATE INDEX "idx_76937_name_meny" ON "public"."cms_tree_type" USING btree ("name_meny");
+CREATE INDEX "idx_76937_updated_by" ON "public"."cms_tree_type" USING btree ("updated_by");
+CREATE INDEX "idx_76937_active" ON "public"."cms_tree_type" USING btree ("active");
 
 -- ----------------------------
 -- Primary Key structure for table cms_tree_type
@@ -8521,21 +8524,21 @@ ALTER TABLE "public"."cms_tree_type" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_tree_type_property
 -- ----------------------------
-CREATE INDEX "idx_72141_updated_by" ON "public"."cms_tree_type_property" USING btree ("updated_by");
-CREATE INDEX "idx_72141_name" ON "public"."cms_tree_type_property" USING btree ("name");
-CREATE INDEX "idx_72141_code" ON "public"."cms_tree_type_property" USING btree ("code");
-CREATE INDEX "idx_72141_active" ON "public"."cms_tree_type_property" USING btree ("active");
-CREATE INDEX "idx_72141_is_required" ON "public"."cms_tree_type_property" USING btree ("is_required");
-CREATE INDEX "idx_72141_component" ON "public"."cms_tree_type_property" USING btree ("component");
-CREATE INDEX "idx_72141_multiple" ON "public"."cms_tree_type_property" USING btree ("multiple");
-CREATE INDEX "idx_72141_property_type" ON "public"."cms_tree_type_property" USING btree ("property_type");
-CREATE INDEX "idx_72141_created_by" ON "public"."cms_tree_type_property" USING btree ("created_by");
-CREATE UNIQUE INDEX "idx_72141_code_2" ON "public"."cms_tree_type_property" USING btree ("code", "tree_type_id");
-CREATE INDEX "idx_72141_hint" ON "public"."cms_tree_type_property" USING btree ("hint");
-CREATE INDEX "idx_72141_created_at" ON "public"."cms_tree_type_property" USING btree ("created_at");
-CREATE INDEX "idx_72141_updated_at" ON "public"."cms_tree_type_property" USING btree ("updated_at");
-CREATE INDEX "idx_72141_tree_type_id" ON "public"."cms_tree_type_property" USING btree ("tree_type_id");
-CREATE INDEX "idx_72141_priority" ON "public"."cms_tree_type_property" USING btree ("priority");
+CREATE INDEX "idx_76949_created_at" ON "public"."cms_tree_type_property" USING btree ("created_at");
+CREATE INDEX "idx_76949_multiple" ON "public"."cms_tree_type_property" USING btree ("multiple");
+CREATE INDEX "idx_76949_name" ON "public"."cms_tree_type_property" USING btree ("name");
+CREATE INDEX "idx_76949_component" ON "public"."cms_tree_type_property" USING btree ("component");
+CREATE INDEX "idx_76949_updated_at" ON "public"."cms_tree_type_property" USING btree ("updated_at");
+CREATE INDEX "idx_76949_created_by" ON "public"."cms_tree_type_property" USING btree ("created_by");
+CREATE INDEX "idx_76949_active" ON "public"."cms_tree_type_property" USING btree ("active");
+CREATE INDEX "idx_76949_priority" ON "public"."cms_tree_type_property" USING btree ("priority");
+CREATE INDEX "idx_76949_hint" ON "public"."cms_tree_type_property" USING btree ("hint");
+CREATE INDEX "idx_76949_code" ON "public"."cms_tree_type_property" USING btree ("code");
+CREATE INDEX "idx_76949_is_required" ON "public"."cms_tree_type_property" USING btree ("is_required");
+CREATE INDEX "idx_76949_property_type" ON "public"."cms_tree_type_property" USING btree ("property_type");
+CREATE UNIQUE INDEX "idx_76949_code_2" ON "public"."cms_tree_type_property" USING btree ("code", "tree_type_id");
+CREATE INDEX "idx_76949_updated_by" ON "public"."cms_tree_type_property" USING btree ("updated_by");
+CREATE INDEX "idx_76949_tree_type_id" ON "public"."cms_tree_type_property" USING btree ("tree_type_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_tree_type_property
@@ -8545,15 +8548,15 @@ ALTER TABLE "public"."cms_tree_type_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_tree_type_property_enum
 -- ----------------------------
-CREATE INDEX "idx_72160_value" ON "public"."cms_tree_type_property_enum" USING btree ("value");
-CREATE INDEX "idx_72160_priority" ON "public"."cms_tree_type_property_enum" USING btree ("priority");
-CREATE INDEX "idx_72160_created_by" ON "public"."cms_tree_type_property_enum" USING btree ("created_by");
-CREATE INDEX "idx_72160_code" ON "public"."cms_tree_type_property_enum" USING btree ("code");
-CREATE INDEX "idx_72160_updated_at" ON "public"."cms_tree_type_property_enum" USING btree ("updated_at");
-CREATE INDEX "idx_72160_updated_by" ON "public"."cms_tree_type_property_enum" USING btree ("updated_by");
-CREATE INDEX "idx_72160_property_id" ON "public"."cms_tree_type_property_enum" USING btree ("property_id");
-CREATE INDEX "idx_72160_def" ON "public"."cms_tree_type_property_enum" USING btree ("def");
-CREATE INDEX "idx_72160_created_at" ON "public"."cms_tree_type_property_enum" USING btree ("created_at");
+CREATE INDEX "idx_76968_created_at" ON "public"."cms_tree_type_property_enum" USING btree ("created_at");
+CREATE INDEX "idx_76968_value" ON "public"."cms_tree_type_property_enum" USING btree ("value");
+CREATE INDEX "idx_76968_def" ON "public"."cms_tree_type_property_enum" USING btree ("def");
+CREATE INDEX "idx_76968_property_id" ON "public"."cms_tree_type_property_enum" USING btree ("property_id");
+CREATE INDEX "idx_76968_priority" ON "public"."cms_tree_type_property_enum" USING btree ("priority");
+CREATE INDEX "idx_76968_created_by" ON "public"."cms_tree_type_property_enum" USING btree ("created_by");
+CREATE INDEX "idx_76968_code" ON "public"."cms_tree_type_property_enum" USING btree ("code");
+CREATE INDEX "idx_76968_updated_at" ON "public"."cms_tree_type_property_enum" USING btree ("updated_at");
+CREATE INDEX "idx_76968_updated_by" ON "public"."cms_tree_type_property_enum" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table cms_tree_type_property_enum
@@ -8563,13 +8566,13 @@ ALTER TABLE "public"."cms_tree_type_property_enum" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_tree_type_property2type
 -- ----------------------------
-CREATE INDEX "idx_72154_updated_by" ON "public"."cms_tree_type_property2type" USING btree ("updated_by");
-CREATE INDEX "idx_72154_created_by" ON "public"."cms_tree_type_property2type" USING btree ("created_by");
-CREATE INDEX "idx_72154_cms_tree_type_id" ON "public"."cms_tree_type_property2type" USING btree ("cms_tree_type_id");
-CREATE UNIQUE INDEX "idx_72154_property2content" ON "public"."cms_tree_type_property2type" USING btree ("cms_tree_type_property_id", "cms_tree_type_id");
-CREATE INDEX "idx_72154_created_at" ON "public"."cms_tree_type_property2type" USING btree ("created_at");
-CREATE INDEX "idx_72154_updated_at" ON "public"."cms_tree_type_property2type" USING btree ("updated_at");
-CREATE INDEX "idx_72154_cms_tree_type_property_id" ON "public"."cms_tree_type_property2type" USING btree ("cms_tree_type_property_id");
+CREATE INDEX "idx_76962_created_at" ON "public"."cms_tree_type_property2type" USING btree ("created_at");
+CREATE INDEX "idx_76962_cms_tree_type_id" ON "public"."cms_tree_type_property2type" USING btree ("cms_tree_type_id");
+CREATE UNIQUE INDEX "idx_76962_property2content" ON "public"."cms_tree_type_property2type" USING btree ("cms_tree_type_property_id", "cms_tree_type_id");
+CREATE INDEX "idx_76962_updated_by" ON "public"."cms_tree_type_property2type" USING btree ("updated_by");
+CREATE INDEX "idx_76962_created_by" ON "public"."cms_tree_type_property2type" USING btree ("created_by");
+CREATE INDEX "idx_76962_updated_at" ON "public"."cms_tree_type_property2type" USING btree ("updated_at");
+CREATE INDEX "idx_76962_cms_tree_type_property_id" ON "public"."cms_tree_type_property2type" USING btree ("cms_tree_type_property_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_tree_type_property2type
@@ -8579,26 +8582,26 @@ ALTER TABLE "public"."cms_tree_type_property2type" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_user
 -- ----------------------------
-CREATE INDEX "idx_72168_logged_at" ON "public"."cms_user" USING btree ("logged_at");
-CREATE INDEX "idx_72168_first_name" ON "public"."cms_user" USING btree ("first_name");
-CREATE UNIQUE INDEX "idx_72168_email" ON "public"."cms_user" USING btree ("email");
-CREATE INDEX "idx_72168_patronymic" ON "public"."cms_user" USING btree ("patronymic");
-CREATE INDEX "idx_72168_last_activity_at" ON "public"."cms_user" USING btree ("last_activity_at");
-CREATE INDEX "idx_72168_email_is_approved" ON "public"."cms_user" USING btree ("email_is_approved");
-CREATE INDEX "idx_72168_created_at" ON "public"."cms_user" USING btree ("created_at");
-CREATE INDEX "idx_72168_full_name_index" ON "public"."cms_user" USING btree ("first_name", "last_name", "patronymic");
-CREATE INDEX "idx_72168_created_by" ON "public"."cms_user" USING btree ("created_by");
-CREATE INDEX "idx_72168_phone_is_approved" ON "public"."cms_user" USING btree ("phone_is_approved");
-CREATE UNIQUE INDEX "idx_72168_phone" ON "public"."cms_user" USING btree ("phone");
-CREATE INDEX "idx_72168_password_hash" ON "public"."cms_user" USING btree ("password_hash");
-CREATE INDEX "idx_72168_updated_at" ON "public"."cms_user" USING btree ("updated_at");
-CREATE UNIQUE INDEX "idx_72168_username" ON "public"."cms_user" USING btree ("username");
-CREATE INDEX "idx_72168_last_name" ON "public"."cms_user" USING btree ("last_name");
-CREATE INDEX "idx_72168_image_id" ON "public"."cms_user" USING btree ("image_id");
-CREATE INDEX "idx_72168_name" ON "public"."cms_user" USING btree ("_to_del_name");
-CREATE INDEX "idx_72168_last_admin_activity_at" ON "public"."cms_user" USING btree ("last_admin_activity_at");
-CREATE INDEX "idx_72168_password_reset_token" ON "public"."cms_user" USING btree ("password_reset_token");
-CREATE INDEX "idx_72168_updated_by" ON "public"."cms_user" USING btree ("updated_by");
+CREATE INDEX "idx_76976_first_name" ON "public"."cms_user" USING btree ("first_name");
+CREATE INDEX "idx_76976_full_name_index" ON "public"."cms_user" USING btree ("first_name", "last_name", "patronymic");
+CREATE INDEX "idx_76976_created_at" ON "public"."cms_user" USING btree ("created_at");
+CREATE INDEX "idx_76976_image_id" ON "public"."cms_user" USING btree ("image_id");
+CREATE INDEX "idx_76976_updated_by" ON "public"."cms_user" USING btree ("updated_by");
+CREATE INDEX "idx_76976_created_by" ON "public"."cms_user" USING btree ("created_by");
+CREATE INDEX "idx_76976_logged_at" ON "public"."cms_user" USING btree ("logged_at");
+CREATE UNIQUE INDEX "idx_76976_phone" ON "public"."cms_user" USING btree ("phone");
+CREATE INDEX "idx_76976_last_activity_at" ON "public"."cms_user" USING btree ("last_activity_at");
+CREATE UNIQUE INDEX "idx_76976_username" ON "public"."cms_user" USING btree ("username");
+CREATE INDEX "idx_76976_password_reset_token" ON "public"."cms_user" USING btree ("password_reset_token");
+CREATE INDEX "idx_76976_password_hash" ON "public"."cms_user" USING btree ("password_hash");
+CREATE UNIQUE INDEX "idx_76976_email" ON "public"."cms_user" USING btree ("email");
+CREATE INDEX "idx_76976_email_is_approved" ON "public"."cms_user" USING btree ("email_is_approved");
+CREATE INDEX "idx_76976_updated_at" ON "public"."cms_user" USING btree ("updated_at");
+CREATE INDEX "idx_76976_last_admin_activity_at" ON "public"."cms_user" USING btree ("last_admin_activity_at");
+CREATE INDEX "idx_76976_name" ON "public"."cms_user" USING btree ("_to_del_name");
+CREATE INDEX "idx_76976_patronymic" ON "public"."cms_user" USING btree ("patronymic");
+CREATE INDEX "idx_76976_last_name" ON "public"."cms_user" USING btree ("last_name");
+CREATE INDEX "idx_76976_phone_is_approved" ON "public"."cms_user" USING btree ("phone_is_approved");
 
 -- ----------------------------
 -- Primary Key structure for table cms_user
@@ -8608,11 +8611,11 @@ ALTER TABLE "public"."cms_user" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_user_authclient
 -- ----------------------------
-CREATE INDEX "idx_72181_provider_identifier" ON "public"."cms_user_authclient" USING btree ("provider_identifier");
-CREATE INDEX "idx_72181_user_id" ON "public"."cms_user_authclient" USING btree ("user_id");
-CREATE INDEX "idx_72181_updated_at" ON "public"."cms_user_authclient" USING btree ("updated_at");
-CREATE INDEX "idx_72181_provider" ON "public"."cms_user_authclient" USING btree ("provider");
-CREATE INDEX "idx_72181_created_at" ON "public"."cms_user_authclient" USING btree ("created_at");
+CREATE INDEX "idx_76989_created_at" ON "public"."cms_user_authclient" USING btree ("created_at");
+CREATE INDEX "idx_76989_updated_at" ON "public"."cms_user_authclient" USING btree ("updated_at");
+CREATE INDEX "idx_76989_user_id" ON "public"."cms_user_authclient" USING btree ("user_id");
+CREATE INDEX "idx_76989_provider" ON "public"."cms_user_authclient" USING btree ("provider");
+CREATE INDEX "idx_76989_provider_identifier" ON "public"."cms_user_authclient" USING btree ("provider_identifier");
 
 -- ----------------------------
 -- Primary Key structure for table cms_user_authclient
@@ -8622,12 +8625,12 @@ ALTER TABLE "public"."cms_user_authclient" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_user_email
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_72190_value" ON "public"."cms_user_email" USING btree ("value");
-CREATE INDEX "idx_72190_approved" ON "public"."cms_user_email" USING btree ("approved");
-CREATE INDEX "idx_72190_approved_key" ON "public"."cms_user_email" USING btree ("approved_key");
-CREATE INDEX "idx_72190_user_id" ON "public"."cms_user_email" USING btree ("user_id");
-CREATE INDEX "idx_72190_updated_at" ON "public"."cms_user_email" USING btree ("updated_at");
-CREATE INDEX "idx_72190_created_at" ON "public"."cms_user_email" USING btree ("created_at");
+CREATE INDEX "idx_76998_approved_key" ON "public"."cms_user_email" USING btree ("approved_key");
+CREATE UNIQUE INDEX "idx_76998_value" ON "public"."cms_user_email" USING btree ("value");
+CREATE INDEX "idx_76998_updated_at" ON "public"."cms_user_email" USING btree ("updated_at");
+CREATE INDEX "idx_76998_approved" ON "public"."cms_user_email" USING btree ("approved");
+CREATE INDEX "idx_76998_created_at" ON "public"."cms_user_email" USING btree ("created_at");
+CREATE INDEX "idx_76998_user_id" ON "public"."cms_user_email" USING btree ("user_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_user_email
@@ -8637,12 +8640,12 @@ ALTER TABLE "public"."cms_user_email" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_user_phone
 -- ----------------------------
-CREATE INDEX "idx_72201_user_id" ON "public"."cms_user_phone" USING btree ("user_id");
-CREATE INDEX "idx_72201_approved_key" ON "public"."cms_user_phone" USING btree ("approved_key");
-CREATE UNIQUE INDEX "idx_72201_value" ON "public"."cms_user_phone" USING btree ("value");
-CREATE INDEX "idx_72201_approved" ON "public"."cms_user_phone" USING btree ("approved");
-CREATE INDEX "idx_72201_updated_at" ON "public"."cms_user_phone" USING btree ("updated_at");
-CREATE INDEX "idx_72201_created_at" ON "public"."cms_user_phone" USING btree ("created_at");
+CREATE INDEX "idx_77009_approved" ON "public"."cms_user_phone" USING btree ("approved");
+CREATE INDEX "idx_77009_approved_key" ON "public"."cms_user_phone" USING btree ("approved_key");
+CREATE INDEX "idx_77009_created_at" ON "public"."cms_user_phone" USING btree ("created_at");
+CREATE UNIQUE INDEX "idx_77009_value" ON "public"."cms_user_phone" USING btree ("value");
+CREATE INDEX "idx_77009_updated_at" ON "public"."cms_user_phone" USING btree ("updated_at");
+CREATE INDEX "idx_77009_user_id" ON "public"."cms_user_phone" USING btree ("user_id");
 
 -- ----------------------------
 -- Primary Key structure for table cms_user_phone
@@ -8652,19 +8655,19 @@ ALTER TABLE "public"."cms_user_phone" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_user_property
 -- ----------------------------
-CREATE INDEX "idx_72212_element_id" ON "public"."cms_user_property" USING btree ("element_id");
-CREATE INDEX "idx_72212_value_num" ON "public"."cms_user_property" USING btree ("value_num");
-CREATE INDEX "idx_72212_value_int2" ON "public"."cms_user_property" USING btree ("value_int2");
-CREATE INDEX "idx_72212_value_num2" ON "public"."cms_user_property" USING btree ("value_num2");
-CREATE INDEX "idx_72212_property_id" ON "public"."cms_user_property" USING btree ("property_id");
-CREATE INDEX "idx_72212_updated_at" ON "public"."cms_user_property" USING btree ("updated_at");
-CREATE INDEX "idx_72212_value_string" ON "public"."cms_user_property" USING btree ("value_string");
-CREATE INDEX "idx_72212_created_by" ON "public"."cms_user_property" USING btree ("created_by");
-CREATE INDEX "idx_72212_updated_by" ON "public"."cms_user_property" USING btree ("updated_by");
-CREATE INDEX "idx_72212_value_enum" ON "public"."cms_user_property" USING btree ("value_enum");
-CREATE INDEX "idx_72212_created_at" ON "public"."cms_user_property" USING btree ("created_at");
-CREATE INDEX "idx_72212_description" ON "public"."cms_user_property" USING btree ("description");
-CREATE INDEX "idx_72212_value" ON "public"."cms_user_property" USING btree ("value");
+CREATE INDEX "idx_77020_created_at" ON "public"."cms_user_property" USING btree ("created_at");
+CREATE INDEX "idx_77020_property_id" ON "public"."cms_user_property" USING btree ("property_id");
+CREATE INDEX "idx_77020_updated_at" ON "public"."cms_user_property" USING btree ("updated_at");
+CREATE INDEX "idx_77020_value_int2" ON "public"."cms_user_property" USING btree ("value_int2");
+CREATE INDEX "idx_77020_created_by" ON "public"."cms_user_property" USING btree ("created_by");
+CREATE INDEX "idx_77020_updated_by" ON "public"."cms_user_property" USING btree ("updated_by");
+CREATE INDEX "idx_77020_value_num2" ON "public"."cms_user_property" USING btree ("value_num2");
+CREATE INDEX "idx_77020_value_string" ON "public"."cms_user_property" USING btree ("value_string");
+CREATE INDEX "idx_77020_description" ON "public"."cms_user_property" USING btree ("description");
+CREATE INDEX "idx_77020_element_id" ON "public"."cms_user_property" USING btree ("element_id");
+CREATE INDEX "idx_77020_value" ON "public"."cms_user_property" USING btree ("value");
+CREATE INDEX "idx_77020_value_enum" ON "public"."cms_user_property" USING btree ("value_enum");
+CREATE INDEX "idx_77020_value_num" ON "public"."cms_user_property" USING btree ("value_num");
 
 -- ----------------------------
 -- Primary Key structure for table cms_user_property
@@ -8674,19 +8677,19 @@ ALTER TABLE "public"."cms_user_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_user_universal_property
 -- ----------------------------
-CREATE INDEX "idx_72221_created_at" ON "public"."cms_user_universal_property" USING btree ("created_at");
-CREATE INDEX "idx_72221_multiple" ON "public"."cms_user_universal_property" USING btree ("multiple");
-CREATE INDEX "idx_72221_active" ON "public"."cms_user_universal_property" USING btree ("active");
-CREATE INDEX "idx_72221_priority" ON "public"."cms_user_universal_property" USING btree ("priority");
-CREATE INDEX "idx_72221_name" ON "public"."cms_user_universal_property" USING btree ("name");
-CREATE INDEX "idx_72221_hint" ON "public"."cms_user_universal_property" USING btree ("hint");
-CREATE INDEX "idx_72221_property_type" ON "public"."cms_user_universal_property" USING btree ("property_type");
-CREATE INDEX "idx_72221_component" ON "public"."cms_user_universal_property" USING btree ("component");
-CREATE INDEX "idx_72221_created_by" ON "public"."cms_user_universal_property" USING btree ("created_by");
-CREATE INDEX "idx_72221_is_required" ON "public"."cms_user_universal_property" USING btree ("is_required");
-CREATE INDEX "idx_72221_updated_at" ON "public"."cms_user_universal_property" USING btree ("updated_at");
-CREATE INDEX "idx_72221_updated_by" ON "public"."cms_user_universal_property" USING btree ("updated_by");
-CREATE UNIQUE INDEX "idx_72221_code" ON "public"."cms_user_universal_property" USING btree ("code");
+CREATE INDEX "idx_77029_property_type" ON "public"."cms_user_universal_property" USING btree ("property_type");
+CREATE INDEX "idx_77029_created_at" ON "public"."cms_user_universal_property" USING btree ("created_at");
+CREATE INDEX "idx_77029_hint" ON "public"."cms_user_universal_property" USING btree ("hint");
+CREATE UNIQUE INDEX "idx_77029_code" ON "public"."cms_user_universal_property" USING btree ("code");
+CREATE INDEX "idx_77029_updated_at" ON "public"."cms_user_universal_property" USING btree ("updated_at");
+CREATE INDEX "idx_77029_is_required" ON "public"."cms_user_universal_property" USING btree ("is_required");
+CREATE INDEX "idx_77029_name" ON "public"."cms_user_universal_property" USING btree ("name");
+CREATE INDEX "idx_77029_multiple" ON "public"."cms_user_universal_property" USING btree ("multiple");
+CREATE INDEX "idx_77029_created_by" ON "public"."cms_user_universal_property" USING btree ("created_by");
+CREATE INDEX "idx_77029_updated_by" ON "public"."cms_user_universal_property" USING btree ("updated_by");
+CREATE INDEX "idx_77029_active" ON "public"."cms_user_universal_property" USING btree ("active");
+CREATE INDEX "idx_77029_priority" ON "public"."cms_user_universal_property" USING btree ("priority");
+CREATE INDEX "idx_77029_component" ON "public"."cms_user_universal_property" USING btree ("component");
 
 -- ----------------------------
 -- Primary Key structure for table cms_user_universal_property
@@ -8696,15 +8699,15 @@ ALTER TABLE "public"."cms_user_universal_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table cms_user_universal_property_enum
 -- ----------------------------
-CREATE INDEX "idx_72234_updated_at" ON "public"."cms_user_universal_property_enum" USING btree ("updated_at");
-CREATE INDEX "idx_72234_created_at" ON "public"."cms_user_universal_property_enum" USING btree ("created_at");
-CREATE INDEX "idx_72234_code" ON "public"."cms_user_universal_property_enum" USING btree ("code");
-CREATE INDEX "idx_72234_value" ON "public"."cms_user_universal_property_enum" USING btree ("value");
-CREATE INDEX "idx_72234_updated_by" ON "public"."cms_user_universal_property_enum" USING btree ("updated_by");
-CREATE INDEX "idx_72234_def" ON "public"."cms_user_universal_property_enum" USING btree ("def");
-CREATE INDEX "idx_72234_priority" ON "public"."cms_user_universal_property_enum" USING btree ("priority");
-CREATE INDEX "idx_72234_created_by" ON "public"."cms_user_universal_property_enum" USING btree ("created_by");
-CREATE INDEX "idx_72234_property_id" ON "public"."cms_user_universal_property_enum" USING btree ("property_id");
+CREATE INDEX "idx_77042_priority" ON "public"."cms_user_universal_property_enum" USING btree ("priority");
+CREATE INDEX "idx_77042_def" ON "public"."cms_user_universal_property_enum" USING btree ("def");
+CREATE INDEX "idx_77042_created_at" ON "public"."cms_user_universal_property_enum" USING btree ("created_at");
+CREATE INDEX "idx_77042_property_id" ON "public"."cms_user_universal_property_enum" USING btree ("property_id");
+CREATE INDEX "idx_77042_updated_by" ON "public"."cms_user_universal_property_enum" USING btree ("updated_by");
+CREATE INDEX "idx_77042_updated_at" ON "public"."cms_user_universal_property_enum" USING btree ("updated_at");
+CREATE INDEX "idx_77042_code" ON "public"."cms_user_universal_property_enum" USING btree ("code");
+CREATE INDEX "idx_77042_created_by" ON "public"."cms_user_universal_property_enum" USING btree ("created_by");
+CREATE INDEX "idx_77042_value" ON "public"."cms_user_universal_property_enum" USING btree ("value");
 
 -- ----------------------------
 -- Primary Key structure for table cms_user_universal_property_enum
@@ -8714,11 +8717,11 @@ ALTER TABLE "public"."cms_user_universal_property_enum" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table export_task
 -- ----------------------------
-CREATE INDEX "idx_72242_created_by" ON "public"."export_task" USING btree ("created_by");
-CREATE INDEX "idx_72242_updated_at" ON "public"."export_task" USING btree ("updated_at");
-CREATE INDEX "idx_72242_created_at" ON "public"."export_task" USING btree ("created_at");
-CREATE INDEX "idx_72242_updated_by" ON "public"."export_task" USING btree ("updated_by");
-CREATE INDEX "idx_72242_name" ON "public"."export_task" USING btree ("name");
+CREATE INDEX "idx_77050_created_by" ON "public"."export_task" USING btree ("created_by");
+CREATE INDEX "idx_77050_name" ON "public"."export_task" USING btree ("name");
+CREATE INDEX "idx_77050_updated_at" ON "public"."export_task" USING btree ("updated_at");
+CREATE INDEX "idx_77050_updated_by" ON "public"."export_task" USING btree ("updated_by");
+CREATE INDEX "idx_77050_created_at" ON "public"."export_task" USING btree ("created_at");
 
 -- ----------------------------
 -- Primary Key structure for table export_task
@@ -8728,12 +8731,12 @@ ALTER TABLE "public"."export_task" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table form2_form
 -- ----------------------------
-CREATE INDEX "idx_72251_updated_at" ON "public"."form2_form" USING btree ("updated_at");
-CREATE INDEX "idx_72251_updated_by" ON "public"."form2_form" USING btree ("updated_by");
-CREATE UNIQUE INDEX "idx_72251_code" ON "public"."form2_form" USING btree ("code");
-CREATE INDEX "idx_72251_created_at" ON "public"."form2_form" USING btree ("created_at");
-CREATE INDEX "idx_72251_name" ON "public"."form2_form" USING btree ("name");
-CREATE INDEX "idx_72251_created_by" ON "public"."form2_form" USING btree ("created_by");
+CREATE INDEX "idx_77059_updated_by" ON "public"."form2_form" USING btree ("updated_by");
+CREATE INDEX "idx_77059_updated_at" ON "public"."form2_form" USING btree ("updated_at");
+CREATE UNIQUE INDEX "idx_77059_code" ON "public"."form2_form" USING btree ("code");
+CREATE INDEX "idx_77059_created_at" ON "public"."form2_form" USING btree ("created_at");
+CREATE INDEX "idx_77059_created_by" ON "public"."form2_form" USING btree ("created_by");
+CREATE INDEX "idx_77059_name" ON "public"."form2_form" USING btree ("name");
 
 -- ----------------------------
 -- Primary Key structure for table form2_form
@@ -8743,20 +8746,20 @@ ALTER TABLE "public"."form2_form" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table form2_form_property
 -- ----------------------------
-CREATE INDEX "idx_72260_hint" ON "public"."form2_form_property" USING btree ("hint");
-CREATE INDEX "idx_72260_property_type" ON "public"."form2_form_property" USING btree ("property_type");
-CREATE INDEX "idx_72260_created_by" ON "public"."form2_form_property" USING btree ("created_by");
-CREATE INDEX "idx_72260_active" ON "public"."form2_form_property" USING btree ("active");
-CREATE INDEX "idx_72260_form_id" ON "public"."form2_form_property" USING btree ("form_id");
-CREATE INDEX "idx_72260_name" ON "public"."form2_form_property" USING btree ("name");
-CREATE INDEX "idx_72260_is_required" ON "public"."form2_form_property" USING btree ("is_required");
-CREATE INDEX "idx_72260_component" ON "public"."form2_form_property" USING btree ("component");
-CREATE INDEX "idx_72260_created_at" ON "public"."form2_form_property" USING btree ("created_at");
-CREATE INDEX "idx_72260_priority" ON "public"."form2_form_property" USING btree ("priority");
-CREATE INDEX "idx_72260_updated_by" ON "public"."form2_form_property" USING btree ("updated_by");
-CREATE UNIQUE INDEX "idx_72260_code" ON "public"."form2_form_property" USING btree ("code", "form_id");
-CREATE INDEX "idx_72260_updated_at" ON "public"."form2_form_property" USING btree ("updated_at");
-CREATE INDEX "idx_72260_multiple" ON "public"."form2_form_property" USING btree ("multiple");
+CREATE INDEX "idx_77068_priority" ON "public"."form2_form_property" USING btree ("priority");
+CREATE INDEX "idx_77068_hint" ON "public"."form2_form_property" USING btree ("hint");
+CREATE INDEX "idx_77068_component" ON "public"."form2_form_property" USING btree ("component");
+CREATE INDEX "idx_77068_property_type" ON "public"."form2_form_property" USING btree ("property_type");
+CREATE INDEX "idx_77068_is_required" ON "public"."form2_form_property" USING btree ("is_required");
+CREATE INDEX "idx_77068_updated_at" ON "public"."form2_form_property" USING btree ("updated_at");
+CREATE INDEX "idx_77068_created_at" ON "public"."form2_form_property" USING btree ("created_at");
+CREATE INDEX "idx_77068_updated_by" ON "public"."form2_form_property" USING btree ("updated_by");
+CREATE INDEX "idx_77068_multiple" ON "public"."form2_form_property" USING btree ("multiple");
+CREATE INDEX "idx_77068_name" ON "public"."form2_form_property" USING btree ("name");
+CREATE INDEX "idx_77068_created_by" ON "public"."form2_form_property" USING btree ("created_by");
+CREATE INDEX "idx_77068_form_id" ON "public"."form2_form_property" USING btree ("form_id");
+CREATE UNIQUE INDEX "idx_77068_code" ON "public"."form2_form_property" USING btree ("code", "form_id");
+CREATE INDEX "idx_77068_active" ON "public"."form2_form_property" USING btree ("active");
 
 -- ----------------------------
 -- Primary Key structure for table form2_form_property
@@ -8766,15 +8769,15 @@ ALTER TABLE "public"."form2_form_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table form2_form_property_enum
 -- ----------------------------
-CREATE INDEX "idx_72273_property_id" ON "public"."form2_form_property_enum" USING btree ("property_id");
-CREATE INDEX "idx_72273_updated_at" ON "public"."form2_form_property_enum" USING btree ("updated_at");
-CREATE INDEX "idx_72273_updated_by" ON "public"."form2_form_property_enum" USING btree ("updated_by");
-CREATE INDEX "idx_72273_created_by" ON "public"."form2_form_property_enum" USING btree ("created_by");
-CREATE INDEX "idx_72273_created_at" ON "public"."form2_form_property_enum" USING btree ("created_at");
-CREATE INDEX "idx_72273_value" ON "public"."form2_form_property_enum" USING btree ("value");
-CREATE INDEX "idx_72273_code" ON "public"."form2_form_property_enum" USING btree ("code");
-CREATE INDEX "idx_72273_def" ON "public"."form2_form_property_enum" USING btree ("def");
-CREATE INDEX "idx_72273_priority" ON "public"."form2_form_property_enum" USING btree ("priority");
+CREATE INDEX "idx_77081_code" ON "public"."form2_form_property_enum" USING btree ("code");
+CREATE INDEX "idx_77081_value" ON "public"."form2_form_property_enum" USING btree ("value");
+CREATE INDEX "idx_77081_created_at" ON "public"."form2_form_property_enum" USING btree ("created_at");
+CREATE INDEX "idx_77081_updated_at" ON "public"."form2_form_property_enum" USING btree ("updated_at");
+CREATE INDEX "idx_77081_property_id" ON "public"."form2_form_property_enum" USING btree ("property_id");
+CREATE INDEX "idx_77081_created_by" ON "public"."form2_form_property_enum" USING btree ("created_by");
+CREATE INDEX "idx_77081_priority" ON "public"."form2_form_property_enum" USING btree ("priority");
+CREATE INDEX "idx_77081_def" ON "public"."form2_form_property_enum" USING btree ("def");
+CREATE INDEX "idx_77081_updated_by" ON "public"."form2_form_property_enum" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table form2_form_property_enum
@@ -8784,17 +8787,17 @@ ALTER TABLE "public"."form2_form_property_enum" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table form2_form_send
 -- ----------------------------
-CREATE INDEX "idx_72281_created_at" ON "public"."form2_form_send" USING btree ("created_at");
-CREATE INDEX "idx_72281_updated_by" ON "public"."form2_form_send" USING btree ("updated_by");
-CREATE INDEX "idx_72281_ip" ON "public"."form2_form_send" USING btree ("ip");
-CREATE INDEX "idx_72281_page_url" ON "public"."form2_form_send" USING btree ("page_url");
-CREATE INDEX "idx_72281_processed_by" ON "public"."form2_form_send" USING btree ("processed_by");
-CREATE INDEX "idx_72281_created_by" ON "public"."form2_form_send" USING btree ("created_by");
-CREATE INDEX "idx_72281_form_id" ON "public"."form2_form_send" USING btree ("form_id");
-CREATE INDEX "idx_72281_updated_at" ON "public"."form2_form_send" USING btree ("updated_at");
-CREATE INDEX "idx_72281_status" ON "public"."form2_form_send" USING btree ("status");
-CREATE INDEX "idx_72281_processed_at" ON "public"."form2_form_send" USING btree ("processed_at");
-CREATE INDEX "idx_72281_site_code" ON "public"."form2_form_send" USING btree ("site_code");
+CREATE INDEX "idx_77089_created_by" ON "public"."form2_form_send" USING btree ("created_by");
+CREATE INDEX "idx_77089_status" ON "public"."form2_form_send" USING btree ("status");
+CREATE INDEX "idx_77089_ip" ON "public"."form2_form_send" USING btree ("ip");
+CREATE INDEX "idx_77089_updated_at" ON "public"."form2_form_send" USING btree ("updated_at");
+CREATE INDEX "idx_77089_processed_at" ON "public"."form2_form_send" USING btree ("processed_at");
+CREATE INDEX "idx_77089_page_url" ON "public"."form2_form_send" USING btree ("page_url");
+CREATE INDEX "idx_77089_updated_by" ON "public"."form2_form_send" USING btree ("updated_by");
+CREATE INDEX "idx_77089_form_id" ON "public"."form2_form_send" USING btree ("form_id");
+CREATE INDEX "idx_77089_processed_by" ON "public"."form2_form_send" USING btree ("processed_by");
+CREATE INDEX "idx_77089_site_code" ON "public"."form2_form_send" USING btree ("site_code");
+CREATE INDEX "idx_77089_created_at" ON "public"."form2_form_send" USING btree ("created_at");
 
 -- ----------------------------
 -- Primary Key structure for table form2_form_send
@@ -8804,18 +8807,18 @@ ALTER TABLE "public"."form2_form_send" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table form2_form_send_property
 -- ----------------------------
-CREATE INDEX "idx_72291_value_num" ON "public"."form2_form_send_property" USING btree ("value_num");
-CREATE INDEX "idx_72291_description" ON "public"."form2_form_send_property" USING btree ("description");
-CREATE INDEX "idx_72291_value_enum" ON "public"."form2_form_send_property" USING btree ("value_enum");
-CREATE INDEX "idx_72291_created_by" ON "public"."form2_form_send_property" USING btree ("created_by");
-CREATE INDEX "idx_72291_value_int2" ON "public"."form2_form_send_property" USING btree ("value_int2");
-CREATE INDEX "idx_72291_created_at" ON "public"."form2_form_send_property" USING btree ("created_at");
-CREATE INDEX "idx_72291_element_id" ON "public"."form2_form_send_property" USING btree ("element_id");
-CREATE INDEX "idx_72291_updated_at" ON "public"."form2_form_send_property" USING btree ("updated_at");
-CREATE INDEX "idx_72291_updated_by" ON "public"."form2_form_send_property" USING btree ("updated_by");
-CREATE INDEX "idx_72291_value_num2" ON "public"."form2_form_send_property" USING btree ("value_num2");
-CREATE INDEX "idx_72291_property_id" ON "public"."form2_form_send_property" USING btree ("property_id");
-CREATE INDEX "idx_72291_value_string" ON "public"."form2_form_send_property" USING btree ("value_string");
+CREATE INDEX "idx_77099_updated_by" ON "public"."form2_form_send_property" USING btree ("updated_by");
+CREATE INDEX "idx_77099_property_id" ON "public"."form2_form_send_property" USING btree ("property_id");
+CREATE INDEX "idx_77099_element_id" ON "public"."form2_form_send_property" USING btree ("element_id");
+CREATE INDEX "idx_77099_value_enum" ON "public"."form2_form_send_property" USING btree ("value_enum");
+CREATE INDEX "idx_77099_created_by" ON "public"."form2_form_send_property" USING btree ("created_by");
+CREATE INDEX "idx_77099_created_at" ON "public"."form2_form_send_property" USING btree ("created_at");
+CREATE INDEX "idx_77099_value_num" ON "public"."form2_form_send_property" USING btree ("value_num");
+CREATE INDEX "idx_77099_value_int2" ON "public"."form2_form_send_property" USING btree ("value_int2");
+CREATE INDEX "idx_77099_updated_at" ON "public"."form2_form_send_property" USING btree ("updated_at");
+CREATE INDEX "idx_77099_description" ON "public"."form2_form_send_property" USING btree ("description");
+CREATE INDEX "idx_77099_value_num2" ON "public"."form2_form_send_property" USING btree ("value_num2");
+CREATE INDEX "idx_77099_value_string" ON "public"."form2_form_send_property" USING btree ("value_string");
 
 -- ----------------------------
 -- Primary Key structure for table form2_form_send_property
@@ -8825,11 +8828,11 @@ ALTER TABLE "public"."form2_form_send_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table import_task
 -- ----------------------------
-CREATE INDEX "idx_72300_name" ON "public"."import_task" USING btree ("name");
-CREATE INDEX "idx_72300_created_by" ON "public"."import_task" USING btree ("created_by");
-CREATE INDEX "idx_72300_updated_at" ON "public"."import_task" USING btree ("updated_at");
-CREATE INDEX "idx_72300_created_at" ON "public"."import_task" USING btree ("created_at");
-CREATE INDEX "idx_72300_updated_by" ON "public"."import_task" USING btree ("updated_by");
+CREATE INDEX "idx_77108_name" ON "public"."import_task" USING btree ("name");
+CREATE INDEX "idx_77108_updated_at" ON "public"."import_task" USING btree ("updated_at");
+CREATE INDEX "idx_77108_updated_by" ON "public"."import_task" USING btree ("updated_by");
+CREATE INDEX "idx_77108_created_by" ON "public"."import_task" USING btree ("created_by");
+CREATE INDEX "idx_77108_created_at" ON "public"."import_task" USING btree ("created_at");
 
 -- ----------------------------
 -- Primary Key structure for table import_task
@@ -8839,18 +8842,18 @@ ALTER TABLE "public"."import_task" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table kladr_location
 -- ----------------------------
-CREATE INDEX "idx_72309_updated_at" ON "public"."kladr_location" USING btree ("updated_at");
-CREATE INDEX "idx_72309_updated_by" ON "public"."kladr_location" USING btree ("updated_by");
-CREATE INDEX "idx_72309_okato" ON "public"."kladr_location" USING btree ("okato");
-CREATE INDEX "idx_72309_parent_sort" ON "public"."kladr_location" USING btree ("parent_id", "sort");
-CREATE INDEX "idx_72309_created_at" ON "public"."kladr_location" USING btree ("created_at");
-CREATE INDEX "idx_72309_created_by" ON "public"."kladr_location" USING btree ("created_by");
-CREATE INDEX "idx_72309_type" ON "public"."kladr_location" USING btree ("type");
-CREATE INDEX "idx_72309_name" ON "public"."kladr_location" USING btree ("name");
-CREATE INDEX "idx_72309_active" ON "public"."kladr_location" USING btree ("active");
-CREATE INDEX "idx_72309_zip" ON "public"."kladr_location" USING btree ("zip");
-CREATE INDEX "idx_72309_name_full" ON "public"."kladr_location" USING btree ("name_full");
-CREATE INDEX "idx_72309_name_short" ON "public"."kladr_location" USING btree ("name_short");
+CREATE INDEX "idx_77117_name" ON "public"."kladr_location" USING btree ("name");
+CREATE INDEX "idx_77117_name_full" ON "public"."kladr_location" USING btree ("name_full");
+CREATE INDEX "idx_77117_name_short" ON "public"."kladr_location" USING btree ("name_short");
+CREATE INDEX "idx_77117_active" ON "public"."kladr_location" USING btree ("active");
+CREATE INDEX "idx_77117_type" ON "public"."kladr_location" USING btree ("type");
+CREATE INDEX "idx_77117_okato" ON "public"."kladr_location" USING btree ("okato");
+CREATE INDEX "idx_77117_created_at" ON "public"."kladr_location" USING btree ("created_at");
+CREATE INDEX "idx_77117_updated_by" ON "public"."kladr_location" USING btree ("updated_by");
+CREATE INDEX "idx_77117_zip" ON "public"."kladr_location" USING btree ("zip");
+CREATE INDEX "idx_77117_created_by" ON "public"."kladr_location" USING btree ("created_by");
+CREATE INDEX "idx_77117_parent_sort" ON "public"."kladr_location" USING btree ("parent_id", "sort");
+CREATE INDEX "idx_77117_updated_at" ON "public"."kladr_location" USING btree ("updated_at");
 
 -- ----------------------------
 -- Primary Key structure for table kladr_location
@@ -8860,8 +8863,8 @@ ALTER TABLE "public"."kladr_location" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table log_db_target
 -- ----------------------------
-CREATE INDEX "idx_72319_idx_log_category" ON "public"."log_db_target" USING btree ("category");
-CREATE INDEX "idx_72319_idx_log_level" ON "public"."log_db_target" USING btree ("level");
+CREATE INDEX "idx_77127_idx_log_level" ON "public"."log_db_target" USING btree ("level");
+CREATE INDEX "idx_77127_idx_log_category" ON "public"."log_db_target" USING btree ("category");
 
 -- ----------------------------
 -- Primary Key structure for table log_db_target
@@ -8871,16 +8874,16 @@ ALTER TABLE "public"."log_db_target" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table measure
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_72328_code" ON "public"."measure" USING btree ("code");
-CREATE INDEX "idx_72328_symbol_intl" ON "public"."measure" USING btree ("symbol_intl");
-CREATE INDEX "idx_72328_updated_by" ON "public"."measure" USING btree ("updated_by");
-CREATE INDEX "idx_72328_def" ON "public"."measure" USING btree ("def");
-CREATE INDEX "idx_72328_created_at" ON "public"."measure" USING btree ("created_at");
-CREATE INDEX "idx_72328_symbol_rus" ON "public"."measure" USING btree ("symbol_rus");
-CREATE INDEX "idx_72328_symbol_letter_intl" ON "public"."measure" USING btree ("symbol_letter_intl");
-CREATE INDEX "idx_72328_updated_at" ON "public"."measure" USING btree ("updated_at");
-CREATE INDEX "idx_72328_created_by" ON "public"."measure" USING btree ("created_by");
-CREATE INDEX "idx_72328_name" ON "public"."measure" USING btree ("name");
+CREATE INDEX "idx_77136_symbol_letter_intl" ON "public"."measure" USING btree ("symbol_letter_intl");
+CREATE INDEX "idx_77136_def" ON "public"."measure" USING btree ("def");
+CREATE UNIQUE INDEX "idx_77136_code" ON "public"."measure" USING btree ("code");
+CREATE INDEX "idx_77136_symbol_rus" ON "public"."measure" USING btree ("symbol_rus");
+CREATE INDEX "idx_77136_created_at" ON "public"."measure" USING btree ("created_at");
+CREATE INDEX "idx_77136_updated_by" ON "public"."measure" USING btree ("updated_by");
+CREATE INDEX "idx_77136_symbol_intl" ON "public"."measure" USING btree ("symbol_intl");
+CREATE INDEX "idx_77136_updated_at" ON "public"."measure" USING btree ("updated_at");
+CREATE INDEX "idx_77136_created_by" ON "public"."measure" USING btree ("created_by");
+CREATE INDEX "idx_77136_name" ON "public"."measure" USING btree ("name");
 
 -- ----------------------------
 -- Primary Key structure for table measure
@@ -8900,11 +8903,11 @@ ALTER TABLE "public"."migration" ADD PRIMARY KEY ("version");
 -- ----------------------------
 -- Indexes structure for table money_currency
 -- ----------------------------
-CREATE INDEX "idx_72349_name_full" ON "public"."money_currency" USING btree ("name_full");
-CREATE INDEX "idx_72349_active" ON "public"."money_currency" USING btree ("active");
-CREATE INDEX "idx_72349_course" ON "public"."money_currency" USING btree ("course");
-CREATE UNIQUE INDEX "idx_72349_code" ON "public"."money_currency" USING btree ("code");
-CREATE INDEX "idx_72349_name" ON "public"."money_currency" USING btree ("name");
+CREATE INDEX "idx_77157_name_full" ON "public"."money_currency" USING btree ("name_full");
+CREATE INDEX "idx_77157_active" ON "public"."money_currency" USING btree ("active");
+CREATE UNIQUE INDEX "idx_77157_code" ON "public"."money_currency" USING btree ("code");
+CREATE INDEX "idx_77157_name" ON "public"."money_currency" USING btree ("name");
+CREATE INDEX "idx_77157_course" ON "public"."money_currency" USING btree ("course");
 
 -- ----------------------------
 -- Primary Key structure for table money_currency
@@ -8914,23 +8917,23 @@ ALTER TABLE "public"."money_currency" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table reviews2_message
 -- ----------------------------
-CREATE INDEX "idx_72360_created_at" ON "public"."reviews2_message" USING btree ("created_at");
-CREATE INDEX "idx_72360_ip" ON "public"."reviews2_message" USING btree ("ip");
-CREATE INDEX "idx_72360_site_code" ON "public"."reviews2_message" USING btree ("site_code");
-CREATE INDEX "idx_72360_status" ON "public"."reviews2_message" USING btree ("status");
-CREATE INDEX "idx_72360_user_email" ON "public"."reviews2_message" USING btree ("user_email");
-CREATE INDEX "idx_72360_updated_by" ON "public"."reviews2_message" USING btree ("updated_by");
-CREATE INDEX "idx_72360_updated_at" ON "public"."reviews2_message" USING btree ("updated_at");
-CREATE INDEX "idx_72360_published_at" ON "public"."reviews2_message" USING btree ("published_at");
-CREATE INDEX "idx_72360_element_id" ON "public"."reviews2_message" USING btree ("element_id");
-CREATE INDEX "idx_72360_rating" ON "public"."reviews2_message" USING btree ("rating");
-CREATE INDEX "idx_72360_created_by" ON "public"."reviews2_message" USING btree ("created_by");
-CREATE INDEX "idx_72360_user_phone" ON "public"."reviews2_message" USING btree ("user_phone");
-CREATE INDEX "idx_72360_user_city" ON "public"."reviews2_message" USING btree ("user_city");
-CREATE INDEX "idx_72360_content_id" ON "public"."reviews2_message" USING btree ("content_id");
-CREATE INDEX "idx_72360_user_name" ON "public"."reviews2_message" USING btree ("user_name");
-CREATE INDEX "idx_72360_processed_at" ON "public"."reviews2_message" USING btree ("processed_at");
-CREATE INDEX "idx_72360_processed_by" ON "public"."reviews2_message" USING btree ("processed_by");
+CREATE INDEX "idx_77168_user_email" ON "public"."reviews2_message" USING btree ("user_email");
+CREATE INDEX "idx_77168_status" ON "public"."reviews2_message" USING btree ("status");
+CREATE INDEX "idx_77168_element_id" ON "public"."reviews2_message" USING btree ("element_id");
+CREATE INDEX "idx_77168_user_name" ON "public"."reviews2_message" USING btree ("user_name");
+CREATE INDEX "idx_77168_created_at" ON "public"."reviews2_message" USING btree ("created_at");
+CREATE INDEX "idx_77168_updated_at" ON "public"."reviews2_message" USING btree ("updated_at");
+CREATE INDEX "idx_77168_processed_at" ON "public"."reviews2_message" USING btree ("processed_at");
+CREATE INDEX "idx_77168_user_phone" ON "public"."reviews2_message" USING btree ("user_phone");
+CREATE INDEX "idx_77168_published_at" ON "public"."reviews2_message" USING btree ("published_at");
+CREATE INDEX "idx_77168_ip" ON "public"."reviews2_message" USING btree ("ip");
+CREATE INDEX "idx_77168_processed_by" ON "public"."reviews2_message" USING btree ("processed_by");
+CREATE INDEX "idx_77168_updated_by" ON "public"."reviews2_message" USING btree ("updated_by");
+CREATE INDEX "idx_77168_user_city" ON "public"."reviews2_message" USING btree ("user_city");
+CREATE INDEX "idx_77168_content_id" ON "public"."reviews2_message" USING btree ("content_id");
+CREATE INDEX "idx_77168_site_code" ON "public"."reviews2_message" USING btree ("site_code");
+CREATE INDEX "idx_77168_created_by" ON "public"."reviews2_message" USING btree ("created_by");
+CREATE INDEX "idx_77168_rating" ON "public"."reviews2_message" USING btree ("rating");
 
 -- ----------------------------
 -- Primary Key structure for table reviews2_message
@@ -8940,23 +8943,23 @@ ALTER TABLE "public"."reviews2_message" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_affiliate
 -- ----------------------------
-CREATE INDEX "idx_72370_fix_plan" ON "public"."shop_affiliate" USING btree ("fix_plan");
-CREATE INDEX "idx_72370_created_by" ON "public"."shop_affiliate" USING btree ("created_by");
-CREATE INDEX "idx_72370_active" ON "public"."shop_affiliate" USING btree ("active");
-CREATE INDEX "idx_72370_user_id" ON "public"."shop_affiliate" USING btree ("user_id");
-CREATE INDEX "idx_72370_last_calculate_at" ON "public"."shop_affiliate" USING btree ("last_calculate_at");
-CREATE INDEX "idx_72370_created_at" ON "public"."shop_affiliate" USING btree ("created_at");
-CREATE INDEX "idx_72370_items_number" ON "public"."shop_affiliate" USING btree ("items_number");
-CREATE INDEX "idx_72370_aff_site" ON "public"."shop_affiliate" USING btree ("aff_site");
-CREATE INDEX "idx_72370_approved_sum" ON "public"."shop_affiliate" USING btree ("approved_sum");
-CREATE UNIQUE INDEX "idx_72370_user_id__site_code" ON "public"."shop_affiliate" USING btree ("user_id", "site_code");
-CREATE INDEX "idx_72370_plan_id" ON "public"."shop_affiliate" USING btree ("plan_id");
-CREATE INDEX "idx_72370_affiliate_id" ON "public"."shop_affiliate" USING btree ("affiliate_id");
-CREATE INDEX "idx_72370_updated_at" ON "public"."shop_affiliate" USING btree ("updated_at");
-CREATE INDEX "idx_72370_site_code" ON "public"."shop_affiliate" USING btree ("site_code");
-CREATE INDEX "idx_72370_updated_by" ON "public"."shop_affiliate" USING btree ("updated_by");
-CREATE INDEX "idx_72370_paid_sum" ON "public"."shop_affiliate" USING btree ("paid_sum");
-CREATE INDEX "idx_72370_items_sum" ON "public"."shop_affiliate" USING btree ("items_sum");
+CREATE INDEX "idx_77178_created_at" ON "public"."shop_affiliate" USING btree ("created_at");
+CREATE INDEX "idx_77178_created_by" ON "public"."shop_affiliate" USING btree ("created_by");
+CREATE INDEX "idx_77178_active" ON "public"."shop_affiliate" USING btree ("active");
+CREATE INDEX "idx_77178_fix_plan" ON "public"."shop_affiliate" USING btree ("fix_plan");
+CREATE INDEX "idx_77178_updated_by" ON "public"."shop_affiliate" USING btree ("updated_by");
+CREATE INDEX "idx_77178_items_number" ON "public"."shop_affiliate" USING btree ("items_number");
+CREATE UNIQUE INDEX "idx_77178_user_id__site_code" ON "public"."shop_affiliate" USING btree ("user_id", "site_code");
+CREATE INDEX "idx_77178_paid_sum" ON "public"."shop_affiliate" USING btree ("paid_sum");
+CREATE INDEX "idx_77178_affiliate_id" ON "public"."shop_affiliate" USING btree ("affiliate_id");
+CREATE INDEX "idx_77178_site_code" ON "public"."shop_affiliate" USING btree ("site_code");
+CREATE INDEX "idx_77178_aff_site" ON "public"."shop_affiliate" USING btree ("aff_site");
+CREATE INDEX "idx_77178_approved_sum" ON "public"."shop_affiliate" USING btree ("approved_sum");
+CREATE INDEX "idx_77178_updated_at" ON "public"."shop_affiliate" USING btree ("updated_at");
+CREATE INDEX "idx_77178_plan_id" ON "public"."shop_affiliate" USING btree ("plan_id");
+CREATE INDEX "idx_77178_last_calculate_at" ON "public"."shop_affiliate" USING btree ("last_calculate_at");
+CREATE INDEX "idx_77178_items_sum" ON "public"."shop_affiliate" USING btree ("items_sum");
+CREATE INDEX "idx_77178_user_id" ON "public"."shop_affiliate" USING btree ("user_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_affiliate
@@ -8966,19 +8969,19 @@ ALTER TABLE "public"."shop_affiliate" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_affiliate_plan
 -- ----------------------------
-CREATE INDEX "idx_72386_active" ON "public"."shop_affiliate_plan" USING btree ("active");
-CREATE INDEX "idx_72386_min_plan_value" ON "public"."shop_affiliate_plan" USING btree ("min_plan_value");
-CREATE INDEX "idx_72386_base_rate_type" ON "public"."shop_affiliate_plan" USING btree ("base_rate_type");
-CREATE INDEX "idx_72386_site_code" ON "public"."shop_affiliate_plan" USING btree ("site_code");
-CREATE INDEX "idx_72386_updated_at" ON "public"."shop_affiliate_plan" USING btree ("updated_at");
-CREATE INDEX "idx_72386_base_rate_currency_code" ON "public"."shop_affiliate_plan" USING btree ("base_rate_currency_code");
-CREATE INDEX "idx_72386_name" ON "public"."shop_affiliate_plan" USING btree ("name");
-CREATE INDEX "idx_72386_created_by" ON "public"."shop_affiliate_plan" USING btree ("created_by");
-CREATE INDEX "idx_72386_created_at" ON "public"."shop_affiliate_plan" USING btree ("created_at");
-CREATE INDEX "idx_72386_min_pay" ON "public"."shop_affiliate_plan" USING btree ("min_pay");
-CREATE INDEX "idx_72386_base_rate" ON "public"."shop_affiliate_plan" USING btree ("base_rate");
-CREATE INDEX "idx_72386_value_currency_code" ON "public"."shop_affiliate_plan" USING btree ("value_currency_code");
-CREATE INDEX "idx_72386_updated_by" ON "public"."shop_affiliate_plan" USING btree ("updated_by");
+CREATE INDEX "idx_77194_base_rate_currency_code" ON "public"."shop_affiliate_plan" USING btree ("base_rate_currency_code");
+CREATE INDEX "idx_77194_base_rate_type" ON "public"."shop_affiliate_plan" USING btree ("base_rate_type");
+CREATE INDEX "idx_77194_created_at" ON "public"."shop_affiliate_plan" USING btree ("created_at");
+CREATE INDEX "idx_77194_name" ON "public"."shop_affiliate_plan" USING btree ("name");
+CREATE INDEX "idx_77194_value_currency_code" ON "public"."shop_affiliate_plan" USING btree ("value_currency_code");
+CREATE INDEX "idx_77194_created_by" ON "public"."shop_affiliate_plan" USING btree ("created_by");
+CREATE INDEX "idx_77194_updated_at" ON "public"."shop_affiliate_plan" USING btree ("updated_at");
+CREATE INDEX "idx_77194_site_code" ON "public"."shop_affiliate_plan" USING btree ("site_code");
+CREATE INDEX "idx_77194_active" ON "public"."shop_affiliate_plan" USING btree ("active");
+CREATE INDEX "idx_77194_base_rate" ON "public"."shop_affiliate_plan" USING btree ("base_rate");
+CREATE INDEX "idx_77194_updated_by" ON "public"."shop_affiliate_plan" USING btree ("updated_by");
+CREATE INDEX "idx_77194_min_pay" ON "public"."shop_affiliate_plan" USING btree ("min_pay");
+CREATE INDEX "idx_77194_min_plan_value" ON "public"."shop_affiliate_plan" USING btree ("min_plan_value");
 
 -- ----------------------------
 -- Primary Key structure for table shop_affiliate_plan
@@ -8988,16 +8991,16 @@ ALTER TABLE "public"."shop_affiliate_plan" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_affiliate_tier
 -- ----------------------------
-CREATE INDEX "idx_72399_rate3" ON "public"."shop_affiliate_tier" USING btree ("rate3");
-CREATE INDEX "idx_72399_updated_by" ON "public"."shop_affiliate_tier" USING btree ("updated_by");
-CREATE INDEX "idx_72399_updated_at" ON "public"."shop_affiliate_tier" USING btree ("updated_at");
-CREATE INDEX "idx_72399_rate2" ON "public"."shop_affiliate_tier" USING btree ("rate2");
-CREATE INDEX "idx_72399_rate4" ON "public"."shop_affiliate_tier" USING btree ("rate4");
-CREATE INDEX "idx_72399_created_at" ON "public"."shop_affiliate_tier" USING btree ("created_at");
-CREATE INDEX "idx_72399_rate1" ON "public"."shop_affiliate_tier" USING btree ("rate1");
-CREATE INDEX "idx_72399_created_by" ON "public"."shop_affiliate_tier" USING btree ("created_by");
-CREATE UNIQUE INDEX "idx_72399_site_code" ON "public"."shop_affiliate_tier" USING btree ("site_code");
-CREATE INDEX "idx_72399_rate5" ON "public"."shop_affiliate_tier" USING btree ("rate5");
+CREATE INDEX "idx_77207_rate4" ON "public"."shop_affiliate_tier" USING btree ("rate4");
+CREATE UNIQUE INDEX "idx_77207_site_code" ON "public"."shop_affiliate_tier" USING btree ("site_code");
+CREATE INDEX "idx_77207_created_by" ON "public"."shop_affiliate_tier" USING btree ("created_by");
+CREATE INDEX "idx_77207_updated_by" ON "public"."shop_affiliate_tier" USING btree ("updated_by");
+CREATE INDEX "idx_77207_rate1" ON "public"."shop_affiliate_tier" USING btree ("rate1");
+CREATE INDEX "idx_77207_rate2" ON "public"."shop_affiliate_tier" USING btree ("rate2");
+CREATE INDEX "idx_77207_rate3" ON "public"."shop_affiliate_tier" USING btree ("rate3");
+CREATE INDEX "idx_77207_updated_at" ON "public"."shop_affiliate_tier" USING btree ("updated_at");
+CREATE INDEX "idx_77207_created_at" ON "public"."shop_affiliate_tier" USING btree ("created_at");
+CREATE INDEX "idx_77207_rate5" ON "public"."shop_affiliate_tier" USING btree ("rate5");
 
 -- ----------------------------
 -- Primary Key structure for table shop_affiliate_tier
@@ -9007,23 +9010,23 @@ ALTER TABLE "public"."shop_affiliate_tier" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_basket
 -- ----------------------------
-CREATE INDEX "idx_72410_measure_name" ON "public"."shop_basket" USING btree ("measure_name");
-CREATE INDEX "idx_72410_catalog_product_xml_id" ON "public"."shop_basket" USING btree ("catalog_xml_id", "product_xml_id");
-CREATE INDEX "idx_72410_currency_code" ON "public"."shop_basket" USING btree ("currency_code");
-CREATE INDEX "idx_72410_price" ON "public"."shop_basket" USING btree ("price");
-CREATE INDEX "idx_72410_site_id" ON "public"."shop_basket" USING btree ("site_id");
-CREATE INDEX "idx_72410_set_parent_id" ON "public"."shop_basket" USING btree ("set_parent_id");
-CREATE INDEX "idx_72410_updated_by" ON "public"."shop_basket" USING btree ("updated_by");
-CREATE INDEX "idx_72410_order_id" ON "public"."shop_basket" USING btree ("order_id");
-CREATE INDEX "idx_72410_updated_at" ON "public"."shop_basket" USING btree ("updated_at");
-CREATE INDEX "idx_72410_name" ON "public"."shop_basket" USING btree ("name");
-CREATE INDEX "idx_72410_created_by" ON "public"."shop_basket" USING btree ("created_by");
-CREATE INDEX "idx_72410_fuser_id" ON "public"."shop_basket" USING btree ("fuser_id");
-CREATE INDEX "idx_72410_delay" ON "public"."shop_basket" USING btree ("delay");
-CREATE INDEX "idx_72410_measure_code" ON "public"."shop_basket" USING btree ("measure_code");
-CREATE INDEX "idx_72410_created_at" ON "public"."shop_basket" USING btree ("created_at");
-CREATE INDEX "idx_72410_product_id" ON "public"."shop_basket" USING btree ("product_id");
-CREATE INDEX "idx_72410_product_price_id" ON "public"."shop_basket" USING btree ("product_price_id");
+CREATE INDEX "idx_77218_measure_code" ON "public"."shop_basket" USING btree ("measure_code");
+CREATE INDEX "idx_77218_created_at" ON "public"."shop_basket" USING btree ("created_at");
+CREATE INDEX "idx_77218_created_by" ON "public"."shop_basket" USING btree ("created_by");
+CREATE INDEX "idx_77218_measure_name" ON "public"."shop_basket" USING btree ("measure_name");
+CREATE INDEX "idx_77218_name" ON "public"."shop_basket" USING btree ("name");
+CREATE INDEX "idx_77218_product_id" ON "public"."shop_basket" USING btree ("product_id");
+CREATE INDEX "idx_77218_updated_by" ON "public"."shop_basket" USING btree ("updated_by");
+CREATE INDEX "idx_77218_order_id" ON "public"."shop_basket" USING btree ("order_id");
+CREATE INDEX "idx_77218_currency_code" ON "public"."shop_basket" USING btree ("currency_code");
+CREATE INDEX "idx_77218_set_parent_id" ON "public"."shop_basket" USING btree ("set_parent_id");
+CREATE INDEX "idx_77218_site_id" ON "public"."shop_basket" USING btree ("site_id");
+CREATE INDEX "idx_77218_delay" ON "public"."shop_basket" USING btree ("delay");
+CREATE INDEX "idx_77218_fuser_id" ON "public"."shop_basket" USING btree ("fuser_id");
+CREATE INDEX "idx_77218_catalog_product_xml_id" ON "public"."shop_basket" USING btree ("catalog_xml_id", "product_xml_id");
+CREATE INDEX "idx_77218_updated_at" ON "public"."shop_basket" USING btree ("updated_at");
+CREATE INDEX "idx_77218_product_price_id" ON "public"."shop_basket" USING btree ("product_price_id");
+CREATE INDEX "idx_77218_price" ON "public"."shop_basket" USING btree ("price");
 
 -- ----------------------------
 -- Primary Key structure for table shop_basket
@@ -9033,15 +9036,15 @@ ALTER TABLE "public"."shop_basket" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_basket_props
 -- ----------------------------
-CREATE INDEX "idx_72429_name" ON "public"."shop_basket_props" USING btree ("name");
-CREATE INDEX "idx_72429_created_by" ON "public"."shop_basket_props" USING btree ("created_by");
-CREATE INDEX "idx_72429_updated_at" ON "public"."shop_basket_props" USING btree ("updated_at");
-CREATE INDEX "idx_72429_priority" ON "public"."shop_basket_props" USING btree ("priority");
-CREATE INDEX "idx_72429_created_at" ON "public"."shop_basket_props" USING btree ("created_at");
-CREATE INDEX "idx_72429_code" ON "public"."shop_basket_props" USING btree ("code");
-CREATE INDEX "idx_72429_value" ON "public"."shop_basket_props" USING btree ("value");
-CREATE INDEX "idx_72429_updated_by" ON "public"."shop_basket_props" USING btree ("updated_by");
-CREATE INDEX "idx_72429_shop_basket_id" ON "public"."shop_basket_props" USING btree ("shop_basket_id");
+CREATE INDEX "idx_77237_updated_by" ON "public"."shop_basket_props" USING btree ("updated_by");
+CREATE INDEX "idx_77237_updated_at" ON "public"."shop_basket_props" USING btree ("updated_at");
+CREATE INDEX "idx_77237_created_at" ON "public"."shop_basket_props" USING btree ("created_at");
+CREATE INDEX "idx_77237_created_by" ON "public"."shop_basket_props" USING btree ("created_by");
+CREATE INDEX "idx_77237_code" ON "public"."shop_basket_props" USING btree ("code");
+CREATE INDEX "idx_77237_name" ON "public"."shop_basket_props" USING btree ("name");
+CREATE INDEX "idx_77237_value" ON "public"."shop_basket_props" USING btree ("value");
+CREATE INDEX "idx_77237_priority" ON "public"."shop_basket_props" USING btree ("priority");
+CREATE INDEX "idx_77237_shop_basket_id" ON "public"."shop_basket_props" USING btree ("shop_basket_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_basket_props
@@ -9051,13 +9054,13 @@ ALTER TABLE "public"."shop_basket_props" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_buyer
 -- ----------------------------
-CREATE INDEX "idx_72439_created_at" ON "public"."shop_buyer" USING btree ("created_at");
-CREATE INDEX "idx_72439_updated_at" ON "public"."shop_buyer" USING btree ("updated_at");
-CREATE INDEX "idx_72439_name" ON "public"."shop_buyer" USING btree ("name");
-CREATE INDEX "idx_72439_shop_person_type_id" ON "public"."shop_buyer" USING btree ("shop_person_type_id");
-CREATE INDEX "idx_72439_updated_by" ON "public"."shop_buyer" USING btree ("updated_by");
-CREATE INDEX "idx_72439_created_by" ON "public"."shop_buyer" USING btree ("created_by");
-CREATE INDEX "idx_72439_cms_user_id" ON "public"."shop_buyer" USING btree ("cms_user_id");
+CREATE INDEX "idx_77247_created_at" ON "public"."shop_buyer" USING btree ("created_at");
+CREATE INDEX "idx_77247_name" ON "public"."shop_buyer" USING btree ("name");
+CREATE INDEX "idx_77247_updated_at" ON "public"."shop_buyer" USING btree ("updated_at");
+CREATE INDEX "idx_77247_created_by" ON "public"."shop_buyer" USING btree ("created_by");
+CREATE INDEX "idx_77247_shop_person_type_id" ON "public"."shop_buyer" USING btree ("shop_person_type_id");
+CREATE INDEX "idx_77247_updated_by" ON "public"."shop_buyer" USING btree ("updated_by");
+CREATE INDEX "idx_77247_cms_user_id" ON "public"."shop_buyer" USING btree ("cms_user_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_buyer
@@ -9067,19 +9070,19 @@ ALTER TABLE "public"."shop_buyer" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_buyer_property
 -- ----------------------------
-CREATE INDEX "idx_72445_description" ON "public"."shop_buyer_property" USING btree ("description");
-CREATE INDEX "idx_72445_created_by" ON "public"."shop_buyer_property" USING btree ("created_by");
-CREATE INDEX "idx_72445_value_num2" ON "public"."shop_buyer_property" USING btree ("value_num2");
-CREATE INDEX "idx_72445_created_at" ON "public"."shop_buyer_property" USING btree ("created_at");
-CREATE INDEX "idx_72445_property_id" ON "public"."shop_buyer_property" USING btree ("property_id");
-CREATE INDEX "idx_72445_value" ON "public"."shop_buyer_property" USING btree ("value");
-CREATE INDEX "idx_72445_element_id" ON "public"."shop_buyer_property" USING btree ("element_id");
-CREATE INDEX "idx_72445_updated_by" ON "public"."shop_buyer_property" USING btree ("updated_by");
-CREATE INDEX "idx_72445_value_string" ON "public"."shop_buyer_property" USING btree ("value_string");
-CREATE INDEX "idx_72445_value_int2" ON "public"."shop_buyer_property" USING btree ("value_int2");
-CREATE INDEX "idx_72445_value_enum" ON "public"."shop_buyer_property" USING btree ("value_enum");
-CREATE INDEX "idx_72445_updated_at" ON "public"."shop_buyer_property" USING btree ("updated_at");
-CREATE INDEX "idx_72445_value_num" ON "public"."shop_buyer_property" USING btree ("value_num");
+CREATE INDEX "idx_77253_value_enum" ON "public"."shop_buyer_property" USING btree ("value_enum");
+CREATE INDEX "idx_77253_created_by" ON "public"."shop_buyer_property" USING btree ("created_by");
+CREATE INDEX "idx_77253_value_string" ON "public"."shop_buyer_property" USING btree ("value_string");
+CREATE INDEX "idx_77253_value_int2" ON "public"."shop_buyer_property" USING btree ("value_int2");
+CREATE INDEX "idx_77253_element_id" ON "public"."shop_buyer_property" USING btree ("element_id");
+CREATE INDEX "idx_77253_updated_at" ON "public"."shop_buyer_property" USING btree ("updated_at");
+CREATE INDEX "idx_77253_property_id" ON "public"."shop_buyer_property" USING btree ("property_id");
+CREATE INDEX "idx_77253_description" ON "public"."shop_buyer_property" USING btree ("description");
+CREATE INDEX "idx_77253_value_num2" ON "public"."shop_buyer_property" USING btree ("value_num2");
+CREATE INDEX "idx_77253_updated_by" ON "public"."shop_buyer_property" USING btree ("updated_by");
+CREATE INDEX "idx_77253_value_num" ON "public"."shop_buyer_property" USING btree ("value_num");
+CREATE INDEX "idx_77253_created_at" ON "public"."shop_buyer_property" USING btree ("created_at");
+CREATE INDEX "idx_77253_value" ON "public"."shop_buyer_property" USING btree ("value");
 
 -- ----------------------------
 -- Primary Key structure for table shop_buyer_property
@@ -9089,15 +9092,15 @@ ALTER TABLE "public"."shop_buyer_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_content
 -- ----------------------------
-CREATE INDEX "idx_72454_yandex_export" ON "public"."shop_content" USING btree ("yandex_export");
-CREATE INDEX "idx_72454_updated_by" ON "public"."shop_content" USING btree ("updated_by");
-CREATE INDEX "idx_72454_created_by" ON "public"."shop_content" USING btree ("created_by");
-CREATE INDEX "idx_72454_children_content_id" ON "public"."shop_content" USING btree ("children_content_id");
-CREATE INDEX "idx_72454_updated_at" ON "public"."shop_content" USING btree ("updated_at");
-CREATE UNIQUE INDEX "idx_72454_content_id" ON "public"."shop_content" USING btree ("content_id");
-CREATE INDEX "idx_72454_shop_content_shop_vat" ON "public"."shop_content" USING btree ("vat_id");
-CREATE INDEX "idx_72454_subscription" ON "public"."shop_content" USING btree ("subscription");
-CREATE INDEX "idx_72454_created_at" ON "public"."shop_content" USING btree ("created_at");
+CREATE UNIQUE INDEX "idx_77262_content_id" ON "public"."shop_content" USING btree ("content_id");
+CREATE INDEX "idx_77262_created_by" ON "public"."shop_content" USING btree ("created_by");
+CREATE INDEX "idx_77262_shop_content_shop_vat" ON "public"."shop_content" USING btree ("vat_id");
+CREATE INDEX "idx_77262_updated_by" ON "public"."shop_content" USING btree ("updated_by");
+CREATE INDEX "idx_77262_subscription" ON "public"."shop_content" USING btree ("subscription");
+CREATE INDEX "idx_77262_children_content_id" ON "public"."shop_content" USING btree ("children_content_id");
+CREATE INDEX "idx_77262_updated_at" ON "public"."shop_content" USING btree ("updated_at");
+CREATE INDEX "idx_77262_created_at" ON "public"."shop_content" USING btree ("created_at");
+CREATE INDEX "idx_77262_yandex_export" ON "public"."shop_content" USING btree ("yandex_export");
 
 -- ----------------------------
 -- Primary Key structure for table shop_content
@@ -9107,25 +9110,25 @@ ALTER TABLE "public"."shop_content" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_delivery
 -- ----------------------------
-CREATE INDEX "idx_72462_updated_by" ON "public"."shop_delivery" USING btree ("updated_by");
-CREATE INDEX "idx_72462_updated_at" ON "public"."shop_delivery" USING btree ("updated_at");
-CREATE INDEX "idx_72462_site_id" ON "public"."shop_delivery" USING btree ("site_id");
-CREATE INDEX "idx_72462_active" ON "public"."shop_delivery" USING btree ("active");
-CREATE INDEX "idx_72462_created_at" ON "public"."shop_delivery" USING btree ("created_at");
-CREATE INDEX "idx_72462_order_price_from" ON "public"."shop_delivery" USING btree ("order_price_from");
-CREATE INDEX "idx_72462_logo_id" ON "public"."shop_delivery" USING btree ("logo_id");
-CREATE INDEX "idx_72462_name" ON "public"."shop_delivery" USING btree ("name");
-CREATE INDEX "idx_72462_period_type" ON "public"."shop_delivery" USING btree ("period_type");
-CREATE INDEX "idx_72462_order_price_to" ON "public"."shop_delivery" USING btree ("order_price_to");
-CREATE INDEX "idx_72462_period_from" ON "public"."shop_delivery" USING btree ("period_from");
-CREATE INDEX "idx_72462_order_currency_code" ON "public"."shop_delivery" USING btree ("order_currency_code");
-CREATE INDEX "idx_72462_weight_from" ON "public"."shop_delivery" USING btree ("weight_from");
-CREATE INDEX "idx_72462_period_to" ON "public"."shop_delivery" USING btree ("period_to");
-CREATE INDEX "idx_72462_priority" ON "public"."shop_delivery" USING btree ("priority");
-CREATE INDEX "idx_72462_price" ON "public"."shop_delivery" USING btree ("price");
-CREATE INDEX "idx_72462_created_by" ON "public"."shop_delivery" USING btree ("created_by");
-CREATE INDEX "idx_72462_currency_code" ON "public"."shop_delivery" USING btree ("currency_code");
-CREATE INDEX "idx_72462_weight_to" ON "public"."shop_delivery" USING btree ("weight_to");
+CREATE INDEX "idx_77270_order_price_to" ON "public"."shop_delivery" USING btree ("order_price_to");
+CREATE INDEX "idx_77270_period_to" ON "public"."shop_delivery" USING btree ("period_to");
+CREATE INDEX "idx_77270_period_from" ON "public"."shop_delivery" USING btree ("period_from");
+CREATE INDEX "idx_77270_active" ON "public"."shop_delivery" USING btree ("active");
+CREATE INDEX "idx_77270_logo_id" ON "public"."shop_delivery" USING btree ("logo_id");
+CREATE INDEX "idx_77270_currency_code" ON "public"."shop_delivery" USING btree ("currency_code");
+CREATE INDEX "idx_77270_weight_to" ON "public"."shop_delivery" USING btree ("weight_to");
+CREATE INDEX "idx_77270_period_type" ON "public"."shop_delivery" USING btree ("period_type");
+CREATE INDEX "idx_77270_priority" ON "public"."shop_delivery" USING btree ("priority");
+CREATE INDEX "idx_77270_updated_at" ON "public"."shop_delivery" USING btree ("updated_at");
+CREATE INDEX "idx_77270_name" ON "public"."shop_delivery" USING btree ("name");
+CREATE INDEX "idx_77270_updated_by" ON "public"."shop_delivery" USING btree ("updated_by");
+CREATE INDEX "idx_77270_order_currency_code" ON "public"."shop_delivery" USING btree ("order_currency_code");
+CREATE INDEX "idx_77270_created_by" ON "public"."shop_delivery" USING btree ("created_by");
+CREATE INDEX "idx_77270_site_id" ON "public"."shop_delivery" USING btree ("site_id");
+CREATE INDEX "idx_77270_order_price_from" ON "public"."shop_delivery" USING btree ("order_price_from");
+CREATE INDEX "idx_77270_weight_from" ON "public"."shop_delivery" USING btree ("weight_from");
+CREATE INDEX "idx_77270_created_at" ON "public"."shop_delivery" USING btree ("created_at");
+CREATE INDEX "idx_77270_price" ON "public"."shop_delivery" USING btree ("price");
 
 -- ----------------------------
 -- Primary Key structure for table shop_delivery
@@ -9135,12 +9138,12 @@ ALTER TABLE "public"."shop_delivery" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_delivery2pay_system
 -- ----------------------------
-CREATE INDEX "idx_72473_created_at" ON "public"."shop_delivery2pay_system" USING btree ("created_at");
-CREATE UNIQUE INDEX "idx_72473_shop_delivery2pay_system" ON "public"."shop_delivery2pay_system" USING btree ("pay_system_id", "delivery_id");
-CREATE INDEX "idx_72473_shop_delivery2pay_system__shop_delivery" ON "public"."shop_delivery2pay_system" USING btree ("delivery_id");
-CREATE INDEX "idx_72473_created_by" ON "public"."shop_delivery2pay_system" USING btree ("created_by");
-CREATE INDEX "idx_72473_updated_at" ON "public"."shop_delivery2pay_system" USING btree ("updated_at");
-CREATE INDEX "idx_72473_updated_by" ON "public"."shop_delivery2pay_system" USING btree ("updated_by");
+CREATE UNIQUE INDEX "idx_77281_shop_delivery2pay_system" ON "public"."shop_delivery2pay_system" USING btree ("pay_system_id", "delivery_id");
+CREATE INDEX "idx_77281_shop_delivery2pay_system__shop_delivery" ON "public"."shop_delivery2pay_system" USING btree ("delivery_id");
+CREATE INDEX "idx_77281_updated_at" ON "public"."shop_delivery2pay_system" USING btree ("updated_at");
+CREATE INDEX "idx_77281_created_at" ON "public"."shop_delivery2pay_system" USING btree ("created_at");
+CREATE INDEX "idx_77281_created_by" ON "public"."shop_delivery2pay_system" USING btree ("created_by");
+CREATE INDEX "idx_77281_updated_by" ON "public"."shop_delivery2pay_system" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table shop_delivery2pay_system
@@ -9150,35 +9153,35 @@ ALTER TABLE "public"."shop_delivery2pay_system" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_discount
 -- ----------------------------
-CREATE INDEX "idx_72479_max_uses" ON "public"."shop_discount" USING btree ("max_uses");
-CREATE INDEX "idx_72479_max_discount" ON "public"."shop_discount" USING btree ("max_discount");
-CREATE INDEX "idx_72479_value" ON "public"."shop_discount" USING btree ("value");
-CREATE INDEX "idx_72479_action_size" ON "public"."shop_discount" USING btree ("action_size");
-CREATE INDEX "idx_72479_active_to" ON "public"."shop_discount" USING btree ("active_to");
-CREATE INDEX "idx_72479_last_discount" ON "public"."shop_discount" USING btree ("last_discount");
-CREATE INDEX "idx_72479_count_to" ON "public"."shop_discount" USING btree ("count_to");
-CREATE INDEX "idx_72479_coupon" ON "public"."shop_discount" USING btree ("coupon");
-CREATE INDEX "idx_72479_count_type" ON "public"."shop_discount" USING btree ("count_type");
-CREATE INDEX "idx_72479_count_from" ON "public"."shop_discount" USING btree ("count_from");
-CREATE INDEX "idx_72479_count_size" ON "public"."shop_discount" USING btree ("count_size");
-CREATE INDEX "idx_72479_action_type" ON "public"."shop_discount" USING btree ("action_type");
-CREATE INDEX "idx_72479_count_period" ON "public"."shop_discount" USING btree ("count_period");
-CREATE INDEX "idx_72479_site_id" ON "public"."shop_discount" USING btree ("site_id");
-CREATE INDEX "idx_72479_currency_code" ON "public"."shop_discount" USING btree ("currency_code");
-CREATE INDEX "idx_72479_created_by" ON "public"."shop_discount" USING btree ("created_by");
-CREATE INDEX "idx_72479_min_order_sum" ON "public"."shop_discount" USING btree ("min_order_sum");
-CREATE INDEX "idx_72479_version" ON "public"."shop_discount" USING btree ("version");
-CREATE INDEX "idx_72479_count_uses" ON "public"."shop_discount" USING btree ("count_uses");
-CREATE INDEX "idx_72479_type" ON "public"."shop_discount" USING btree ("type");
-CREATE INDEX "idx_72479_renewal" ON "public"."shop_discount" USING btree ("renewal");
-CREATE INDEX "idx_72479_created_at" ON "public"."shop_discount" USING btree ("created_at");
-CREATE INDEX "idx_72479_updated_at" ON "public"."shop_discount" USING btree ("updated_at");
-CREATE INDEX "idx_72479_value_type" ON "public"."shop_discount" USING btree ("value_type");
-CREATE INDEX "idx_72479_updated_by" ON "public"."shop_discount" USING btree ("updated_by");
-CREATE INDEX "idx_72479_priority" ON "public"."shop_discount" USING btree ("priority");
-CREATE INDEX "idx_72479_active_from" ON "public"."shop_discount" USING btree ("active_from");
-CREATE INDEX "idx_72479_active" ON "public"."shop_discount" USING btree ("active");
-CREATE INDEX "idx_72479_name" ON "public"."shop_discount" USING btree ("name");
+CREATE INDEX "idx_77287_active_from" ON "public"."shop_discount" USING btree ("active_from");
+CREATE INDEX "idx_77287_active_to" ON "public"."shop_discount" USING btree ("active_to");
+CREATE INDEX "idx_77287_count_from" ON "public"."shop_discount" USING btree ("count_from");
+CREATE INDEX "idx_77287_currency_code" ON "public"."shop_discount" USING btree ("currency_code");
+CREATE INDEX "idx_77287_count_period" ON "public"."shop_discount" USING btree ("count_period");
+CREATE INDEX "idx_77287_updated_at" ON "public"."shop_discount" USING btree ("updated_at");
+CREATE INDEX "idx_77287_type" ON "public"."shop_discount" USING btree ("type");
+CREATE INDEX "idx_77287_priority" ON "public"."shop_discount" USING btree ("priority");
+CREATE INDEX "idx_77287_version" ON "public"."shop_discount" USING btree ("version");
+CREATE INDEX "idx_77287_value_type" ON "public"."shop_discount" USING btree ("value_type");
+CREATE INDEX "idx_77287_max_discount" ON "public"."shop_discount" USING btree ("max_discount");
+CREATE INDEX "idx_77287_count_type" ON "public"."shop_discount" USING btree ("count_type");
+CREATE INDEX "idx_77287_min_order_sum" ON "public"."shop_discount" USING btree ("min_order_sum");
+CREATE INDEX "idx_77287_coupon" ON "public"."shop_discount" USING btree ("coupon");
+CREATE INDEX "idx_77287_created_at" ON "public"."shop_discount" USING btree ("created_at");
+CREATE INDEX "idx_77287_name" ON "public"."shop_discount" USING btree ("name");
+CREATE INDEX "idx_77287_action_type" ON "public"."shop_discount" USING btree ("action_type");
+CREATE INDEX "idx_77287_action_size" ON "public"."shop_discount" USING btree ("action_size");
+CREATE INDEX "idx_77287_count_to" ON "public"."shop_discount" USING btree ("count_to");
+CREATE INDEX "idx_77287_active" ON "public"."shop_discount" USING btree ("active");
+CREATE INDEX "idx_77287_created_by" ON "public"."shop_discount" USING btree ("created_by");
+CREATE INDEX "idx_77287_max_uses" ON "public"."shop_discount" USING btree ("max_uses");
+CREATE INDEX "idx_77287_count_uses" ON "public"."shop_discount" USING btree ("count_uses");
+CREATE INDEX "idx_77287_value" ON "public"."shop_discount" USING btree ("value");
+CREATE INDEX "idx_77287_count_size" ON "public"."shop_discount" USING btree ("count_size");
+CREATE INDEX "idx_77287_updated_by" ON "public"."shop_discount" USING btree ("updated_by");
+CREATE INDEX "idx_77287_renewal" ON "public"."shop_discount" USING btree ("renewal");
+CREATE INDEX "idx_77287_last_discount" ON "public"."shop_discount" USING btree ("last_discount");
+CREATE INDEX "idx_77287_site_id" ON "public"."shop_discount" USING btree ("site_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_discount
@@ -9188,18 +9191,18 @@ ALTER TABLE "public"."shop_discount" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_discount_coupon
 -- ----------------------------
-CREATE INDEX "idx_72510_active_to" ON "public"."shop_discount_coupon" USING btree ("active_to");
-CREATE INDEX "idx_72510_updated_by" ON "public"."shop_discount_coupon" USING btree ("updated_by");
-CREATE INDEX "idx_72510_created_at" ON "public"."shop_discount_coupon" USING btree ("created_at");
-CREATE INDEX "idx_72510_updated_at" ON "public"."shop_discount_coupon" USING btree ("updated_at");
-CREATE INDEX "idx_72510_use_count" ON "public"."shop_discount_coupon" USING btree ("use_count");
-CREATE INDEX "idx_72510_created_by" ON "public"."shop_discount_coupon" USING btree ("created_by");
-CREATE INDEX "idx_72510_is_active" ON "public"."shop_discount_coupon" USING btree ("is_active");
-CREATE INDEX "idx_72510_coupon" ON "public"."shop_discount_coupon" USING btree ("coupon");
-CREATE INDEX "idx_72510_shop_discount_id" ON "public"."shop_discount_coupon" USING btree ("shop_discount_id");
-CREATE INDEX "idx_72510_max_use" ON "public"."shop_discount_coupon" USING btree ("max_use");
-CREATE INDEX "idx_72510_cms_user_id" ON "public"."shop_discount_coupon" USING btree ("cms_user_id");
-CREATE INDEX "idx_72510_active_from" ON "public"."shop_discount_coupon" USING btree ("active_from");
+CREATE INDEX "idx_77318_created_at" ON "public"."shop_discount_coupon" USING btree ("created_at");
+CREATE INDEX "idx_77318_created_by" ON "public"."shop_discount_coupon" USING btree ("created_by");
+CREATE INDEX "idx_77318_is_active" ON "public"."shop_discount_coupon" USING btree ("is_active");
+CREATE INDEX "idx_77318_active_from" ON "public"."shop_discount_coupon" USING btree ("active_from");
+CREATE INDEX "idx_77318_max_use" ON "public"."shop_discount_coupon" USING btree ("max_use");
+CREATE INDEX "idx_77318_updated_at" ON "public"."shop_discount_coupon" USING btree ("updated_at");
+CREATE INDEX "idx_77318_use_count" ON "public"."shop_discount_coupon" USING btree ("use_count");
+CREATE INDEX "idx_77318_cms_user_id" ON "public"."shop_discount_coupon" USING btree ("cms_user_id");
+CREATE INDEX "idx_77318_active_to" ON "public"."shop_discount_coupon" USING btree ("active_to");
+CREATE INDEX "idx_77318_shop_discount_id" ON "public"."shop_discount_coupon" USING btree ("shop_discount_id");
+CREATE INDEX "idx_77318_coupon" ON "public"."shop_discount_coupon" USING btree ("coupon");
+CREATE INDEX "idx_77318_updated_by" ON "public"."shop_discount_coupon" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table shop_discount_coupon
@@ -9209,12 +9212,12 @@ ALTER TABLE "public"."shop_discount_coupon" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_discount2type_price
 -- ----------------------------
-CREATE INDEX "idx_72504_created_by" ON "public"."shop_discount2type_price" USING btree ("created_by");
-CREATE INDEX "idx_72504_created_at" ON "public"."shop_discount2type_price" USING btree ("created_at");
-CREATE INDEX "idx_72504_updated_at" ON "public"."shop_discount2type_price" USING btree ("updated_at");
-CREATE INDEX "idx_72504_shop_discount2type_price__type_price_id" ON "public"."shop_discount2type_price" USING btree ("type_price_id");
-CREATE UNIQUE INDEX "idx_72504_discount_id__type_price_id" ON "public"."shop_discount2type_price" USING btree ("discount_id", "type_price_id");
-CREATE INDEX "idx_72504_updated_by" ON "public"."shop_discount2type_price" USING btree ("updated_by");
+CREATE INDEX "idx_77312_created_by" ON "public"."shop_discount2type_price" USING btree ("created_by");
+CREATE INDEX "idx_77312_created_at" ON "public"."shop_discount2type_price" USING btree ("created_at");
+CREATE UNIQUE INDEX "idx_77312_discount_id__type_price_id" ON "public"."shop_discount2type_price" USING btree ("discount_id", "type_price_id");
+CREATE INDEX "idx_77312_updated_by" ON "public"."shop_discount2type_price" USING btree ("updated_by");
+CREATE INDEX "idx_77312_updated_at" ON "public"."shop_discount2type_price" USING btree ("updated_at");
+CREATE INDEX "idx_77312_shop_discount2type_price__type_price_id" ON "public"."shop_discount2type_price" USING btree ("type_price_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_discount2type_price
@@ -9224,12 +9227,12 @@ ALTER TABLE "public"."shop_discount2type_price" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_extra
 -- ----------------------------
-CREATE INDEX "idx_72519_created_by" ON "public"."shop_extra" USING btree ("created_by");
-CREATE INDEX "idx_72519_value" ON "public"."shop_extra" USING btree ("value");
-CREATE INDEX "idx_72519_updated_by" ON "public"."shop_extra" USING btree ("updated_by");
-CREATE INDEX "idx_72519_created_at" ON "public"."shop_extra" USING btree ("created_at");
-CREATE INDEX "idx_72519_name" ON "public"."shop_extra" USING btree ("name");
-CREATE INDEX "idx_72519_updated_at" ON "public"."shop_extra" USING btree ("updated_at");
+CREATE INDEX "idx_77327_value" ON "public"."shop_extra" USING btree ("value");
+CREATE INDEX "idx_77327_updated_at" ON "public"."shop_extra" USING btree ("updated_at");
+CREATE INDEX "idx_77327_created_by" ON "public"."shop_extra" USING btree ("created_by");
+CREATE INDEX "idx_77327_name" ON "public"."shop_extra" USING btree ("name");
+CREATE INDEX "idx_77327_created_at" ON "public"."shop_extra" USING btree ("created_at");
+CREATE INDEX "idx_77327_updated_by" ON "public"."shop_extra" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table shop_extra
@@ -9239,17 +9242,17 @@ ALTER TABLE "public"."shop_extra" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_fuser
 -- ----------------------------
-CREATE INDEX "idx_72525_updated_at" ON "public"."shop_fuser" USING btree ("updated_at");
-CREATE INDEX "idx_72525_shop_fuser__store_id" ON "public"."shop_fuser" USING btree ("store_id");
-CREATE INDEX "idx_72525_shop_fuser__site_id" ON "public"."shop_fuser" USING btree ("site_id");
-CREATE INDEX "idx_72525_created_at" ON "public"."shop_fuser" USING btree ("created_at");
-CREATE INDEX "idx_72525_created_by" ON "public"."shop_fuser" USING btree ("created_by");
-CREATE INDEX "idx_72525_shop_fuser__delivery_id" ON "public"."shop_fuser" USING btree ("delivery_id");
-CREATE INDEX "idx_72525_shop_fuser__shop_buyer" ON "public"."shop_fuser" USING btree ("buyer_id");
-CREATE INDEX "idx_72525_shop_fuser__person_type_id" ON "public"."shop_fuser" USING btree ("person_type_id");
-CREATE INDEX "idx_72525_updated_by" ON "public"."shop_fuser" USING btree ("updated_by");
-CREATE INDEX "idx_72525_shop_fuser__pay_system_id" ON "public"."shop_fuser" USING btree ("pay_system_id");
-CREATE UNIQUE INDEX "idx_72525_user_id" ON "public"."shop_fuser" USING btree ("user_id");
+CREATE INDEX "idx_77333_shop_fuser__delivery_id" ON "public"."shop_fuser" USING btree ("delivery_id");
+CREATE INDEX "idx_77333_shop_fuser__pay_system_id" ON "public"."shop_fuser" USING btree ("pay_system_id");
+CREATE INDEX "idx_77333_shop_fuser__person_type_id" ON "public"."shop_fuser" USING btree ("person_type_id");
+CREATE INDEX "idx_77333_shop_fuser__shop_buyer" ON "public"."shop_fuser" USING btree ("buyer_id");
+CREATE INDEX "idx_77333_updated_at" ON "public"."shop_fuser" USING btree ("updated_at");
+CREATE UNIQUE INDEX "idx_77333_user_id" ON "public"."shop_fuser" USING btree ("user_id");
+CREATE INDEX "idx_77333_created_by" ON "public"."shop_fuser" USING btree ("created_by");
+CREATE INDEX "idx_77333_created_at" ON "public"."shop_fuser" USING btree ("created_at");
+CREATE INDEX "idx_77333_shop_fuser__store_id" ON "public"."shop_fuser" USING btree ("store_id");
+CREATE INDEX "idx_77333_updated_by" ON "public"."shop_fuser" USING btree ("updated_by");
+CREATE INDEX "idx_77333_shop_fuser__site_id" ON "public"."shop_fuser" USING btree ("site_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_fuser
@@ -9259,24 +9262,24 @@ ALTER TABLE "public"."shop_fuser" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_order
 -- ----------------------------
-CREATE INDEX "idx_72534_person_type_id" ON "public"."shop_order" USING btree ("person_type_id");
-CREATE UNIQUE INDEX "idx_72534_key" ON "public"."shop_order" USING btree ("key");
-CREATE INDEX "idx_72534_created_by" ON "public"."shop_order" USING btree ("created_by");
-CREATE INDEX "idx_72534_currency_code" ON "public"."shop_order" USING btree ("currency_code");
-CREATE INDEX "idx_72534_pay_system_id" ON "public"."shop_order" USING btree ("pay_system_id");
-CREATE INDEX "idx_72534_created_at" ON "public"."shop_order" USING btree ("created_at");
-CREATE INDEX "idx_72534_status_code" ON "public"."shop_order" USING btree ("status_code");
-CREATE INDEX "idx_72534_shop_order__buyer_id" ON "public"."shop_order" USING btree ("buyer_id");
-CREATE INDEX "idx_72534_affiliate_id" ON "public"."shop_order" USING btree ("affiliate_id");
-CREATE INDEX "idx_72534_updated_by" ON "public"."shop_order" USING btree ("updated_by");
-CREATE INDEX "idx_72534_payed_at" ON "public"."shop_order" USING btree ("payed_at");
-CREATE INDEX "idx_72534_payed" ON "public"."shop_order" USING btree ("payed");
-CREATE INDEX "idx_72534_delivery_id" ON "public"."shop_order" USING btree ("delivery_id");
-CREATE INDEX "idx_72534_locked_by" ON "public"."shop_order" USING btree ("locked_by");
-CREATE INDEX "idx_72534_updated_at" ON "public"."shop_order" USING btree ("updated_at");
-CREATE INDEX "idx_72534_user_id" ON "public"."shop_order" USING btree ("user_id");
-CREATE INDEX "idx_72534_store_id" ON "public"."shop_order" USING btree ("store_id");
-CREATE INDEX "idx_72534_site_id" ON "public"."shop_order" USING btree ("site_id");
+CREATE INDEX "idx_77342_updated_at" ON "public"."shop_order" USING btree ("updated_at");
+CREATE INDEX "idx_77342_shop_order__buyer_id" ON "public"."shop_order" USING btree ("buyer_id");
+CREATE INDEX "idx_77342_updated_by" ON "public"."shop_order" USING btree ("updated_by");
+CREATE INDEX "idx_77342_payed" ON "public"."shop_order" USING btree ("payed");
+CREATE INDEX "idx_77342_user_id" ON "public"."shop_order" USING btree ("user_id");
+CREATE INDEX "idx_77342_payed_at" ON "public"."shop_order" USING btree ("payed_at");
+CREATE INDEX "idx_77342_created_at" ON "public"."shop_order" USING btree ("created_at");
+CREATE INDEX "idx_77342_created_by" ON "public"."shop_order" USING btree ("created_by");
+CREATE INDEX "idx_77342_delivery_id" ON "public"."shop_order" USING btree ("delivery_id");
+CREATE INDEX "idx_77342_site_id" ON "public"."shop_order" USING btree ("site_id");
+CREATE INDEX "idx_77342_person_type_id" ON "public"."shop_order" USING btree ("person_type_id");
+CREATE INDEX "idx_77342_status_code" ON "public"."shop_order" USING btree ("status_code");
+CREATE INDEX "idx_77342_currency_code" ON "public"."shop_order" USING btree ("currency_code");
+CREATE INDEX "idx_77342_affiliate_id" ON "public"."shop_order" USING btree ("affiliate_id");
+CREATE INDEX "idx_77342_store_id" ON "public"."shop_order" USING btree ("store_id");
+CREATE INDEX "idx_77342_pay_system_id" ON "public"."shop_order" USING btree ("pay_system_id");
+CREATE UNIQUE INDEX "idx_77342_key" ON "public"."shop_order" USING btree ("key");
+CREATE INDEX "idx_77342_locked_by" ON "public"."shop_order" USING btree ("locked_by");
 
 -- ----------------------------
 -- Primary Key structure for table shop_order
@@ -9286,12 +9289,12 @@ ALTER TABLE "public"."shop_order" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_order_change
 -- ----------------------------
-CREATE INDEX "idx_72566_updated_at" ON "public"."shop_order_change" USING btree ("updated_at");
-CREATE INDEX "idx_72566_created_by" ON "public"."shop_order_change" USING btree ("created_by");
-CREATE INDEX "idx_72566_shop_order_id" ON "public"."shop_order_change" USING btree ("shop_order_id");
-CREATE INDEX "idx_72566_created_at" ON "public"."shop_order_change" USING btree ("created_at");
-CREATE INDEX "idx_72566_type" ON "public"."shop_order_change" USING btree ("type");
-CREATE INDEX "idx_72566_updated_by" ON "public"."shop_order_change" USING btree ("updated_by");
+CREATE INDEX "idx_77374_shop_order_id" ON "public"."shop_order_change" USING btree ("shop_order_id");
+CREATE INDEX "idx_77374_created_at" ON "public"."shop_order_change" USING btree ("created_at");
+CREATE INDEX "idx_77374_updated_at" ON "public"."shop_order_change" USING btree ("updated_at");
+CREATE INDEX "idx_77374_updated_by" ON "public"."shop_order_change" USING btree ("updated_by");
+CREATE INDEX "idx_77374_type" ON "public"."shop_order_change" USING btree ("type");
+CREATE INDEX "idx_77374_created_by" ON "public"."shop_order_change" USING btree ("created_by");
 
 -- ----------------------------
 -- Primary Key structure for table shop_order_change
@@ -9301,14 +9304,14 @@ ALTER TABLE "public"."shop_order_change" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_order_status
 -- ----------------------------
-CREATE INDEX "idx_72575_updated_at" ON "public"."shop_order_status" USING btree ("updated_at");
-CREATE UNIQUE INDEX "idx_72575_code" ON "public"."shop_order_status" USING btree ("code");
-CREATE INDEX "idx_72575_created_by" ON "public"."shop_order_status" USING btree ("created_by");
-CREATE INDEX "idx_72575_name" ON "public"."shop_order_status" USING btree ("name");
-CREATE INDEX "idx_72575_created_at" ON "public"."shop_order_status" USING btree ("created_at");
-CREATE INDEX "idx_72575_updated_by" ON "public"."shop_order_status" USING btree ("updated_by");
-CREATE INDEX "idx_72575_priority" ON "public"."shop_order_status" USING btree ("priority");
-CREATE INDEX "idx_72575_color" ON "public"."shop_order_status" USING btree ("color");
+CREATE INDEX "idx_77383_created_by" ON "public"."shop_order_status" USING btree ("created_by");
+CREATE INDEX "idx_77383_name" ON "public"."shop_order_status" USING btree ("name");
+CREATE INDEX "idx_77383_priority" ON "public"."shop_order_status" USING btree ("priority");
+CREATE UNIQUE INDEX "idx_77383_code" ON "public"."shop_order_status" USING btree ("code");
+CREATE INDEX "idx_77383_color" ON "public"."shop_order_status" USING btree ("color");
+CREATE INDEX "idx_77383_updated_by" ON "public"."shop_order_status" USING btree ("updated_by");
+CREATE INDEX "idx_77383_created_at" ON "public"."shop_order_status" USING btree ("created_at");
+CREATE INDEX "idx_77383_updated_at" ON "public"."shop_order_status" USING btree ("updated_at");
 
 -- ----------------------------
 -- Primary Key structure for table shop_order_status
@@ -9318,12 +9321,12 @@ ALTER TABLE "public"."shop_order_status" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_order2discount_coupon
 -- ----------------------------
-CREATE INDEX "idx_72559_order_id" ON "public"."shop_order2discount_coupon" USING btree ("order_id");
-CREATE INDEX "idx_72559_discount_coupon_id" ON "public"."shop_order2discount_coupon" USING btree ("discount_coupon_id");
-CREATE INDEX "idx_72559_updated_at" ON "public"."shop_order2discount_coupon" USING btree ("updated_at");
-CREATE INDEX "idx_72559_updated_by" ON "public"."shop_order2discount_coupon" USING btree ("updated_by");
-CREATE INDEX "idx_72559_created_by" ON "public"."shop_order2discount_coupon" USING btree ("created_by");
-CREATE INDEX "idx_72559_created_at" ON "public"."shop_order2discount_coupon" USING btree ("created_at");
+CREATE INDEX "idx_77367_updated_by" ON "public"."shop_order2discount_coupon" USING btree ("updated_by");
+CREATE INDEX "idx_77367_updated_at" ON "public"."shop_order2discount_coupon" USING btree ("updated_at");
+CREATE INDEX "idx_77367_created_by" ON "public"."shop_order2discount_coupon" USING btree ("created_by");
+CREATE INDEX "idx_77367_discount_coupon_id" ON "public"."shop_order2discount_coupon" USING btree ("discount_coupon_id");
+CREATE INDEX "idx_77367_order_id" ON "public"."shop_order2discount_coupon" USING btree ("order_id");
+CREATE INDEX "idx_77367_created_at" ON "public"."shop_order2discount_coupon" USING btree ("created_at");
 
 -- ----------------------------
 -- Primary Key structure for table shop_order2discount_coupon
@@ -9333,13 +9336,13 @@ ALTER TABLE "public"."shop_order2discount_coupon" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_pay_system
 -- ----------------------------
-CREATE INDEX "idx_72585_created_at" ON "public"."shop_pay_system" USING btree ("created_at");
-CREATE INDEX "idx_72585_priority" ON "public"."shop_pay_system" USING btree ("priority");
-CREATE INDEX "idx_72585_updated_at" ON "public"."shop_pay_system" USING btree ("updated_at");
-CREATE INDEX "idx_72585_active" ON "public"."shop_pay_system" USING btree ("active");
-CREATE INDEX "idx_72585_created_by" ON "public"."shop_pay_system" USING btree ("created_by");
-CREATE INDEX "idx_72585_updated_by" ON "public"."shop_pay_system" USING btree ("updated_by");
-CREATE UNIQUE INDEX "idx_72585_name" ON "public"."shop_pay_system" USING btree ("name");
+CREATE UNIQUE INDEX "idx_77393_name" ON "public"."shop_pay_system" USING btree ("name");
+CREATE INDEX "idx_77393_priority" ON "public"."shop_pay_system" USING btree ("priority");
+CREATE INDEX "idx_77393_updated_at" ON "public"."shop_pay_system" USING btree ("updated_at");
+CREATE INDEX "idx_77393_active" ON "public"."shop_pay_system" USING btree ("active");
+CREATE INDEX "idx_77393_created_at" ON "public"."shop_pay_system" USING btree ("created_at");
+CREATE INDEX "idx_77393_created_by" ON "public"."shop_pay_system" USING btree ("created_by");
+CREATE INDEX "idx_77393_updated_by" ON "public"."shop_pay_system" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table shop_pay_system
@@ -9349,19 +9352,19 @@ ALTER TABLE "public"."shop_pay_system" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_pay_system_person_type
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_72594_pay_system_id__person_type_id" ON "public"."shop_pay_system_person_type" USING btree ("pay_system_id", "person_type_id");
-CREATE INDEX "idx_72594_shop_pay_system_person_type_person_type_id" ON "public"."shop_pay_system_person_type" USING btree ("person_type_id");
+CREATE INDEX "idx_77402_shop_pay_system_person_type_person_type_id" ON "public"."shop_pay_system_person_type" USING btree ("person_type_id");
+CREATE UNIQUE INDEX "idx_77402_pay_system_id__person_type_id" ON "public"."shop_pay_system_person_type" USING btree ("pay_system_id", "person_type_id");
 
 -- ----------------------------
 -- Indexes structure for table shop_person_type
 -- ----------------------------
-CREATE INDEX "idx_72599_created_at" ON "public"."shop_person_type" USING btree ("created_at");
-CREATE INDEX "idx_72599_active" ON "public"."shop_person_type" USING btree ("active");
-CREATE INDEX "idx_72599_created_by" ON "public"."shop_person_type" USING btree ("created_by");
-CREATE INDEX "idx_72599_updated_by" ON "public"."shop_person_type" USING btree ("updated_by");
-CREATE INDEX "idx_72599_updated_at" ON "public"."shop_person_type" USING btree ("updated_at");
-CREATE UNIQUE INDEX "idx_72599_name" ON "public"."shop_person_type" USING btree ("name");
-CREATE INDEX "idx_72599_priority" ON "public"."shop_person_type" USING btree ("priority");
+CREATE INDEX "idx_77407_updated_at" ON "public"."shop_person_type" USING btree ("updated_at");
+CREATE INDEX "idx_77407_created_at" ON "public"."shop_person_type" USING btree ("created_at");
+CREATE INDEX "idx_77407_updated_by" ON "public"."shop_person_type" USING btree ("updated_by");
+CREATE INDEX "idx_77407_created_by" ON "public"."shop_person_type" USING btree ("created_by");
+CREATE UNIQUE INDEX "idx_77407_name" ON "public"."shop_person_type" USING btree ("name");
+CREATE INDEX "idx_77407_active" ON "public"."shop_person_type" USING btree ("active");
+CREATE INDEX "idx_77407_priority" ON "public"."shop_person_type" USING btree ("priority");
 
 -- ----------------------------
 -- Primary Key structure for table shop_person_type
@@ -9371,28 +9374,28 @@ ALTER TABLE "public"."shop_person_type" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_person_type_property
 -- ----------------------------
-CREATE INDEX "idx_72607_is_order_location_delivery" ON "public"."shop_person_type_property" USING btree ("is_order_location_delivery");
-CREATE INDEX "idx_72607_is_buyer_name" ON "public"."shop_person_type_property" USING btree ("is_buyer_name");
-CREATE INDEX "idx_72607_hint" ON "public"."shop_person_type_property" USING btree ("hint");
-CREATE INDEX "idx_72607_shop_person_type_id" ON "public"."shop_person_type_property" USING btree ("shop_person_type_id");
-CREATE INDEX "idx_72607_is_required" ON "public"."shop_person_type_property" USING btree ("is_required");
-CREATE INDEX "idx_72607_is_user_phone" ON "public"."shop_person_type_property" USING btree ("is_user_phone");
-CREATE INDEX "idx_72607_active" ON "public"."shop_person_type_property" USING btree ("active");
-CREATE INDEX "idx_72607_created_by" ON "public"."shop_person_type_property" USING btree ("created_by");
-CREATE UNIQUE INDEX "idx_72607_shop_person_type_id_2" ON "public"."shop_person_type_property" USING btree ("shop_person_type_id", "code");
-CREATE INDEX "idx_72607_is_order_location_tax" ON "public"."shop_person_type_property" USING btree ("is_order_location_tax");
-CREATE INDEX "idx_72607_property_type" ON "public"."shop_person_type_property" USING btree ("property_type");
-CREATE INDEX "idx_72607_created_at" ON "public"."shop_person_type_property" USING btree ("created_at");
-CREATE INDEX "idx_72607_is_user_username" ON "public"."shop_person_type_property" USING btree ("is_user_username");
-CREATE INDEX "idx_72607_component" ON "public"."shop_person_type_property" USING btree ("component");
-CREATE INDEX "idx_72607_priority" ON "public"."shop_person_type_property" USING btree ("priority");
-CREATE INDEX "idx_72607_is_user_name" ON "public"."shop_person_type_property" USING btree ("is_user_name");
-CREATE INDEX "idx_72607_multiple" ON "public"."shop_person_type_property" USING btree ("multiple");
-CREATE INDEX "idx_72607_name" ON "public"."shop_person_type_property" USING btree ("name");
-CREATE INDEX "idx_72607_updated_by" ON "public"."shop_person_type_property" USING btree ("updated_by");
-CREATE INDEX "idx_72607_is_order_postcode" ON "public"."shop_person_type_property" USING btree ("is_order_postcode");
-CREATE INDEX "idx_72607_is_user_email" ON "public"."shop_person_type_property" USING btree ("is_user_email");
-CREATE INDEX "idx_72607_updated_at" ON "public"."shop_person_type_property" USING btree ("updated_at");
+CREATE INDEX "idx_77415_multiple" ON "public"."shop_person_type_property" USING btree ("multiple");
+CREATE INDEX "idx_77415_is_required" ON "public"."shop_person_type_property" USING btree ("is_required");
+CREATE INDEX "idx_77415_is_buyer_name" ON "public"."shop_person_type_property" USING btree ("is_buyer_name");
+CREATE INDEX "idx_77415_name" ON "public"."shop_person_type_property" USING btree ("name");
+CREATE INDEX "idx_77415_created_at" ON "public"."shop_person_type_property" USING btree ("created_at");
+CREATE INDEX "idx_77415_is_user_email" ON "public"."shop_person_type_property" USING btree ("is_user_email");
+CREATE INDEX "idx_77415_priority" ON "public"."shop_person_type_property" USING btree ("priority");
+CREATE INDEX "idx_77415_is_order_location_delivery" ON "public"."shop_person_type_property" USING btree ("is_order_location_delivery");
+CREATE INDEX "idx_77415_updated_by" ON "public"."shop_person_type_property" USING btree ("updated_by");
+CREATE UNIQUE INDEX "idx_77415_shop_person_type_id_2" ON "public"."shop_person_type_property" USING btree ("shop_person_type_id", "code");
+CREATE INDEX "idx_77415_active" ON "public"."shop_person_type_property" USING btree ("active");
+CREATE INDEX "idx_77415_is_order_postcode" ON "public"."shop_person_type_property" USING btree ("is_order_postcode");
+CREATE INDEX "idx_77415_is_user_phone" ON "public"."shop_person_type_property" USING btree ("is_user_phone");
+CREATE INDEX "idx_77415_component" ON "public"."shop_person_type_property" USING btree ("component");
+CREATE INDEX "idx_77415_is_user_name" ON "public"."shop_person_type_property" USING btree ("is_user_name");
+CREATE INDEX "idx_77415_is_user_username" ON "public"."shop_person_type_property" USING btree ("is_user_username");
+CREATE INDEX "idx_77415_shop_person_type_id" ON "public"."shop_person_type_property" USING btree ("shop_person_type_id");
+CREATE INDEX "idx_77415_is_order_location_tax" ON "public"."shop_person_type_property" USING btree ("is_order_location_tax");
+CREATE INDEX "idx_77415_created_by" ON "public"."shop_person_type_property" USING btree ("created_by");
+CREATE INDEX "idx_77415_updated_at" ON "public"."shop_person_type_property" USING btree ("updated_at");
+CREATE INDEX "idx_77415_property_type" ON "public"."shop_person_type_property" USING btree ("property_type");
+CREATE INDEX "idx_77415_hint" ON "public"."shop_person_type_property" USING btree ("hint");
 
 -- ----------------------------
 -- Primary Key structure for table shop_person_type_property
@@ -9402,15 +9405,15 @@ ALTER TABLE "public"."shop_person_type_property" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_person_type_property_enum
 -- ----------------------------
-CREATE INDEX "idx_72628_code" ON "public"."shop_person_type_property_enum" USING btree ("code");
-CREATE INDEX "idx_72628_created_at" ON "public"."shop_person_type_property_enum" USING btree ("created_at");
-CREATE INDEX "idx_72628_value" ON "public"."shop_person_type_property_enum" USING btree ("value");
-CREATE INDEX "idx_72628_priority" ON "public"."shop_person_type_property_enum" USING btree ("priority");
-CREATE INDEX "idx_72628_property_id" ON "public"."shop_person_type_property_enum" USING btree ("property_id");
-CREATE INDEX "idx_72628_updated_by" ON "public"."shop_person_type_property_enum" USING btree ("updated_by");
-CREATE INDEX "idx_72628_created_by" ON "public"."shop_person_type_property_enum" USING btree ("created_by");
-CREATE INDEX "idx_72628_updated_at" ON "public"."shop_person_type_property_enum" USING btree ("updated_at");
-CREATE INDEX "idx_72628_def" ON "public"."shop_person_type_property_enum" USING btree ("def");
+CREATE INDEX "idx_77436_value" ON "public"."shop_person_type_property_enum" USING btree ("value");
+CREATE INDEX "idx_77436_priority" ON "public"."shop_person_type_property_enum" USING btree ("priority");
+CREATE INDEX "idx_77436_property_id" ON "public"."shop_person_type_property_enum" USING btree ("property_id");
+CREATE INDEX "idx_77436_code" ON "public"."shop_person_type_property_enum" USING btree ("code");
+CREATE INDEX "idx_77436_created_by" ON "public"."shop_person_type_property_enum" USING btree ("created_by");
+CREATE INDEX "idx_77436_created_at" ON "public"."shop_person_type_property_enum" USING btree ("created_at");
+CREATE INDEX "idx_77436_updated_by" ON "public"."shop_person_type_property_enum" USING btree ("updated_by");
+CREATE INDEX "idx_77436_updated_at" ON "public"."shop_person_type_property_enum" USING btree ("updated_at");
+CREATE INDEX "idx_77436_def" ON "public"."shop_person_type_property_enum" USING btree ("def");
 
 -- ----------------------------
 -- Primary Key structure for table shop_person_type_property_enum
@@ -9420,40 +9423,40 @@ ALTER TABLE "public"."shop_person_type_property_enum" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_person_type_site
 -- ----------------------------
-CREATE UNIQUE INDEX "idx_72634_site_code__person_type_id" ON "public"."shop_person_type_site" USING btree ("person_type_id", "site_code");
-CREATE INDEX "idx_72634_shop_person_type_site_site_code" ON "public"."shop_person_type_site" USING btree ("site_code");
+CREATE INDEX "idx_77442_shop_person_type_site_site_code" ON "public"."shop_person_type_site" USING btree ("site_code");
+CREATE UNIQUE INDEX "idx_77442_site_code__person_type_id" ON "public"."shop_person_type_site" USING btree ("person_type_id", "site_code");
 
 -- ----------------------------
 -- Indexes structure for table shop_product
 -- ----------------------------
-CREATE INDEX "idx_72639_measure_ratio" ON "public"."shop_product" USING btree ("measure_ratio");
-CREATE INDEX "idx_72639_barcode_multi" ON "public"."shop_product" USING btree ("barcode_multi");
-CREATE INDEX "idx_72639_vat_included" ON "public"."shop_product" USING btree ("vat_included");
-CREATE INDEX "idx_72639_weight" ON "public"."shop_product" USING btree ("weight");
-CREATE INDEX "idx_72639_updated_by" ON "public"."shop_product" USING btree ("updated_by");
-CREATE INDEX "idx_72639_created_by" ON "public"."shop_product" USING btree ("created_by");
-CREATE INDEX "idx_72639_quantity_reserved" ON "public"."shop_product" USING btree ("quantity_reserved");
-CREATE INDEX "idx_72639_recur_scheme_length" ON "public"."shop_product" USING btree ("recur_scheme_length");
-CREATE INDEX "idx_72639_quantity" ON "public"."shop_product" USING btree ("quantity");
-CREATE INDEX "idx_72639_select_best_price" ON "public"."shop_product" USING btree ("select_best_price");
-CREATE INDEX "idx_72639_product_type" ON "public"."shop_product" USING btree ("product_type");
-CREATE INDEX "idx_72639_price_type" ON "public"."shop_product" USING btree ("price_type");
-CREATE INDEX "idx_72639_recur_scheme_type" ON "public"."shop_product" USING btree ("recur_scheme_type");
-CREATE INDEX "idx_72639_quantity_trace" ON "public"."shop_product" USING btree ("quantity_trace");
-CREATE INDEX "idx_72639_shop_product_shop_vat" ON "public"."shop_product" USING btree ("vat_id");
-CREATE INDEX "idx_72639_length" ON "public"."shop_product" USING btree ("length");
-CREATE INDEX "idx_72639_updated_at" ON "public"."shop_product" USING btree ("updated_at");
-CREATE INDEX "idx_72639_height" ON "public"."shop_product" USING btree ("height");
-CREATE INDEX "idx_72639_width" ON "public"."shop_product" USING btree ("width");
-CREATE INDEX "idx_72639_tmp_id" ON "public"."shop_product" USING btree ("tmp_id");
-CREATE INDEX "idx_72639_created_at" ON "public"."shop_product" USING btree ("created_at");
-CREATE INDEX "idx_72639_negative_amount_trace" ON "public"."shop_product" USING btree ("negative_amount_trace");
-CREATE INDEX "idx_72639_shop_product_shop_type_price" ON "public"."shop_product" USING btree ("trial_price_id");
-CREATE INDEX "idx_72639_subscribe" ON "public"."shop_product" USING btree ("subscribe");
-CREATE INDEX "idx_72639_can_buy_zero" ON "public"."shop_product" USING btree ("can_buy_zero");
-CREATE INDEX "idx_72639_measure_id" ON "public"."shop_product" USING btree ("measure_id");
-CREATE INDEX "idx_72639_purchasing_currency" ON "public"."shop_product" USING btree ("purchasing_currency");
-CREATE INDEX "idx_72639_purchasing_price" ON "public"."shop_product" USING btree ("purchasing_price");
+CREATE INDEX "idx_77447_measure_ratio" ON "public"."shop_product" USING btree ("measure_ratio");
+CREATE INDEX "idx_77447_created_at" ON "public"."shop_product" USING btree ("created_at");
+CREATE INDEX "idx_77447_negative_amount_trace" ON "public"."shop_product" USING btree ("negative_amount_trace");
+CREATE INDEX "idx_77447_created_by" ON "public"."shop_product" USING btree ("created_by");
+CREATE INDEX "idx_77447_price_type" ON "public"."shop_product" USING btree ("price_type");
+CREATE INDEX "idx_77447_recur_scheme_type" ON "public"."shop_product" USING btree ("recur_scheme_type");
+CREATE INDEX "idx_77447_width" ON "public"."shop_product" USING btree ("width");
+CREATE INDEX "idx_77447_purchasing_price" ON "public"."shop_product" USING btree ("purchasing_price");
+CREATE INDEX "idx_77447_shop_product_shop_type_price" ON "public"."shop_product" USING btree ("trial_price_id");
+CREATE INDEX "idx_77447_subscribe" ON "public"."shop_product" USING btree ("subscribe");
+CREATE INDEX "idx_77447_quantity_reserved" ON "public"."shop_product" USING btree ("quantity_reserved");
+CREATE INDEX "idx_77447_updated_by" ON "public"."shop_product" USING btree ("updated_by");
+CREATE INDEX "idx_77447_quantity_trace" ON "public"."shop_product" USING btree ("quantity_trace");
+CREATE INDEX "idx_77447_height" ON "public"."shop_product" USING btree ("height");
+CREATE INDEX "idx_77447_tmp_id" ON "public"."shop_product" USING btree ("tmp_id");
+CREATE INDEX "idx_77447_can_buy_zero" ON "public"."shop_product" USING btree ("can_buy_zero");
+CREATE INDEX "idx_77447_length" ON "public"."shop_product" USING btree ("length");
+CREATE INDEX "idx_77447_measure_id" ON "public"."shop_product" USING btree ("measure_id");
+CREATE INDEX "idx_77447_barcode_multi" ON "public"."shop_product" USING btree ("barcode_multi");
+CREATE INDEX "idx_77447_shop_product_shop_vat" ON "public"."shop_product" USING btree ("vat_id");
+CREATE INDEX "idx_77447_updated_at" ON "public"."shop_product" USING btree ("updated_at");
+CREATE INDEX "idx_77447_purchasing_currency" ON "public"."shop_product" USING btree ("purchasing_currency");
+CREATE INDEX "idx_77447_quantity" ON "public"."shop_product" USING btree ("quantity");
+CREATE INDEX "idx_77447_recur_scheme_length" ON "public"."shop_product" USING btree ("recur_scheme_length");
+CREATE INDEX "idx_77447_select_best_price" ON "public"."shop_product" USING btree ("select_best_price");
+CREATE INDEX "idx_77447_vat_included" ON "public"."shop_product" USING btree ("vat_included");
+CREATE INDEX "idx_77447_product_type" ON "public"."shop_product" USING btree ("product_type");
+CREATE INDEX "idx_77447_weight" ON "public"."shop_product" USING btree ("weight");
 
 -- ----------------------------
 -- Primary Key structure for table shop_product
@@ -9463,18 +9466,18 @@ ALTER TABLE "public"."shop_product" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_product_price
 -- ----------------------------
-CREATE INDEX "idx_72659_created_by" ON "public"."shop_product_price" USING btree ("created_by");
-CREATE INDEX "idx_72659_updated_at" ON "public"."shop_product_price" USING btree ("updated_at");
-CREATE INDEX "idx_72659_created_at" ON "public"."shop_product_price" USING btree ("created_at");
-CREATE INDEX "idx_72659_shop_product_price_product_id" ON "public"."shop_product_price" USING btree ("product_id");
-CREATE INDEX "idx_72659_currency_code" ON "public"."shop_product_price" USING btree ("currency_code");
-CREATE UNIQUE INDEX "idx_72659_unique_product_pricetype" ON "public"."shop_product_price" USING btree ("product_id", "type_price_id");
-CREATE INDEX "idx_72659_shop_product_price_shop_type_price" ON "public"."shop_product_price" USING btree ("type_price_id");
-CREATE INDEX "idx_72659_updated_by" ON "public"."shop_product_price" USING btree ("updated_by");
-CREATE INDEX "idx_72659_quantity_to" ON "public"."shop_product_price" USING btree ("quantity_to");
-CREATE INDEX "idx_72659_tmp_id" ON "public"."shop_product_price" USING btree ("tmp_id");
-CREATE INDEX "idx_72659_price" ON "public"."shop_product_price" USING btree ("price");
-CREATE INDEX "idx_72659_quantity_from" ON "public"."shop_product_price" USING btree ("quantity_from");
+CREATE INDEX "idx_77467_created_at" ON "public"."shop_product_price" USING btree ("created_at");
+CREATE INDEX "idx_77467_currency_code" ON "public"."shop_product_price" USING btree ("currency_code");
+CREATE UNIQUE INDEX "idx_77467_unique_product_pricetype" ON "public"."shop_product_price" USING btree ("product_id", "type_price_id");
+CREATE INDEX "idx_77467_shop_product_price_product_id" ON "public"."shop_product_price" USING btree ("product_id");
+CREATE INDEX "idx_77467_updated_at" ON "public"."shop_product_price" USING btree ("updated_at");
+CREATE INDEX "idx_77467_quantity_from" ON "public"."shop_product_price" USING btree ("quantity_from");
+CREATE INDEX "idx_77467_price" ON "public"."shop_product_price" USING btree ("price");
+CREATE INDEX "idx_77467_quantity_to" ON "public"."shop_product_price" USING btree ("quantity_to");
+CREATE INDEX "idx_77467_updated_by" ON "public"."shop_product_price" USING btree ("updated_by");
+CREATE INDEX "idx_77467_created_by" ON "public"."shop_product_price" USING btree ("created_by");
+CREATE INDEX "idx_77467_tmp_id" ON "public"."shop_product_price" USING btree ("tmp_id");
+CREATE INDEX "idx_77467_shop_product_price_shop_type_price" ON "public"."shop_product_price" USING btree ("type_price_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_product_price
@@ -9484,15 +9487,15 @@ ALTER TABLE "public"."shop_product_price" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_product_price_change
 -- ----------------------------
-CREATE INDEX "idx_72665_updated_at" ON "public"."shop_product_price_change" USING btree ("updated_at");
-CREATE INDEX "idx_72665_shop_product_price_id" ON "public"."shop_product_price_change" USING btree ("shop_product_price_id");
-CREATE INDEX "idx_72665_quantity_to" ON "public"."shop_product_price_change" USING btree ("quantity_to");
-CREATE INDEX "idx_72665_currency_code" ON "public"."shop_product_price_change" USING btree ("currency_code");
-CREATE INDEX "idx_72665_created_at" ON "public"."shop_product_price_change" USING btree ("created_at");
-CREATE INDEX "idx_72665_updated_by" ON "public"."shop_product_price_change" USING btree ("updated_by");
-CREATE INDEX "idx_72665_quantity_from" ON "public"."shop_product_price_change" USING btree ("quantity_from");
-CREATE INDEX "idx_72665_created_by" ON "public"."shop_product_price_change" USING btree ("created_by");
-CREATE INDEX "idx_72665_price" ON "public"."shop_product_price_change" USING btree ("price");
+CREATE INDEX "idx_77473_created_at" ON "public"."shop_product_price_change" USING btree ("created_at");
+CREATE INDEX "idx_77473_updated_by" ON "public"."shop_product_price_change" USING btree ("updated_by");
+CREATE INDEX "idx_77473_created_by" ON "public"."shop_product_price_change" USING btree ("created_by");
+CREATE INDEX "idx_77473_quantity_to" ON "public"."shop_product_price_change" USING btree ("quantity_to");
+CREATE INDEX "idx_77473_shop_product_price_id" ON "public"."shop_product_price_change" USING btree ("shop_product_price_id");
+CREATE INDEX "idx_77473_price" ON "public"."shop_product_price_change" USING btree ("price");
+CREATE INDEX "idx_77473_quantity_from" ON "public"."shop_product_price_change" USING btree ("quantity_from");
+CREATE INDEX "idx_77473_updated_at" ON "public"."shop_product_price_change" USING btree ("updated_at");
+CREATE INDEX "idx_77473_currency_code" ON "public"."shop_product_price_change" USING btree ("currency_code");
 
 -- ----------------------------
 -- Primary Key structure for table shop_product_price_change
@@ -9502,15 +9505,15 @@ ALTER TABLE "public"."shop_product_price_change" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_product_quantity_change
 -- ----------------------------
-CREATE INDEX "idx_72671_quantity_reserved" ON "public"."shop_product_quantity_change" USING btree ("quantity_reserved");
-CREATE INDEX "idx_72671_created_by" ON "public"."shop_product_quantity_change" USING btree ("created_by");
-CREATE INDEX "idx_72671_measure_id" ON "public"."shop_product_quantity_change" USING btree ("measure_id");
-CREATE INDEX "idx_72671_quantity" ON "public"."shop_product_quantity_change" USING btree ("quantity");
-CREATE INDEX "idx_72671_shop_product_quantity_change__shop_product_id" ON "public"."shop_product_quantity_change" USING btree ("shop_product_id");
-CREATE INDEX "idx_72671_created_at" ON "public"."shop_product_quantity_change" USING btree ("created_at");
-CREATE INDEX "idx_72671_updated_at" ON "public"."shop_product_quantity_change" USING btree ("updated_at");
-CREATE INDEX "idx_72671_updated_by" ON "public"."shop_product_quantity_change" USING btree ("updated_by");
-CREATE INDEX "idx_72671_measure_ratio" ON "public"."shop_product_quantity_change" USING btree ("measure_ratio");
+CREATE INDEX "idx_77479_quantity" ON "public"."shop_product_quantity_change" USING btree ("quantity");
+CREATE INDEX "idx_77479_updated_by" ON "public"."shop_product_quantity_change" USING btree ("updated_by");
+CREATE INDEX "idx_77479_measure_id" ON "public"."shop_product_quantity_change" USING btree ("measure_id");
+CREATE INDEX "idx_77479_created_at" ON "public"."shop_product_quantity_change" USING btree ("created_at");
+CREATE INDEX "idx_77479_shop_product_quantity_change__shop_product_id" ON "public"."shop_product_quantity_change" USING btree ("shop_product_id");
+CREATE INDEX "idx_77479_measure_ratio" ON "public"."shop_product_quantity_change" USING btree ("measure_ratio");
+CREATE INDEX "idx_77479_created_by" ON "public"."shop_product_quantity_change" USING btree ("created_by");
+CREATE INDEX "idx_77479_quantity_reserved" ON "public"."shop_product_quantity_change" USING btree ("quantity_reserved");
+CREATE INDEX "idx_77479_updated_at" ON "public"."shop_product_quantity_change" USING btree ("updated_at");
 
 -- ----------------------------
 -- Primary Key structure for table shop_product_quantity_change
@@ -9520,16 +9523,16 @@ ALTER TABLE "public"."shop_product_quantity_change" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_quantity_notice_email
 -- ----------------------------
-CREATE INDEX "idx_72680_shop_product_id" ON "public"."shop_quantity_notice_email" USING btree ("shop_product_id");
-CREATE INDEX "idx_72680_created_by" ON "public"."shop_quantity_notice_email" USING btree ("created_by");
-CREATE INDEX "idx_72680_name" ON "public"."shop_quantity_notice_email" USING btree ("name");
-CREATE INDEX "idx_72680_updated_by" ON "public"."shop_quantity_notice_email" USING btree ("updated_by");
-CREATE INDEX "idx_72680_is_notified" ON "public"."shop_quantity_notice_email" USING btree ("is_notified");
-CREATE INDEX "idx_72680_updated_at" ON "public"."shop_quantity_notice_email" USING btree ("updated_at");
-CREATE INDEX "idx_72680_notified_at" ON "public"."shop_quantity_notice_email" USING btree ("notified_at");
-CREATE INDEX "idx_72680_email" ON "public"."shop_quantity_notice_email" USING btree ("email");
-CREATE INDEX "idx_72680_shop_fuser_id" ON "public"."shop_quantity_notice_email" USING btree ("shop_fuser_id");
-CREATE INDEX "idx_72680_created_at" ON "public"."shop_quantity_notice_email" USING btree ("created_at");
+CREATE INDEX "idx_77488_created_by" ON "public"."shop_quantity_notice_email" USING btree ("created_by");
+CREATE INDEX "idx_77488_updated_by" ON "public"."shop_quantity_notice_email" USING btree ("updated_by");
+CREATE INDEX "idx_77488_updated_at" ON "public"."shop_quantity_notice_email" USING btree ("updated_at");
+CREATE INDEX "idx_77488_is_notified" ON "public"."shop_quantity_notice_email" USING btree ("is_notified");
+CREATE INDEX "idx_77488_name" ON "public"."shop_quantity_notice_email" USING btree ("name");
+CREATE INDEX "idx_77488_notified_at" ON "public"."shop_quantity_notice_email" USING btree ("notified_at");
+CREATE INDEX "idx_77488_email" ON "public"."shop_quantity_notice_email" USING btree ("email");
+CREATE INDEX "idx_77488_shop_fuser_id" ON "public"."shop_quantity_notice_email" USING btree ("shop_fuser_id");
+CREATE INDEX "idx_77488_created_at" ON "public"."shop_quantity_notice_email" USING btree ("created_at");
+CREATE INDEX "idx_77488_shop_product_id" ON "public"."shop_quantity_notice_email" USING btree ("shop_product_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_quantity_notice_email
@@ -9539,24 +9542,24 @@ ALTER TABLE "public"."shop_quantity_notice_email" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_store
 -- ----------------------------
-CREATE INDEX "idx_72690_address" ON "public"."shop_store" USING btree ("address");
-CREATE INDEX "idx_72690_phone" ON "public"."shop_store" USING btree ("phone");
-CREATE INDEX "idx_72690_xml_id" ON "public"."shop_store" USING btree ("xml_id");
-CREATE INDEX "idx_72690_image_id" ON "public"."shop_store" USING btree ("image_id");
-CREATE INDEX "idx_72690_email" ON "public"."shop_store" USING btree ("email");
-CREATE INDEX "idx_72690_schedule" ON "public"."shop_store" USING btree ("schedule");
-CREATE INDEX "idx_72690_shipping_center" ON "public"."shop_store" USING btree ("shipping_center");
-CREATE INDEX "idx_72690_updated_by" ON "public"."shop_store" USING btree ("updated_by");
-CREATE INDEX "idx_72690_created_at" ON "public"."shop_store" USING btree ("created_at");
-CREATE INDEX "idx_72690_issuing_center" ON "public"."shop_store" USING btree ("issuing_center");
-CREATE INDEX "idx_72690_priority" ON "public"."shop_store" USING btree ("priority");
-CREATE INDEX "idx_72690_name" ON "public"."shop_store" USING btree ("name");
-CREATE INDEX "idx_72690_location_id" ON "public"."shop_store" USING btree ("location_id");
-CREATE INDEX "idx_72690_gps_s" ON "public"."shop_store" USING btree ("gps_s");
-CREATE INDEX "idx_72690_gps_n" ON "public"."shop_store" USING btree ("gps_n");
-CREATE INDEX "idx_72690_updated_at" ON "public"."shop_store" USING btree ("updated_at");
-CREATE INDEX "idx_72690_site_code" ON "public"."shop_store" USING btree ("site_code");
-CREATE INDEX "idx_72690_created_by" ON "public"."shop_store" USING btree ("created_by");
+CREATE INDEX "idx_77498_image_id" ON "public"."shop_store" USING btree ("image_id");
+CREATE INDEX "idx_77498_created_by" ON "public"."shop_store" USING btree ("created_by");
+CREATE INDEX "idx_77498_updated_by" ON "public"."shop_store" USING btree ("updated_by");
+CREATE INDEX "idx_77498_issuing_center" ON "public"."shop_store" USING btree ("issuing_center");
+CREATE INDEX "idx_77498_created_at" ON "public"."shop_store" USING btree ("created_at");
+CREATE INDEX "idx_77498_location_id" ON "public"."shop_store" USING btree ("location_id");
+CREATE INDEX "idx_77498_name" ON "public"."shop_store" USING btree ("name");
+CREATE INDEX "idx_77498_priority" ON "public"."shop_store" USING btree ("priority");
+CREATE INDEX "idx_77498_shipping_center" ON "public"."shop_store" USING btree ("shipping_center");
+CREATE INDEX "idx_77498_address" ON "public"."shop_store" USING btree ("address");
+CREATE INDEX "idx_77498_gps_s" ON "public"."shop_store" USING btree ("gps_s");
+CREATE INDEX "idx_77498_site_code" ON "public"."shop_store" USING btree ("site_code");
+CREATE INDEX "idx_77498_email" ON "public"."shop_store" USING btree ("email");
+CREATE INDEX "idx_77498_gps_n" ON "public"."shop_store" USING btree ("gps_n");
+CREATE INDEX "idx_77498_updated_at" ON "public"."shop_store" USING btree ("updated_at");
+CREATE INDEX "idx_77498_schedule" ON "public"."shop_store" USING btree ("schedule");
+CREATE INDEX "idx_77498_phone" ON "public"."shop_store" USING btree ("phone");
+CREATE INDEX "idx_77498_xml_id" ON "public"."shop_store" USING btree ("xml_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_store
@@ -9566,13 +9569,13 @@ ALTER TABLE "public"."shop_store" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_tax
 -- ----------------------------
-CREATE INDEX "idx_72705_updated_by" ON "public"."shop_tax" USING btree ("updated_by");
-CREATE INDEX "idx_72705_updated_at" ON "public"."shop_tax" USING btree ("updated_at");
-CREATE INDEX "idx_72705_created_by" ON "public"."shop_tax" USING btree ("created_by");
-CREATE INDEX "idx_72705_code" ON "public"."shop_tax" USING btree ("code");
-CREATE INDEX "idx_72705_site_code" ON "public"."shop_tax" USING btree ("site_code");
-CREATE INDEX "idx_72705_created_at" ON "public"."shop_tax" USING btree ("created_at");
-CREATE INDEX "idx_72705_name" ON "public"."shop_tax" USING btree ("name");
+CREATE INDEX "idx_77513_created_by" ON "public"."shop_tax" USING btree ("created_by");
+CREATE INDEX "idx_77513_updated_at" ON "public"."shop_tax" USING btree ("updated_at");
+CREATE INDEX "idx_77513_updated_by" ON "public"."shop_tax" USING btree ("updated_by");
+CREATE INDEX "idx_77513_code" ON "public"."shop_tax" USING btree ("code");
+CREATE INDEX "idx_77513_created_at" ON "public"."shop_tax" USING btree ("created_at");
+CREATE INDEX "idx_77513_site_code" ON "public"."shop_tax" USING btree ("site_code");
+CREATE INDEX "idx_77513_name" ON "public"."shop_tax" USING btree ("name");
 
 -- ----------------------------
 -- Primary Key structure for table shop_tax
@@ -9582,18 +9585,18 @@ ALTER TABLE "public"."shop_tax" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_tax_rate
 -- ----------------------------
-CREATE INDEX "idx_72714_updated_by" ON "public"."shop_tax_rate" USING btree ("updated_by");
-CREATE INDEX "idx_72714_value" ON "public"."shop_tax_rate" USING btree ("value");
-CREATE INDEX "idx_72714_created_at" ON "public"."shop_tax_rate" USING btree ("created_at");
-CREATE INDEX "idx_72714_active" ON "public"."shop_tax_rate" USING btree ("active");
-CREATE INDEX "idx_72714_is_percent" ON "public"."shop_tax_rate" USING btree ("is_percent");
-CREATE INDEX "idx_72714_updated_at" ON "public"."shop_tax_rate" USING btree ("updated_at");
-CREATE INDEX "idx_72714_is_in_price" ON "public"."shop_tax_rate" USING btree ("is_in_price");
-CREATE INDEX "idx_72714_currency" ON "public"."shop_tax_rate" USING btree ("currency");
-CREATE INDEX "idx_72714_created_by" ON "public"."shop_tax_rate" USING btree ("created_by");
-CREATE INDEX "idx_72714_tax_id" ON "public"."shop_tax_rate" USING btree ("tax_id");
-CREATE INDEX "idx_72714_person_type_id" ON "public"."shop_tax_rate" USING btree ("person_type_id");
-CREATE INDEX "idx_72714_priority" ON "public"."shop_tax_rate" USING btree ("priority");
+CREATE INDEX "idx_77522_created_by" ON "public"."shop_tax_rate" USING btree ("created_by");
+CREATE INDEX "idx_77522_is_percent" ON "public"."shop_tax_rate" USING btree ("is_percent");
+CREATE INDEX "idx_77522_value" ON "public"."shop_tax_rate" USING btree ("value");
+CREATE INDEX "idx_77522_priority" ON "public"."shop_tax_rate" USING btree ("priority");
+CREATE INDEX "idx_77522_active" ON "public"."shop_tax_rate" USING btree ("active");
+CREATE INDEX "idx_77522_tax_id" ON "public"."shop_tax_rate" USING btree ("tax_id");
+CREATE INDEX "idx_77522_currency" ON "public"."shop_tax_rate" USING btree ("currency");
+CREATE INDEX "idx_77522_created_at" ON "public"."shop_tax_rate" USING btree ("created_at");
+CREATE INDEX "idx_77522_updated_by" ON "public"."shop_tax_rate" USING btree ("updated_by");
+CREATE INDEX "idx_77522_updated_at" ON "public"."shop_tax_rate" USING btree ("updated_at");
+CREATE INDEX "idx_77522_is_in_price" ON "public"."shop_tax_rate" USING btree ("is_in_price");
+CREATE INDEX "idx_77522_person_type_id" ON "public"."shop_tax_rate" USING btree ("person_type_id");
 
 -- ----------------------------
 -- Primary Key structure for table shop_tax_rate
@@ -9603,15 +9606,15 @@ ALTER TABLE "public"."shop_tax_rate" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_type_price
 -- ----------------------------
-CREATE INDEX "idx_72725_created_by" ON "public"."shop_type_price" USING btree ("created_by");
-CREATE INDEX "idx_72725_updated_at" ON "public"."shop_type_price" USING btree ("updated_at");
-CREATE INDEX "idx_72725_priority" ON "public"."shop_type_price" USING btree ("priority");
-CREATE INDEX "idx_72725_xml_id" ON "public"."shop_type_price" USING btree ("xml_id");
-CREATE INDEX "idx_72725_updated_by" ON "public"."shop_type_price" USING btree ("updated_by");
-CREATE INDEX "idx_72725_def" ON "public"."shop_type_price" USING btree ("def");
-CREATE INDEX "idx_72725_created_at" ON "public"."shop_type_price" USING btree ("created_at");
-CREATE UNIQUE INDEX "idx_72725_code" ON "public"."shop_type_price" USING btree ("code");
-CREATE INDEX "idx_72725_name" ON "public"."shop_type_price" USING btree ("name");
+CREATE INDEX "idx_77533_xml_id" ON "public"."shop_type_price" USING btree ("xml_id");
+CREATE INDEX "idx_77533_name" ON "public"."shop_type_price" USING btree ("name");
+CREATE INDEX "idx_77533_updated_by" ON "public"."shop_type_price" USING btree ("updated_by");
+CREATE INDEX "idx_77533_created_at" ON "public"."shop_type_price" USING btree ("created_at");
+CREATE UNIQUE INDEX "idx_77533_code" ON "public"."shop_type_price" USING btree ("code");
+CREATE INDEX "idx_77533_updated_at" ON "public"."shop_type_price" USING btree ("updated_at");
+CREATE INDEX "idx_77533_priority" ON "public"."shop_type_price" USING btree ("priority");
+CREATE INDEX "idx_77533_created_by" ON "public"."shop_type_price" USING btree ("created_by");
+CREATE INDEX "idx_77533_def" ON "public"."shop_type_price" USING btree ("def");
 
 -- ----------------------------
 -- Primary Key structure for table shop_type_price
@@ -9621,15 +9624,15 @@ ALTER TABLE "public"."shop_type_price" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_user_account
 -- ----------------------------
-CREATE INDEX "idx_72736_updated_by" ON "public"."shop_user_account" USING btree ("updated_by");
-CREATE INDEX "idx_72736_updated_at" ON "public"."shop_user_account" USING btree ("updated_at");
-CREATE INDEX "idx_72736_created_at" ON "public"."shop_user_account" USING btree ("created_at");
-CREATE INDEX "idx_72736_created_by" ON "public"."shop_user_account" USING btree ("created_by");
-CREATE INDEX "idx_72736_locked_at" ON "public"."shop_user_account" USING btree ("locked_at");
-CREATE UNIQUE INDEX "idx_72736_currency_user" ON "public"."shop_user_account" USING btree ("currency_code", "user_id");
-CREATE INDEX "idx_72736_current_budget" ON "public"."shop_user_account" USING btree ("current_budget");
-CREATE INDEX "idx_72736_shop_user_account_user_id" ON "public"."shop_user_account" USING btree ("user_id");
-CREATE INDEX "idx_72736_locked" ON "public"."shop_user_account" USING btree ("locked");
+CREATE INDEX "idx_77544_locked" ON "public"."shop_user_account" USING btree ("locked");
+CREATE INDEX "idx_77544_created_at" ON "public"."shop_user_account" USING btree ("created_at");
+CREATE INDEX "idx_77544_locked_at" ON "public"."shop_user_account" USING btree ("locked_at");
+CREATE INDEX "idx_77544_shop_user_account_user_id" ON "public"."shop_user_account" USING btree ("user_id");
+CREATE INDEX "idx_77544_created_by" ON "public"."shop_user_account" USING btree ("created_by");
+CREATE UNIQUE INDEX "idx_77544_currency_user" ON "public"."shop_user_account" USING btree ("currency_code", "user_id");
+CREATE INDEX "idx_77544_current_budget" ON "public"."shop_user_account" USING btree ("current_budget");
+CREATE INDEX "idx_77544_updated_by" ON "public"."shop_user_account" USING btree ("updated_by");
+CREATE INDEX "idx_77544_updated_at" ON "public"."shop_user_account" USING btree ("updated_at");
 
 -- ----------------------------
 -- Primary Key structure for table shop_user_account
@@ -9639,16 +9642,16 @@ ALTER TABLE "public"."shop_user_account" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_user_transact
 -- ----------------------------
-CREATE INDEX "idx_72747_amount" ON "public"."shop_user_transact" USING btree ("amount");
-CREATE INDEX "idx_72747_updated_by" ON "public"."shop_user_transact" USING btree ("updated_by");
-CREATE INDEX "idx_72747_created_by" ON "public"."shop_user_transact" USING btree ("created_by");
-CREATE INDEX "idx_72747_description" ON "public"."shop_user_transact" USING btree ("description");
-CREATE INDEX "idx_72747_cms_user_id" ON "public"."shop_user_transact" USING btree ("cms_user_id");
-CREATE INDEX "idx_72747_debit" ON "public"."shop_user_transact" USING btree ("debit");
-CREATE INDEX "idx_72747_shop_order_id" ON "public"."shop_user_transact" USING btree ("shop_order_id");
-CREATE INDEX "idx_72747_updated_at" ON "public"."shop_user_transact" USING btree ("updated_at");
-CREATE INDEX "idx_72747_currency_code" ON "public"."shop_user_transact" USING btree ("currency_code");
-CREATE INDEX "idx_72747_created_at" ON "public"."shop_user_transact" USING btree ("created_at");
+CREATE INDEX "idx_77555_created_at" ON "public"."shop_user_transact" USING btree ("created_at");
+CREATE INDEX "idx_77555_updated_at" ON "public"."shop_user_transact" USING btree ("updated_at");
+CREATE INDEX "idx_77555_currency_code" ON "public"."shop_user_transact" USING btree ("currency_code");
+CREATE INDEX "idx_77555_description" ON "public"."shop_user_transact" USING btree ("description");
+CREATE INDEX "idx_77555_amount" ON "public"."shop_user_transact" USING btree ("amount");
+CREATE INDEX "idx_77555_shop_order_id" ON "public"."shop_user_transact" USING btree ("shop_order_id");
+CREATE INDEX "idx_77555_cms_user_id" ON "public"."shop_user_transact" USING btree ("cms_user_id");
+CREATE INDEX "idx_77555_debit" ON "public"."shop_user_transact" USING btree ("debit");
+CREATE INDEX "idx_77555_created_by" ON "public"."shop_user_transact" USING btree ("created_by");
+CREATE INDEX "idx_77555_updated_by" ON "public"."shop_user_transact" USING btree ("updated_by");
 
 -- ----------------------------
 -- Primary Key structure for table shop_user_transact
@@ -9658,14 +9661,14 @@ ALTER TABLE "public"."shop_user_transact" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_vat
 -- ----------------------------
-CREATE INDEX "idx_72758_rate" ON "public"."shop_vat" USING btree ("rate");
-CREATE INDEX "idx_72758_updated_at" ON "public"."shop_vat" USING btree ("updated_at");
-CREATE INDEX "idx_72758_priority" ON "public"."shop_vat" USING btree ("priority");
-CREATE INDEX "idx_72758_created_at" ON "public"."shop_vat" USING btree ("created_at");
-CREATE INDEX "idx_72758_name" ON "public"."shop_vat" USING btree ("name");
-CREATE INDEX "idx_72758_created_by" ON "public"."shop_vat" USING btree ("created_by");
-CREATE INDEX "idx_72758_active" ON "public"."shop_vat" USING btree ("active");
-CREATE INDEX "idx_72758_updated_by" ON "public"."shop_vat" USING btree ("updated_by");
+CREATE INDEX "idx_77566_priority" ON "public"."shop_vat" USING btree ("priority");
+CREATE INDEX "idx_77566_updated_by" ON "public"."shop_vat" USING btree ("updated_by");
+CREATE INDEX "idx_77566_rate" ON "public"."shop_vat" USING btree ("rate");
+CREATE INDEX "idx_77566_created_by" ON "public"."shop_vat" USING btree ("created_by");
+CREATE INDEX "idx_77566_updated_at" ON "public"."shop_vat" USING btree ("updated_at");
+CREATE INDEX "idx_77566_active" ON "public"."shop_vat" USING btree ("active");
+CREATE INDEX "idx_77566_created_at" ON "public"."shop_vat" USING btree ("created_at");
+CREATE INDEX "idx_77566_name" ON "public"."shop_vat" USING btree ("name");
 
 -- ----------------------------
 -- Primary Key structure for table shop_vat
@@ -9675,13 +9678,13 @@ ALTER TABLE "public"."shop_vat" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Indexes structure for table shop_viewed_product
 -- ----------------------------
-CREATE INDEX "idx_72767_created_by" ON "public"."shop_viewed_product" USING btree ("created_by");
-CREATE INDEX "idx_72767_updated_at" ON "public"."shop_viewed_product" USING btree ("updated_at");
-CREATE INDEX "idx_72767_updated_by" ON "public"."shop_viewed_product" USING btree ("updated_by");
-CREATE INDEX "idx_72767_created_at" ON "public"."shop_viewed_product" USING btree ("created_at");
-CREATE INDEX "idx_72767_site_id" ON "public"."shop_viewed_product" USING btree ("site_id");
-CREATE INDEX "idx_72767_shop_product_id" ON "public"."shop_viewed_product" USING btree ("shop_product_id");
-CREATE INDEX "idx_72767_shop_fuser_id" ON "public"."shop_viewed_product" USING btree ("shop_fuser_id");
+CREATE INDEX "idx_77575_site_id" ON "public"."shop_viewed_product" USING btree ("site_id");
+CREATE INDEX "idx_77575_created_at" ON "public"."shop_viewed_product" USING btree ("created_at");
+CREATE INDEX "idx_77575_updated_by" ON "public"."shop_viewed_product" USING btree ("updated_by");
+CREATE INDEX "idx_77575_shop_fuser_id" ON "public"."shop_viewed_product" USING btree ("shop_fuser_id");
+CREATE INDEX "idx_77575_shop_product_id" ON "public"."shop_viewed_product" USING btree ("shop_product_id");
+CREATE INDEX "idx_77575_created_by" ON "public"."shop_viewed_product" USING btree ("created_by");
+CREATE INDEX "idx_77575_updated_at" ON "public"."shop_viewed_product" USING btree ("updated_at");
 
 -- ----------------------------
 -- Primary Key structure for table shop_viewed_product
@@ -9696,8 +9699,8 @@ ALTER TABLE "public"."source_message" ADD PRIMARY KEY ("id");
 -- ----------------------------
 -- Foreign Key structure for table "public"."auth_assignment"
 -- ----------------------------
-ALTER TABLE "public"."auth_assignment" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."auth_assignment" ADD FOREIGN KEY ("item_name") REFERENCES "public"."auth_item" ("name") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."auth_assignment" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."auth_item"
@@ -9707,8 +9710,8 @@ ALTER TABLE "public"."auth_item" ADD FOREIGN KEY ("rule_name") REFERENCES "publi
 -- ----------------------------
 -- Foreign Key structure for table "public"."auth_item_child"
 -- ----------------------------
-ALTER TABLE "public"."auth_item_child" ADD FOREIGN KEY ("parent") REFERENCES "public"."auth_item" ("name") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."auth_item_child" ADD FOREIGN KEY ("child") REFERENCES "public"."auth_item" ("name") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."auth_item_child" ADD FOREIGN KEY ("parent") REFERENCES "public"."auth_item" ("name") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_admin_filter"
@@ -9720,148 +9723,148 @@ ALTER TABLE "public"."cms_admin_filter" ADD FOREIGN KEY ("updated_by") REFERENCE
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_component_settings"
 -- ----------------------------
-ALTER TABLE "public"."cms_component_settings" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_component_settings" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_component_settings" ADD FOREIGN KEY ("cms_site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_component_settings" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_component_settings" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_component_settings" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content"
 -- ----------------------------
-ALTER TABLE "public"."cms_content" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_content" ADD FOREIGN KEY ("parent_content_id") REFERENCES "public"."cms_content" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content" ADD FOREIGN KEY ("root_tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content" ADD FOREIGN KEY ("default_tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content" ADD FOREIGN KEY ("content_type") REFERENCES "public"."cms_content_type" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."cms_content" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content" ADD FOREIGN KEY ("parent_content_id") REFERENCES "public"."cms_content" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_element"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("image_full_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("content_id") REFERENCES "public"."cms_content" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("parent_content_element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("image_full_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("image_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content_element" ADD FOREIGN KEY ("parent_content_element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_element_file"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_element_file" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element_file" ADD FOREIGN KEY ("storage_file_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_content_element_file" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content_element_file" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element_file" ADD FOREIGN KEY ("content_element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_element_image"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_element_image" ADD FOREIGN KEY ("content_element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_content_element_image" ADD FOREIGN KEY ("storage_file_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_content_element_image" ADD FOREIGN KEY ("content_element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_content_element_image" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element_image" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_element_property"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_element_property" ADD FOREIGN KEY ("element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_content_element_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_content_element_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element_property" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_content_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_content_element_property" ADD FOREIGN KEY ("element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_content_element_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_element_tree"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_element_tree" ADD FOREIGN KEY ("tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."cms_content_element_tree" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element_tree" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element_tree" ADD FOREIGN KEY ("element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_content_element_tree" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content_element_tree" ADD FOREIGN KEY ("tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_element2cms_user"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_element2cms_user" ADD FOREIGN KEY ("cms_user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_content_element2cms_user" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_content_element2cms_user" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_element2cms_user" ADD FOREIGN KEY ("cms_content_element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_content_element2cms_user" ADD FOREIGN KEY ("cms_user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_content_element2cms_user" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_property"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_content_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_property" ADD FOREIGN KEY ("content_id") REFERENCES "public"."cms_content" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE "public"."cms_content_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_property_enum"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_property_enum" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_property_enum" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_content_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_content_property_enum" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content_property_enum" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_property2content"
 -- ----------------------------
+ALTER TABLE "public"."cms_content_property2content" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_property2content" ADD FOREIGN KEY ("cms_content_id") REFERENCES "public"."cms_content" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_content_property2content" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_property2content" ADD FOREIGN KEY ("cms_content_property_id") REFERENCES "public"."cms_content_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."cms_content_property2content" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_property2tree"
 -- ----------------------------
 ALTER TABLE "public"."cms_content_property2tree" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_content_property2tree" ADD FOREIGN KEY ("cms_content_property_id") REFERENCES "public"."cms_content_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_content_property2tree" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_property2tree" ADD FOREIGN KEY ("cms_tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_content_property2tree" ADD FOREIGN KEY ("cms_content_property_id") REFERENCES "public"."cms_content_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_content_type"
 -- ----------------------------
-ALTER TABLE "public"."cms_content_type" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_content_type" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_content_type" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_dashboard"
 -- ----------------------------
-ALTER TABLE "public"."cms_dashboard" ADD FOREIGN KEY ("cms_user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."cms_dashboard" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_dashboard" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_dashboard" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_dashboard" ADD FOREIGN KEY ("cms_user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_dashboard_widget"
 -- ----------------------------
-ALTER TABLE "public"."cms_dashboard_widget" ADD FOREIGN KEY ("cms_dashboard_id") REFERENCES "public"."cms_dashboard" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_dashboard_widget" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_dashboard_widget" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_dashboard_widget" ADD FOREIGN KEY ("cms_dashboard_id") REFERENCES "public"."cms_dashboard" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_lang"
 -- ----------------------------
-ALTER TABLE "public"."cms_lang" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_lang" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_lang" ADD FOREIGN KEY ("image_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_lang" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_lang" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_search_phrase"
 -- ----------------------------
+ALTER TABLE "public"."cms_search_phrase" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_search_phrase" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_search_phrase" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_search_phrase" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_site"
 -- ----------------------------
 ALTER TABLE "public"."cms_site" ADD FOREIGN KEY ("image_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_site" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_site" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_site" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_site_domain"
 -- ----------------------------
-ALTER TABLE "public"."cms_site_domain" ADD FOREIGN KEY ("cms_site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_site_domain" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_site_domain" ADD FOREIGN KEY ("cms_site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_site_domain" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
@@ -9873,44 +9876,44 @@ ALTER TABLE "public"."cms_storage_file" ADD FOREIGN KEY ("created_by") REFERENCE
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_tree"
 -- ----------------------------
+ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("image_full_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("pid") REFERENCES "public"."cms_tree" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("redirect_tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("tree_type_id") REFERENCES "public"."cms_tree_type" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("pid") REFERENCES "public"."cms_tree" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("cms_site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("image_full_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("image_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("tree_type_id") REFERENCES "public"."cms_tree_type" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_tree" ADD FOREIGN KEY ("cms_site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_tree_file"
 -- ----------------------------
-ALTER TABLE "public"."cms_tree_file" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree_file" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree_file" ADD FOREIGN KEY ("storage_file_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_tree_file" ADD FOREIGN KEY ("tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_tree_file" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_tree_image"
 -- ----------------------------
-ALTER TABLE "public"."cms_tree_image" ADD FOREIGN KEY ("tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."cms_tree_image" ADD FOREIGN KEY ("storage_file_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."cms_tree_image" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree_image" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_tree_image" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_tree_image" ADD FOREIGN KEY ("storage_file_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_tree_image" ADD FOREIGN KEY ("tree_id") REFERENCES "public"."cms_tree" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_tree_property"
 -- ----------------------------
-ALTER TABLE "public"."cms_tree_property" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_tree_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_tree_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree_property" ADD FOREIGN KEY ("element_id") REFERENCES "public"."cms_tree" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_tree_property" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_tree_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_tree_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_tree_type"
 -- ----------------------------
-ALTER TABLE "public"."cms_tree_type" ADD FOREIGN KEY ("default_children_tree_type") REFERENCES "public"."cms_tree_type" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree_type" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_tree_type" ADD FOREIGN KEY ("default_children_tree_type") REFERENCES "public"."cms_tree_type" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree_type" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
@@ -9923,17 +9926,17 @@ ALTER TABLE "public"."cms_tree_type_property" ADD FOREIGN KEY ("created_by") REF
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_tree_type_property_enum"
 -- ----------------------------
+ALTER TABLE "public"."cms_tree_type_property_enum" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_tree_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_tree_type_property_enum" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree_type_property_enum" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_tree_type_property_enum" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_tree_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_tree_type_property2type"
 -- ----------------------------
-ALTER TABLE "public"."cms_tree_type_property2type" ADD FOREIGN KEY ("cms_tree_type_id") REFERENCES "public"."cms_tree_type" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_tree_type_property2type" ADD FOREIGN KEY ("cms_tree_type_property_id") REFERENCES "public"."cms_tree_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."cms_tree_type_property2type" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_tree_type_property2type" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_tree_type_property2type" ADD FOREIGN KEY ("cms_tree_type_id") REFERENCES "public"."cms_tree_type" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."cms_tree_type_property2type" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_user"
@@ -9960,23 +9963,23 @@ ALTER TABLE "public"."cms_user_phone" ADD FOREIGN KEY ("user_id") REFERENCES "pu
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_user_property"
 -- ----------------------------
+ALTER TABLE "public"."cms_user_property" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_user_universal_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_user_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_user_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."cms_user_property" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_user_universal_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_user_property" ADD FOREIGN KEY ("element_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_user_universal_property"
 -- ----------------------------
-ALTER TABLE "public"."cms_user_universal_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_user_universal_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_user_universal_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."cms_user_universal_property_enum"
 -- ----------------------------
-ALTER TABLE "public"."cms_user_universal_property_enum" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_user_universal_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."cms_user_universal_property_enum" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."cms_user_universal_property_enum" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."cms_user_universal_property_enum" ADD FOREIGN KEY ("property_id") REFERENCES "public"."cms_user_universal_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."export_task"
@@ -9993,33 +9996,33 @@ ALTER TABLE "public"."form2_form" ADD FOREIGN KEY ("created_by") REFERENCES "pub
 -- ----------------------------
 -- Foreign Key structure for table "public"."form2_form_property"
 -- ----------------------------
-ALTER TABLE "public"."form2_form_property" ADD FOREIGN KEY ("form_id") REFERENCES "public"."form2_form" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."form2_form_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."form2_form_property" ADD FOREIGN KEY ("form_id") REFERENCES "public"."form2_form" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."form2_form_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."form2_form_property_enum"
 -- ----------------------------
-ALTER TABLE "public"."form2_form_property_enum" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."form2_form_property_enum" ADD FOREIGN KEY ("property_id") REFERENCES "public"."form2_form_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."form2_form_property_enum" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."form2_form_property_enum" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."form2_form_send"
 -- ----------------------------
-ALTER TABLE "public"."form2_form_send" ADD FOREIGN KEY ("form_id") REFERENCES "public"."form2_form" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."form2_form_send" ADD FOREIGN KEY ("processed_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."form2_form_send" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."form2_form_send" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."form2_form_send" ADD FOREIGN KEY ("processed_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."form2_form_send" ADD FOREIGN KEY ("form_id") REFERENCES "public"."form2_form" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."form2_form_send" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."form2_form_send" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."form2_form_send_property"
 -- ----------------------------
-ALTER TABLE "public"."form2_form_send_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."form2_form_send_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."form2_form_send_property" ADD FOREIGN KEY ("element_id") REFERENCES "public"."form2_form_send" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."form2_form_send_property" ADD FOREIGN KEY ("property_id") REFERENCES "public"."form2_form_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."form2_form_send_property" ADD FOREIGN KEY ("element_id") REFERENCES "public"."form2_form_send" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."form2_form_send_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."form2_form_send_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."import_task"
@@ -10047,123 +10050,123 @@ ALTER TABLE "public"."message" ADD FOREIGN KEY ("id") REFERENCES "public"."sourc
 -- ----------------------------
 -- Foreign Key structure for table "public"."reviews2_message"
 -- ----------------------------
-ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("content_id") REFERENCES "public"."cms_content" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("element_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("processed_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."reviews2_message" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_affiliate"
 -- ----------------------------
+ALTER TABLE "public"."shop_affiliate" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_affiliate" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_affiliate" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_affiliate" ADD FOREIGN KEY ("affiliate_id") REFERENCES "public"."shop_affiliate" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_affiliate" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_affiliate" ADD FOREIGN KEY ("affiliate_id") REFERENCES "public"."shop_affiliate" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_affiliate" ADD FOREIGN KEY ("plan_id") REFERENCES "public"."shop_affiliate_plan" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE "public"."shop_affiliate" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_affiliate_plan"
 -- ----------------------------
+ALTER TABLE "public"."shop_affiliate_plan" ADD FOREIGN KEY ("value_currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_affiliate_plan" ADD FOREIGN KEY ("base_rate_currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_affiliate_plan" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_affiliate_plan" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_affiliate_plan" ADD FOREIGN KEY ("value_currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_affiliate_plan" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_affiliate_tier"
 -- ----------------------------
-ALTER TABLE "public"."shop_affiliate_tier" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_affiliate_tier" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_affiliate_tier" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_affiliate_tier" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_basket"
 -- ----------------------------
-ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("fuser_id") REFERENCES "public"."shop_fuser" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("site_id") REFERENCES "public"."cms_site" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("product_price_id") REFERENCES "public"."shop_product_price" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("product_id") REFERENCES "public"."shop_product" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("order_id") REFERENCES "public"."shop_order" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("fuser_id") REFERENCES "public"."shop_fuser" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE "public"."shop_basket" ADD FOREIGN KEY ("product_price_id") REFERENCES "public"."shop_product_price" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_basket_props"
 -- ----------------------------
 ALTER TABLE "public"."shop_basket_props" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_basket_props" ADD FOREIGN KEY ("shop_basket_id") REFERENCES "public"."shop_basket" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_basket_props" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_basket_props" ADD FOREIGN KEY ("shop_basket_id") REFERENCES "public"."shop_basket" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_buyer"
 -- ----------------------------
 ALTER TABLE "public"."shop_buyer" ADD FOREIGN KEY ("shop_person_type_id") REFERENCES "public"."shop_person_type" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_buyer" ADD FOREIGN KEY ("cms_user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_buyer" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_buyer" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_buyer" ADD FOREIGN KEY ("cms_user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_buyer_property"
 -- ----------------------------
+ALTER TABLE "public"."shop_buyer_property" ADD FOREIGN KEY ("property_id") REFERENCES "public"."shop_person_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_buyer_property" ADD FOREIGN KEY ("element_id") REFERENCES "public"."shop_buyer" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_buyer_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE "public"."shop_buyer_property" ADD FOREIGN KEY ("property_id") REFERENCES "public"."shop_person_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_buyer_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_content"
 -- ----------------------------
-ALTER TABLE "public"."shop_content" ADD FOREIGN KEY ("content_id") REFERENCES "public"."cms_content" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_content" ADD FOREIGN KEY ("children_content_id") REFERENCES "public"."cms_content" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_content" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_content" ADD FOREIGN KEY ("vat_id") REFERENCES "public"."shop_vat" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_content" ADD FOREIGN KEY ("content_id") REFERENCES "public"."cms_content" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_content" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_content" ADD FOREIGN KEY ("vat_id") REFERENCES "public"."shop_vat" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_content" ADD FOREIGN KEY ("children_content_id") REFERENCES "public"."cms_content" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_delivery"
 -- ----------------------------
-ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("order_currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("logo_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("order_currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_delivery" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_delivery2pay_system"
 -- ----------------------------
-ALTER TABLE "public"."shop_delivery2pay_system" ADD FOREIGN KEY ("delivery_id") REFERENCES "public"."shop_delivery" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_delivery2pay_system" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_delivery2pay_system" ADD FOREIGN KEY ("pay_system_id") REFERENCES "public"."shop_pay_system" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_delivery2pay_system" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_delivery2pay_system" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_delivery2pay_system" ADD FOREIGN KEY ("delivery_id") REFERENCES "public"."shop_delivery" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_delivery2pay_system" ADD FOREIGN KEY ("pay_system_id") REFERENCES "public"."shop_pay_system" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_discount"
 -- ----------------------------
-ALTER TABLE "public"."shop_discount" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_discount" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_discount" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE "public"."shop_discount" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_discount" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_discount_coupon"
 -- ----------------------------
-ALTER TABLE "public"."shop_discount_coupon" ADD FOREIGN KEY ("shop_discount_id") REFERENCES "public"."shop_discount" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_discount_coupon" ADD FOREIGN KEY ("cms_user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_discount_coupon" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_discount_coupon" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_discount_coupon" ADD FOREIGN KEY ("shop_discount_id") REFERENCES "public"."shop_discount" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_discount_coupon" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_discount2type_price"
 -- ----------------------------
-ALTER TABLE "public"."shop_discount2type_price" ADD FOREIGN KEY ("discount_id") REFERENCES "public"."shop_discount" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_discount2type_price" ADD FOREIGN KEY ("type_price_id") REFERENCES "public"."shop_type_price" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_discount2type_price" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_discount2type_price" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_discount2type_price" ADD FOREIGN KEY ("type_price_id") REFERENCES "public"."shop_type_price" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_discount2type_price" ADD FOREIGN KEY ("discount_id") REFERENCES "public"."shop_discount" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_discount2type_price" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_extra"
@@ -10174,23 +10177,22 @@ ALTER TABLE "public"."shop_extra" ADD FOREIGN KEY ("created_by") REFERENCES "pub
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_fuser"
 -- ----------------------------
-ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("pay_system_id") REFERENCES "public"."shop_pay_system" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("person_type_id") REFERENCES "public"."shop_person_type" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("buyer_id") REFERENCES "public"."shop_buyer" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("delivery_id") REFERENCES "public"."shop_delivery" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("store_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("delivery_id") REFERENCES "public"."shop_delivery" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("pay_system_id") REFERENCES "public"."shop_pay_system" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("person_type_id") REFERENCES "public"."shop_person_type" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("store_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_fuser" ADD FOREIGN KEY ("site_id") REFERENCES "public"."cms_site" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_order"
 -- ----------------------------
-ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("affiliate_id") REFERENCES "public"."shop_affiliate" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("affiliate_id") REFERENCES "public"."shop_affiliate" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("buyer_id") REFERENCES "public"."shop_buyer" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("delivery_id") REFERENCES "public"."shop_delivery" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
@@ -10200,13 +10202,14 @@ ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("person_type_id") REFERENCES 
 ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("site_id") REFERENCES "public"."cms_site" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("status_code") REFERENCES "public"."shop_order_status" ("code") ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("store_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_order" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_order_change"
 -- ----------------------------
+ALTER TABLE "public"."shop_order_change" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_order_change" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_order_change" ADD FOREIGN KEY ("shop_order_id") REFERENCES "public"."shop_order" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_order_change" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_order_status"
@@ -10217,10 +10220,10 @@ ALTER TABLE "public"."shop_order_status" ADD FOREIGN KEY ("updated_by") REFERENC
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_order2discount_coupon"
 -- ----------------------------
+ALTER TABLE "public"."shop_order2discount_coupon" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_order2discount_coupon" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_order2discount_coupon" ADD FOREIGN KEY ("order_id") REFERENCES "public"."shop_order" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_order2discount_coupon" ADD FOREIGN KEY ("discount_coupon_id") REFERENCES "public"."shop_discount_coupon" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_order2discount_coupon" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_pay_system"
@@ -10231,138 +10234,138 @@ ALTER TABLE "public"."shop_pay_system" ADD FOREIGN KEY ("created_by") REFERENCES
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_pay_system_person_type"
 -- ----------------------------
-ALTER TABLE "public"."shop_pay_system_person_type" ADD FOREIGN KEY ("pay_system_id") REFERENCES "public"."shop_pay_system" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_pay_system_person_type" ADD FOREIGN KEY ("person_type_id") REFERENCES "public"."shop_person_type" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_pay_system_person_type" ADD FOREIGN KEY ("pay_system_id") REFERENCES "public"."shop_pay_system" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_person_type"
 -- ----------------------------
-ALTER TABLE "public"."shop_person_type" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_person_type" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_person_type" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_person_type_property"
 -- ----------------------------
 ALTER TABLE "public"."shop_person_type_property" ADD FOREIGN KEY ("shop_person_type_id") REFERENCES "public"."shop_person_type" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE "public"."shop_person_type_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_person_type_property" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_person_type_property" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_person_type_property_enum"
 -- ----------------------------
-ALTER TABLE "public"."shop_person_type_property_enum" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_person_type_property_enum" ADD FOREIGN KEY ("property_id") REFERENCES "public"."shop_person_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_person_type_property_enum" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_person_type_property_enum" ADD FOREIGN KEY ("property_id") REFERENCES "public"."shop_person_type_property" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_person_type_property_enum" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_person_type_site"
 -- ----------------------------
-ALTER TABLE "public"."shop_person_type_site" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_person_type_site" ADD FOREIGN KEY ("person_type_id") REFERENCES "public"."shop_person_type" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_person_type_site" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_product"
 -- ----------------------------
-ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("trial_price_id") REFERENCES "public"."shop_type_price" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("measure_id") REFERENCES "public"."measure" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("purchasing_currency") REFERENCES "public"."money_currency" ("code") ON DELETE SET NULL ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("vat_id") REFERENCES "public"."shop_vat" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("measure_id") REFERENCES "public"."measure" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("trial_price_id") REFERENCES "public"."shop_type_price" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product" ADD FOREIGN KEY ("vat_id") REFERENCES "public"."shop_vat" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_product_price"
 -- ----------------------------
+ALTER TABLE "public"."shop_product_price" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product_price" ADD FOREIGN KEY ("type_price_id") REFERENCES "public"."shop_type_price" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_product_price" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_product_price" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_product_price" ADD FOREIGN KEY ("product_id") REFERENCES "public"."shop_product" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_product_price" ADD FOREIGN KEY ("type_price_id") REFERENCES "public"."shop_type_price" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_product_price" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_product_price" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_product_price_change"
 -- ----------------------------
-ALTER TABLE "public"."shop_product_price_change" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_product_price_change" ADD FOREIGN KEY ("shop_product_price_id") REFERENCES "public"."shop_product_price" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_product_price_change" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_product_price_change" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product_price_change" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product_price_change" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_product_quantity_change"
 -- ----------------------------
 ALTER TABLE "public"."shop_product_quantity_change" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_product_quantity_change" ADD FOREIGN KEY ("shop_product_id") REFERENCES "public"."shop_product" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_product_quantity_change" ADD FOREIGN KEY ("measure_id") REFERENCES "public"."measure" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_product_quantity_change" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product_quantity_change" ADD FOREIGN KEY ("measure_id") REFERENCES "public"."measure" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_product_quantity_change" ADD FOREIGN KEY ("shop_product_id") REFERENCES "public"."shop_product" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_quantity_notice_email"
 -- ----------------------------
 ALTER TABLE "public"."shop_quantity_notice_email" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_quantity_notice_email" ADD FOREIGN KEY ("shop_fuser_id") REFERENCES "public"."shop_fuser" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_quantity_notice_email" ADD FOREIGN KEY ("shop_product_id") REFERENCES "public"."shop_product" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_quantity_notice_email" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_quantity_notice_email" ADD FOREIGN KEY ("shop_product_id") REFERENCES "public"."shop_product" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_quantity_notice_email" ADD FOREIGN KEY ("shop_fuser_id") REFERENCES "public"."shop_fuser" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_store"
 -- ----------------------------
-ALTER TABLE "public"."shop_store" ADD FOREIGN KEY ("image_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_store" ADD FOREIGN KEY ("location_id") REFERENCES "public"."kladr_location" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_store" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE RESTRICT ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_store" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_store" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_store" ADD FOREIGN KEY ("location_id") REFERENCES "public"."kladr_location" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_store" ADD FOREIGN KEY ("image_id") REFERENCES "public"."cms_storage_file" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_store" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_tax"
 -- ----------------------------
-ALTER TABLE "public"."shop_tax" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_tax" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_tax" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_tax" ADD FOREIGN KEY ("site_code") REFERENCES "public"."cms_site" ("code") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_tax_rate"
 -- ----------------------------
-ALTER TABLE "public"."shop_tax_rate" ADD FOREIGN KEY ("person_type_id") REFERENCES "public"."shop_person_type" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE "public"."shop_tax_rate" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_tax_rate" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_tax_rate" ADD FOREIGN KEY ("tax_id") REFERENCES "public"."shop_tax" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_tax_rate" ADD FOREIGN KEY ("person_type_id") REFERENCES "public"."shop_person_type" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_tax_rate" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_type_price"
 -- ----------------------------
-ALTER TABLE "public"."shop_type_price" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_type_price" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_type_price" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_user_account"
 -- ----------------------------
-ALTER TABLE "public"."shop_user_account" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_user_account" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_user_account" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE "public"."shop_user_account" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_user_account" ADD FOREIGN KEY ("user_id") REFERENCES "public"."cms_user" ("id") ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_user_transact"
 -- ----------------------------
-ALTER TABLE "public"."shop_user_transact" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
-ALTER TABLE "public"."shop_user_transact" ADD FOREIGN KEY ("shop_order_id") REFERENCES "public"."shop_order" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_user_transact" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_user_transact" ADD FOREIGN KEY ("cms_user_id") REFERENCES "public"."cms_user" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_user_transact" ADD FOREIGN KEY ("currency_code") REFERENCES "public"."money_currency" ("code") ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE "public"."shop_user_transact" ADD FOREIGN KEY ("shop_order_id") REFERENCES "public"."shop_order" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_user_transact" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_vat"
 -- ----------------------------
-ALTER TABLE "public"."shop_vat" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_vat" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_vat" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 
 -- ----------------------------
 -- Foreign Key structure for table "public"."shop_viewed_product"
 -- ----------------------------
 ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("shop_product_id") REFERENCES "public"."cms_content_element" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("shop_fuser_id") REFERENCES "public"."shop_fuser" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
-ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
 ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("shop_product_id") REFERENCES "public"."shop_product" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("created_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("updated_by") REFERENCES "public"."cms_user" ("id") ON DELETE SET NULL ON UPDATE SET NULL;
+ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("shop_fuser_id") REFERENCES "public"."shop_fuser" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "public"."shop_viewed_product" ADD FOREIGN KEY ("site_id") REFERENCES "public"."cms_site" ("id") ON DELETE CASCADE ON UPDATE CASCADE;

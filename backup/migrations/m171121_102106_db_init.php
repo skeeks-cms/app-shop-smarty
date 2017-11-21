@@ -19,9 +19,11 @@ class m171121_102106_db_init extends \yii\db\Migration
 {
     public function safeUp()
     {
+        $version = 'db__2017-11-21_11-49-03.sql';
+
         if ($this->db->driverName === 'mysql') {
 
-            $filePath = dirname(dirname(__DIR__)) . "/backup/db/db__2017-11-21_02-03-02.sql";
+            $filePath = dirname(__DIR__) . "/db/{$version}";
 
             $file = fopen($filePath, "r");
             if (!$file) {
@@ -34,7 +36,7 @@ class m171121_102106_db_init extends \yii\db\Migration
             $this->execute($sql);
 
         } else if ($this->db->driverName === 'pgsql') {
-            $filePath = dirname(dirname(__DIR__)) . "/backup/pgsql/db__2017-11-21_02-03-02.sql";
+            $filePath = dirname(__DIR__) . "/pgsql/{$version}";
 
             $file = fopen($filePath, "r");
             if (!$file) {
