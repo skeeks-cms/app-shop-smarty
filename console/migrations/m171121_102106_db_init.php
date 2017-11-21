@@ -22,7 +22,7 @@ class m171121_102106_db_init extends \yii\db\Migration
 
         if ($this->db->driverName === 'mysql') {
 
-            $filePath = dirname(__DIR__) . "/backup/db/db__2017-11-21_02-03-02.sql";
+            $filePath = dirname(dirname(__DIR__)) . "/backup/db/db__2017-11-21_02-03-02.sql";
 
             $file = fopen($filePath, "r");
             if (!$file) {
@@ -35,7 +35,7 @@ class m171121_102106_db_init extends \yii\db\Migration
             $this->execute($sql);
 
         } else if ($this->db->driverName === 'pgsql') {
-            $filePath = dirname(__DIR__) . "/backup/db/pgsql.sql";
+            $filePath = dirname(dirname(__DIR__)) . "/backup/pgsql/db__2017-11-21_02-03-02.sql";
 
             $file = fopen($filePath, "r");
             if (!$file) {

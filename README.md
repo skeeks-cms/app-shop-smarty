@@ -19,8 +19,6 @@ Links
 Install
 -----------
 
-http://www.linuxandubuntu.com/home/difference-between-postgresql-and-mysql-and-how-to-migrate-from-mysql-to-postgresql
-
 ```bash
 # Download latest version of composer
 curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php
@@ -32,8 +30,40 @@ cd demo.ru
 #Edit the file to access the database, it is located at common/config/db.php
 
 #Installation of ready-dump
-php yii dbDumper/mysql/restore
+php yii migrate -t=migration_install
 ```
+
+
+
+
+
+
+
+
+
+Other
+----
+
+sudo -i -u postgres
+
+pgloader mysql://shop:jW4mKYSVRVZPGyNn@localhost/shop_smarty pgsql:///test
+
+pgloader -v -L ~/pgloader.log migrate.load
+
+migrate.load
+```
+load database
+     from      mysql://shop:jW4mKYSVRVZPGyNn@127.0.0.1:3306/shop_smarty
+     into pgsql:///test
+ ALTER SCHEMA 'shop_smarty' RENAME TO 'public';
+
+```
+
+
+
+
+http://www.linuxandubuntu.com/home/difference-between-postgresql-and-mysql-and-how-to-migrate-from-mysql-to-postgresql
+
 
 Screenshots
 -----------
