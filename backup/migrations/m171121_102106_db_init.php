@@ -19,7 +19,7 @@ class m171121_102106_db_init extends \yii\db\Migration
 {
     public function safeUp()
     {
-        $version = 'db__2017-11-21_11-49-03.sql';
+        $version = 'db__2018-02-07_12-28-32.sql';
 
         if ($this->db->driverName === 'mysql') {
 
@@ -36,6 +36,9 @@ class m171121_102106_db_init extends \yii\db\Migration
             $this->execute($sql);
 
         } else if ($this->db->driverName === 'pgsql') {
+
+            $version = 'db__2017-11-21_11-49-03.sql';
+
             $filePath = dirname(__DIR__) . "/pgsql/{$version}";
 
             $file = fopen($filePath, "r");
