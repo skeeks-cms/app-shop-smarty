@@ -8,9 +8,9 @@
 /* @var $this yii\web\View */
 ?>
 
-<?= $this->render('@template/include/breadcrumbs', [
-    'title' => 'Корзина'
-]) ?>
+<?= $this->render('@app/views/include/breadcrumbs', [
+    'title' => 'Корзина №'.\Yii::$app->shop->cart->shopOrder->id,
+]); ?>
 
 
 <?
@@ -26,9 +26,9 @@ JS
 ?>
 <!--=== Content Part ===-->
 <section class="sx-cart-layout bg-printair">
-    <? \skeeks\cms\modules\admin\widgets\Pjax::begin([
+    <? $pjax = \skeeks\cms\modules\admin\widgets\Pjax::begin([
         'id' => 'sx-cart-full',
-    ]) ?>
+    ]); ?>
     <div class="row">
         <div class="container sx-border-block">
 
@@ -51,12 +51,12 @@ JS
                 <div class="col-lg-9 col-sm-8">
                     <?= \skeeks\cms\shopCartItemsWidget\ShopCartItemsListWidget::widget([
                         'dataProvider' => new \yii\data\ActiveDataProvider([
-                            'query' => \Yii::$app->shop->shopFuser->getShopBaskets(),
+                            'query'      => \Yii::$app->shop->shopFuser->getShopBaskets(),
                             'pagination' =>
-                            [
-                                'defaultPageSize' => 100,
-                                'pageSizeLimit' => [1, 100],
-                            ]
+                                [
+                                    'defaultPageSize' => 100,
+                                    'pageSizeLimit'   => [1, 100],
+                                ],
                         ]),
 
                     ]); ?>
@@ -64,17 +64,18 @@ JS
                 <!-- RIGHT -->
                 <div class="col-lg-3 col-sm-4">
                     <? $url = \yii\helpers\Url::to(['/shop/cart/checkout']); ?>
-                    <?= $this->render("_result", [
+                    <?= $this->render("@app/views/modules/shop/cart/_result", [
                         'submit' => <<<HTML
     <a href="{$url}" class="btn btn-primary btn-lg btn-block size-15" data-pjax="0">
         <i class="fa fa-mail-forward"></i> Оформить
     </a>
 HTML
+                        ,
                     ]); ?>
                 </div>
             <? endif; ?>
 
         </div>
     </div>
-    <? \skeeks\cms\modules\admin\widgets\Pjax::end() ?>
+    <? $pjax::end(); ?>
 </section>

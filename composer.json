@@ -17,7 +17,7 @@
         }
     ],
     "require": {
-        "skeeks/cms-basic-shop": "^1.1.0",
+        "skeeks/cms-basic-shop": "^1.1.3",
 
         "skeeks/cms-vk-comments": "^1.0",
         "skeeks/cms-ya-share": "^2.0",
@@ -76,15 +76,15 @@
             "web": [
                 "common/config/main.php",
                 "common/config/db.php",
-                "frontend/config/main.php"
+                "frontend/configShopComponent/main.php"
             ],
             "web-dev": [
                 "$web",
-                "?frontend/config/env/dev/main.php"
+                "?frontend/config/main-dev.php"
             ],
             "web-prod": [
                 "$web",
-                "?frontend/config/env/prod/main.php"
+                "?frontend/config/main-prod.php"
             ],
             "console": [
                 "common/config/main.php",
@@ -93,11 +93,11 @@
             ],
             "console-dev": [
                 "$console",
-                "?console/config/env/dev/main.php"
+                "?console/config/main-dev.php"
             ],
             "console-prod": [
                 "$console",
-                "?console/config/env/prod/main.php"
+                "?console/config/main-prod.php"
             ]
         }
     },
