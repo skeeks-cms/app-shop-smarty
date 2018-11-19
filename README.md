@@ -26,6 +26,9 @@ COMPOSER_HOME=.composer php composer.phar create-project --prefer-dist --stabili
 # Going into the project folder
 cd demo.ru
 
+# Download latest version of composer
+curl -sS https://getcomposer.org/installer | COMPOSER_HOME=.composer php
+
 #Edit the file to access the database, it is located at common/config/db.php
 
 #Update configs
