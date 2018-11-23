@@ -76,7 +76,7 @@
             "web": [
                 "common/config/main.php",
                 "common/config/db.php",
-                "frontend/configShopComponent/main.php"
+                "frontend/config/main.php"
             ],
             "web-dev": [
                 "$web",
