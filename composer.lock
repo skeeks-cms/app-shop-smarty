@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c026f4911b659f792710e191c395c7fc",
+    "content-hash": "c1838df63bcef1640818b0cdf0878563",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -320,7 +320,7 @@
             "version": "2.2.4",
             "source": {
                 "type": "git",
-                "url": "git@github.com:jquery/jquery-dist.git",
+                "url": "https://github.com/jquery/jquery-dist.git",
                 "reference": "c0185ab7c75aab88762c5aae780b9d83b80eda72"
             },
             "dist": {
@@ -2223,16 +2223,16 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.2",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
-                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
+                "reference": "6c001f1daafa3a3ac1d8ff69ee4db8e799a654dd",
                 "shasum": ""
             },
             "require": {
@@ -2266,20 +2266,20 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2018-11-20T15:27:04+00:00"
         },
         {
             "name": "skeeks/cms",
-            "version": "5.2.4.1",
+            "version": "5.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms.git",
-                "reference": "8890921098e1b51d8a835aea7a02d3d7d0bfcfd8"
+                "reference": "2d0d3142c135dd2d40f8754ec10779742f4d3505"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/8890921098e1b51d8a835aea7a02d3d7d0bfcfd8",
-                "reference": "8890921098e1b51d8a835aea7a02d3d7d0bfcfd8",
+                "url": "https://api.github.com/repos/skeeks-cms/cms/zipball/2d0d3142c135dd2d40f8754ec10779742f4d3505",
+                "reference": "2d0d3142c135dd2d40f8754ec10779742f4d3505",
                 "shasum": ""
             },
             "require": {
@@ -2376,7 +2376,7 @@
                 "skeeks cms",
                 "yii2"
             ],
-            "time": "2018-11-12T13:56:09+00:00"
+            "time": "2018-11-24T02:50:22+00:00"
         },
         {
             "name": "skeeks/cms-admin",
@@ -2585,16 +2585,16 @@
         },
         {
             "name": "skeeks/cms-backend",
-            "version": "1.2.7.1",
+            "version": "1.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-backend.git",
-                "reference": "f36f4a1c540a3901f056047dc1c5197924f69976"
+                "reference": "e2beaf13bd26112b2bfa4414d542c81a7ce1a877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-backend/zipball/f36f4a1c540a3901f056047dc1c5197924f69976",
-                "reference": "f36f4a1c540a3901f056047dc1c5197924f69976",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-backend/zipball/e2beaf13bd26112b2bfa4414d542c81a7ce1a877",
+                "reference": "e2beaf13bd26112b2bfa4414d542c81a7ce1a877",
                 "shasum": ""
             },
             "require": {
@@ -2630,20 +2630,20 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2018-11-12T13:56:08+00:00"
+            "time": "2018-11-22T03:12:44+00:00"
         },
         {
             "name": "skeeks/cms-backend-admin",
-            "version": "1.1.4",
+            "version": "1.1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-backend-admin.git",
-                "reference": "f5ea215b9422a7a843d8519b950058341b6bccf2"
+                "reference": "07081e9e39aa0b385ef8c497b90b2bb4766aead2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-backend-admin/zipball/f5ea215b9422a7a843d8519b950058341b6bccf2",
-                "reference": "f5ea215b9422a7a843d8519b950058341b6bccf2",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-backend-admin/zipball/07081e9e39aa0b385ef8c497b90b2bb4766aead2",
+                "reference": "07081e9e39aa0b385ef8c497b90b2bb4766aead2",
                 "shasum": ""
             },
             "require": {
@@ -2687,7 +2687,7 @@
                 "skeeks",
                 "yii"
             ],
-            "time": "2018-11-03T09:02:14+00:00"
+            "time": "2018-11-17T04:49:25+00:00"
         },
         {
             "name": "skeeks/cms-basic",
@@ -3898,7 +3898,7 @@
         },
         {
             "name": "skeeks/cms-query-filters",
-            "version": "0.1.7",
+            "version": "0.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/skeeks-cms/cms-query-filters.git",
