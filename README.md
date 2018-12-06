@@ -75,9 +75,9 @@ Screenshots
 [![skeeks!](https://cms.skeeks.com/uploads/all/3f/6d/14/3f6d14293f59d2553f867c324ca1959e.png)](https://cms.skeeks.com)
 [![skeeks!](https://cms.skeeks.com/uploads/all/2d/27/d4/2d27d4cdeeaceb28c54184f3b1886f36.png)](https://cms.skeeks.com)
 
+
 ___
 
-> [![skeeks!](https://gravatar.com/userimage/74431132/13d04d83218593564422770b616e5622.jpg)](https://skeeks.com)  
+> [![skeeks!](https://skeeks.com/img/logo/logo-no-title-80px.png)](https://skeeks.com)  
 <i>SkeekS CMS (Yii2) — quickly, easily and effectively!</i>  
 [skeeks.com](https://skeeks.com) | [cms.skeeks.com](https://cms.skeeks.com)
-
