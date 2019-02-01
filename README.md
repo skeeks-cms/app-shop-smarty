@@ -70,6 +70,12 @@ load database
 http://www.linuxandubuntu.com/home/difference-between-postgresql-and-mysql-and-how-to-migrate-from-mysql-to-postgresql
 
 
+Video
+------------
+
+[![Shop on SkeekS CMS (Yii2)](https://www.fresher.ru/manager_content/12-2018/youtube-podvel-tradicionnye-itogi-goda/1.jpg)](https://www.youtube.com/watch?v=S7PFZiSzRuc)
+
+
 Screenshots
 -----------
 [![skeeks!](https://cms.skeeks.com/uploads/all/3f/6d/14/3f6d14293f59d2553f867c324ca1959e.png)](https://cms.skeeks.com)
