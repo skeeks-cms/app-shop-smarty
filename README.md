@@ -56,12 +56,12 @@ pgloader mysql://shop:jW4mKYSVRVZPGyNn@localhost/shop_smarty pgsql:///test
 pgloader -v -L ~/pgloader.log migrate.load
 
 migrate.load
-```
+
+```bash
 load database
      from      mysql://shop:jW4mKYSVRVZPGyNn@127.0.0.1:3306/shop_smarty
      into pgsql:///test
  ALTER SCHEMA 'shop_smarty' RENAME TO 'public';
-
 ```
 
 
