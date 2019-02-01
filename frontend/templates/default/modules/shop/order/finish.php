@@ -152,7 +152,7 @@ use yii\helpers\Html;
                         <hr/>
                         <? if ($model->allow_payment == \skeeks\cms\components\Cms::BOOL_Y) : ?>
                             <? if ($model->paySystem->paySystemHandler && $model->payed == 'N') : ?>
-                                <?= Html::a("Оплатить", \yii\helpers\Url::to(['/shop/order/finish-pay', 'key' => $model->key]), [
+                                <?= Html::a("Оплатить", $model->payUrl, [
                                     'class' => 'btn btn-lg btn-primary'
                                 ]); ?>
                             <? else : ?>
