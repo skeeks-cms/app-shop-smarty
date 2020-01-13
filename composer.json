@@ -17,14 +17,13 @@
         }
     ],
     "require": {
-        "skeeks/cms-basic-shop": "^1.1.3",
+        "skeeks/cms-basic-shop": "^1.1.4",
 
         "skeeks/cms-vk-comments": "^1.0",
         "skeeks/cms-ya-share": "^2.0",
         "skeeks/cms-vk-community": "^1.0",
         "skeeks/cms-authclient": "^2.0",
         "skeeks/cms-external-links": "^1.0",
-        "skeeks/cms-instagram-widget": "^1.0",
         "skeeks/yii2-template-smarty-asset": "1.1.5"
     },
     "require-dev": {
