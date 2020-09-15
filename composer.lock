@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1838df63bcef1640818b0cdf0878563",
+    "content-hash": "c041cef096b569bf6cb3a94ecf5c550f",
     "packages": [
         {
             "name": "2amigos/yii2-file-upload-widget",
@@ -145,7 +145,7 @@
             "version": "v9.34.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/blueimp/jQuery-File-Upload.git",
+                "url": "git@github.com:blueimp/jQuery-File-Upload.git",
                 "reference": "bb52d3493d725175fcf5554da034a317aaaea0e2"
             },
             "dist": {
@@ -214,7 +214,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "git@github.com:twbs/bootstrap.git",
+                "url": "https://github.com/twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -268,12 +268,12 @@
             "version": "v3.5.7",
             "source": {
                 "type": "git",
-                "url": "git@github.com:fancyapps/fancyBox.git",
+                "url": "https://github.com/fancyapps/fancybox.git",
                 "reference": "b507d317a95b70a0b1be7209d528c4dba3ee0dd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fancyapps/fancyBox/zipball/b507d317a95b70a0b1be7209d528c4dba3ee0dd0",
+                "url": "https://api.github.com/repos/fancyapps/fancybox/zipball/b507d317a95b70a0b1be7209d528c4dba3ee0dd0",
                 "reference": "b507d317a95b70a0b1be7209d528c4dba3ee0dd0"
             },
             "require": {
@@ -328,7 +328,7 @@
             "version": "1.12.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/components/jqueryui.git",
+                "url": "git@github.com:components/jqueryui.git",
                 "reference": "44ecf3794cc56b65954cc19737234a3119d036cc"
             },
             "dist": {
@@ -370,7 +370,7 @@
             "version": "v1.3.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/bestiejs/punycode.js.git",
+                "url": "git@github.com:bestiejs/punycode.js.git",
                 "reference": "38c8d3131a82567bfef18da09f7f4db68c84f8a3"
             },
             "dist": {
@@ -542,49 +542,6 @@
             "time": "2019-01-31T20:38:55+00:00"
         },
         {
-            "name": "cosenary/instagram",
-            "version": "v2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cosenary/Instagram-PHP-API.git",
-                "reference": "fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cosenary/Instagram-PHP-API/zipball/fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5",
-                "reference": "fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "php": ">=5.2.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MetzWeb\\Instagram\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Metz",
-                    "email": "christian-metz1@gmx.net",
-                    "homepage": "http://metzweb.net"
-                }
-            ],
-            "description": "An easy-to-use PHP Class for accessing Instagram's API.",
-            "homepage": "https://github.com/cosenary/Instagram-PHP-API",
-            "keywords": [
-                "api",
-                "instagram"
-            ],
-            "time": "2014-11-29T13:10:42+00:00"
-        },
-        {
             "name": "doctrine/lexer",
             "version": "1.0.2",
             "source": {
@@ -703,16 +660,16 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.12.0",
+            "version": "v4.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "a617e55bc62a87eec73bd456d146d134ad716f03"
+                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/a617e55bc62a87eec73bd456d146d134ad716f03",
-                "reference": "a617e55bc62a87eec73bd456d146d134ad716f03",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
+                "reference": "08e27c97e4c6ed02f37c5b2b20488046c8d90d75",
                 "shasum": ""
             },
             "require": {
@@ -728,6 +685,9 @@
                 },
                 "files": [
                     "library/HTMLPurifier.composer.php"
+                ],
+                "exclude-from-classmap": [
+                    "/library/HTMLPurifier/Language/"
                 ]
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -746,7 +706,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2019-10-28T03:44:26+00:00"
+            "time": "2020-06-29T00:56:53+00:00"
         },
         {
             "name": "fortawesome/font-awesome",
@@ -996,6 +956,7 @@
                 "config",
                 "plugin"
             ],
+            "abandoned": "yiisoft/composer-config-plugin",
             "time": "2017-05-19T14:47:44+00:00"
         },
         {
@@ -2029,7 +1990,7 @@
             "time": "2019-11-26T17:56:10+00:00"
         },
         {
-            "name": "natxet/CssMin",
+            "name": "natxet/cssmin",
             "version": "v3.0.6",
             "source": {
                 "type": "git",
@@ -3707,101 +3668,6 @@
                 "yii"
             ],
             "time": "2019-12-26T07:39:04+00:00"
-        },
-        {
-            "name": "skeeks/cms-instagram-component",
-            "version": "1.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/skeeks-cms/cms-instagram-component.git",
-                "reference": "6b95d09a10f0df951733f0d0966c2174e1b1b9c8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-instagram-component/zipball/6b95d09a10f0df951733f0d0966c2174e1b1b9c8",
-                "reference": "6b95d09a10f0df951733f0d0966c2174e1b1b9c8",
-                "shasum": ""
-            },
-            "require": {
-                "cosenary/instagram": "*",
-                "skeeks/cms": "*"
-            },
-            "type": "yii2-extension",
-            "extra": {
-                "config-plugin": {
-                    "web": "config/main.php"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "skeeks\\cms\\instagram\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kirill Marenov",
-                    "email": "kmarenov@gmail.com"
-                }
-            ],
-            "description": "Instagram component for SkeekS CMS",
-            "homepage": "http://skeeks.com/",
-            "keywords": [
-                "Sx",
-                "app",
-                "instagram",
-                "skeeks",
-                "yii"
-            ],
-            "time": "2017-11-07T10:05:14+00:00"
-        },
-        {
-            "name": "skeeks/cms-instagram-widget",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/skeeks-cms/cms-instagram-widget.git",
-                "reference": "542f6548764d1e57e49a5bc4e9837d9ebdd2e00f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/skeeks-cms/cms-instagram-widget/zipball/542f6548764d1e57e49a5bc4e9837d9ebdd2e00f",
-                "reference": "542f6548764d1e57e49a5bc4e9837d9ebdd2e00f",
-                "shasum": ""
-            },
-            "require": {
-                "skeeks/cms-instagram-component": "*"
-            },
-            "type": "yii2-extension",
-            "autoload": {
-                "psr-4": {
-                    "skeeks\\cms\\instagram\\widget\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Kirill Marenov",
-                    "email": "kmarenov@gmail.com"
-                }
-            ],
-            "description": "Instagram widget for SkeekS CMS",
-            "homepage": "http://skeeks.com/",
-            "keywords": [
-                "Sx",
-                "app",
-                "cms",
-                "module",
-                "skeeks",
-                "yii2"
-            ],
-            "time": "2016-03-05T12:44:46+00:00"
         },
         {
             "name": "skeeks/cms-log-db-target",
@@ -6717,21 +6583,21 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.31",
+            "version": "2.0.38",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "0329b2db8bbf9719b1add17d6defd2d6045b4f09"
+                "reference": "fd01e747cc66a049ec105048f0ab8dfbdf60bf4b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/0329b2db8bbf9719b1add17d6defd2d6045b4f09",
-                "reference": "0329b2db8bbf9719b1add17d6defd2d6045b4f09",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/fd01e747cc66a049ec105048f0ab8dfbdf60bf4b",
+                "reference": "fd01e747cc66a049ec105048f0ab8dfbdf60bf4b",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
-                "bower-asset/jquery": "3.4.*@stable | 3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
+                "bower-asset/jquery": "3.5.*@stable | 3.4.*@stable | 3.3.*@stable | 3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
                 "bower-asset/punycode": "1.3.*",
                 "bower-asset/yii2-pjax": "~2.0.1",
                 "cebe/markdown": "~1.0.0 | ~1.1.0 | ~1.2.0",
@@ -6813,7 +6679,21 @@
                 "framework",
                 "yii2"
             ],
-            "time": "2019-12-18T12:52:03+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/yiisoft",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/yiisoft",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/yiisoft/yii2",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-09-14T21:52:10+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -7010,23 +6890,23 @@
         },
         {
             "name": "yiisoft/yii2-composer",
-            "version": "2.0.8",
+            "version": "2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-composer.git",
-                "reference": "5c7ca9836cf80b34db265332a7f2f8438eb469b9"
+                "reference": "94bb3f66e779e2774f8776d6e1bdeab402940510"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/5c7ca9836cf80b34db265332a7f2f8438eb469b9",
-                "reference": "5c7ca9836cf80b34db265332a7f2f8438eb469b9",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/94bb3f66e779e2774f8776d6e1bdeab402940510",
+                "reference": "94bb3f66e779e2774f8776d6e1bdeab402940510",
                 "shasum": ""
             },
             "require": {
-                "composer-plugin-api": "^1.0"
+                "composer-plugin-api": "^1.0 | ^2.0"
             },
             "require-dev": {
-                "composer/composer": "^1.0",
+                "composer/composer": "^1.0 | ^2.0@dev",
                 "phpunit/phpunit": "<7"
             },
             "type": "composer-plugin",
@@ -7061,7 +6941,21 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2019-07-16T13:22:30+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/yiisoft",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/yiisoft",
+                    "type": "open_collective"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/yiisoft/yii2-composer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-06-24T00:04:01+00:00"
         },
         {
             "name": "yiisoft/yii2-httpclient",
@@ -7212,6 +7106,49 @@
     ],
     "packages-dev": [
         {
+            "name": "cosenary/instagram",
+            "version": "v2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cosenary/Instagram-PHP-API.git",
+                "reference": "fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cosenary/Instagram-PHP-API/zipball/fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5",
+                "reference": "fbf4c82e2cc7e9a7fd6f9fd7bba1fd2c506102a5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MetzWeb\\Instagram\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Metz",
+                    "email": "christian-metz1@gmx.net",
+                    "homepage": "http://metzweb.net"
+                }
+            ],
+            "description": "An easy-to-use PHP Class for accessing Instagram's API.",
+            "homepage": "https://github.com/cosenary/Instagram-PHP-API",
+            "keywords": [
+                "api",
+                "instagram"
+            ],
+            "time": "2014-11-29T13:10:42+00:00"
+        },
+        {
             "name": "opis/closure",
             "version": "3.5.1",
             "source": {
@@ -7271,6 +7208,101 @@
                 "serialize"
             ],
             "time": "2019-11-29T22:36:02+00:00"
+        },
+        {
+            "name": "skeeks/cms-instagram-component",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skeeks-cms/cms-instagram-component.git",
+                "reference": "6b95d09a10f0df951733f0d0966c2174e1b1b9c8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-instagram-component/zipball/6b95d09a10f0df951733f0d0966c2174e1b1b9c8",
+                "reference": "6b95d09a10f0df951733f0d0966c2174e1b1b9c8",
+                "shasum": ""
+            },
+            "require": {
+                "cosenary/instagram": "*",
+                "skeeks/cms": "*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "config-plugin": {
+                    "web": "config/main.php"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "skeeks\\cms\\instagram\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kirill Marenov",
+                    "email": "kmarenov@gmail.com"
+                }
+            ],
+            "description": "Instagram component for SkeekS CMS",
+            "homepage": "http://skeeks.com/",
+            "keywords": [
+                "Sx",
+                "app",
+                "instagram",
+                "skeeks",
+                "yii"
+            ],
+            "time": "2017-11-07T10:05:14+00:00"
+        },
+        {
+            "name": "skeeks/cms-instagram-widget",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/skeeks-cms/cms-instagram-widget.git",
+                "reference": "542f6548764d1e57e49a5bc4e9837d9ebdd2e00f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/skeeks-cms/cms-instagram-widget/zipball/542f6548764d1e57e49a5bc4e9837d9ebdd2e00f",
+                "reference": "542f6548764d1e57e49a5bc4e9837d9ebdd2e00f",
+                "shasum": ""
+            },
+            "require": {
+                "skeeks/cms-instagram-component": "*"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "skeeks\\cms\\instagram\\widget\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Kirill Marenov",
+                    "email": "kmarenov@gmail.com"
+                }
+            ],
+            "description": "Instagram widget for SkeekS CMS",
+            "homepage": "http://skeeks.com/",
+            "keywords": [
+                "Sx",
+                "app",
+                "cms",
+                "module",
+                "skeeks",
+                "yii2"
+            ],
+            "time": "2016-03-05T12:44:46+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -7337,5 +7369,6 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
